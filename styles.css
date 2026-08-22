@@ -1251,3 +1251,48 @@ main, section, article, div { min-width:0; }
     transition-duration:.01ms!important;
   }
 }
+
+/* =========================================================
+   WEMBLAZING — MOBILE MOTION PERFORMANCE
+   Keeps the visual language, removes only expensive live filters.
+   ========================================================= */
+@media (max-width:760px){
+  .nebula{
+    filter:blur(68px)!important;
+    will-change:transform,opacity!important;
+  }
+
+  .wem-orbit-layer{
+    filter:none!important;
+    will-change:opacity!important;
+  }
+
+  .shoot-line{
+    filter:none!important;
+    will-change:transform,opacity!important;
+  }
+
+  .comet-stage,
+  .comet-head,
+  .tail-ribbon,
+  .tail-line{
+    filter:none!important;
+  }
+
+  .comet-stage{
+    will-change:contents;
+  }
+
+  .wem-star{
+    filter:none!important;
+    animation-name:star-focus-mobile!important;
+    will-change:transform,opacity!important;
+  }
+
+  @keyframes star-focus-mobile{
+    0%   {opacity:.20;transform:scale(.88)}
+    45%  {opacity:.58;transform:scale(1)}
+    100% {opacity:.32;transform:scale(.92)}
+  }
+}
+
