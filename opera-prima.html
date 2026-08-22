@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>OPERA PRIMA — WEMBLAZING</title>
+<style>
+:root{--ink:#f0ede8;--muted:#b9b4b1;--night:#080d15;--panel:#151b24;--line:rgba(255,255,255,.16);--accent:#b6956a;--violet:#38103e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0;background:var(--night);color:var(--ink);font-family:Arial,Helvetica,sans-serif}body{min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(circle at 5% 35%,rgba(119,144,151,.36),transparent 30%),radial-gradient(circle at 88% 80%,rgba(113,119,129,.26),transparent 34%),linear-gradient(120deg,#17242b 0%,#07101a 52%,#080d15 100%)}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.38;background:linear-gradient(170deg,transparent 18%,rgba(111,0,90,.25) 18.1%,transparent 18.35%),linear-gradient(190deg,transparent 69%,rgba(111,0,90,.22) 69.1%,transparent 69.35%)}
+nav{position:fixed;z-index:20;top:0;left:0;right:0;padding:24px 3.2vw;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(8,13,21,.86),transparent);backdrop-filter:blur(4px)}nav a{color:#fff;text-decoration:none;font-size:11px;letter-spacing:.18em;font-weight:700}.navright{display:flex;gap:30px}
+main{padding:112px 3.2vw 80px}.section{max-width:1480px;margin:0 auto 110px}.kicker{font-size:10px;letter-spacing:.22em;font-weight:700;color:#d7b68a;text-transform:uppercase}.rule{height:1px;background:var(--line);margin-bottom:14px}.topline{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;margin-bottom:54px}
+.hero{min-height:630px;display:grid;grid-template-columns:1.35fr .65fr;gap:7vw;align-items:center}.hero h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(74px,9.6vw,150px);line-height:.82;margin:22px 0 30px;letter-spacing:-.045em}.hero .meta{font-size:12px;line-height:1.65;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#bfc3c7}.hero-mark{height:560px;border:1px solid var(--line);border-radius:38px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015));display:flex;align-items:center;justify-content:center;padding:70px}.hero-mark img{width:min(85%,390px);height:auto;object-fit:contain}
+.intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;align-items:end}.intro h2,.display-title{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(52px,7vw,105px);line-height:.9;letter-spacing:-.035em;margin:14px 0 28px}.intro h2 span{color:#b9a27f}.copy{max-width:640px;color:#c7c8ca;font-size:16px;line-height:1.75}.copy p{margin:0 0 18px}.statement{font-family:Georgia,serif;font-size:clamp(30px,4.2vw,64px);line-height:1.04;max-width:980px;margin:0 0 55px}.statement em{color:#c1a67e;font-weight:400}
+.identity-box{border:1px solid var(--line);border-radius:32px;padding:7vw 8vw;min-height:510px;display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:7vw;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012))}.identity-box img:first-child{width:100%;max-height:240px;object-fit:contain}.identity-box img:last-child{width:100%;max-height:310px;object-fit:contain}.caption-grid{display:grid;grid-template-columns:1fr 1fr;gap:7vw;color:#c5c5c6;font-size:14px;line-height:1.7;margin-top:24px}
+.app-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.card{border:1px solid var(--line);border-radius:28px;overflow:hidden;background:rgba(255,255,255,.035);min-height:420px;display:flex;align-items:center;justify-content:center}.card img{width:100%;height:100%;object-fit:cover}.cup-card{padding:48px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01))}.cup-card img{object-fit:contain;max-height:610px}.store{grid-column:1/-1;aspect-ratio:16/9}.menu{padding:28px}.menu img{object-fit:contain;max-height:720px}
+.closing{padding:110px 0 40px;text-align:center}.closing .small{font-size:10px;letter-spacing:.22em;color:#c3aa86;text-transform:uppercase}.closing h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(54px,8vw,120px);line-height:.9;margin:20px auto 28px;max-width:1100px}.closing p{max-width:650px;margin:auto;color:#bfc2c4;line-height:1.7}
+.reveal{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:900px){main{padding:96px 20px 60px}.hero,.intro,.identity-box,.app-grid{grid-template-columns:1fr}.hero{min-height:auto}.hero-mark{height:390px;padding:50px}.identity-box{padding:50px 28px}.caption-grid{grid-template-columns:1fr;gap:16px}.store{grid-column:auto}.card{min-height:320px}.navright{gap:14px}.hero h1{font-size:clamp(64px,19vw,100px)}}
+
+/* -------- OPERA PRIMA COLOR SYSTEM -------- */
+.color-system{
+  padding-top:42px;
+  padding-bottom:12vh;
+}
+.color-system .section-kicker{
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.58);
+  margin-bottom:18px;
+}
+.color-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.color-card{
+  aspect-ratio:1 / 1;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  overflow:hidden;
+  background:var(--swatch);
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.color-fill{
+  flex:1;
+  background:var(--swatch);
+}
+.color-meta{
+  padding:18px;
+  background:var(--swatch);
+  color:var(--text);
+}
+.color-meta strong{
+  display:block;
+  font-size:11px;
+  letter-spacing:.14em;
+  margin-bottom:8px;
+}
+.color-meta span{
+  display:block;
+  font-size:10px;
+  letter-spacing:.12em;
+  opacity:.78;
+  margin-bottom:12px;
+}
+.color-meta p{
+  margin:0;
+  font-size:11px;
+  line-height:1.55;
+  max-width:24ch;
+  opacity:.82;
+}
+@media(max-width:900px){
+  .color-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .color-grid{grid-template-columns:1fr}
+}
+
+/* -------- OPERA PRIMA NEBULA -------- */
+:root{
+  --op-espresso:#211B18;
+  --op-ivory:#E8E3DE;
+  --op-travertine:#CDB79B;
+  --op-bronze:#9A784A;
+}
+
+/* OPERA PRIMA NEBULA */
+body{
+  background:#120f0e;
+}
+
+.op-nebula{
+  position:fixed;
+  inset:0;
+  z-index:-10;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(205,183,155,.76), transparent 34%),
+    radial-gradient(circle at 85% 20%, rgba(154,120,74,.55), transparent 32%),
+    radial-gradient(circle at 58% 68%, rgba(70,45,35,.60), transparent 42%),
+    linear-gradient(180deg,#120f0e 0%,#171310 45%,#0f0d0c 100%);
+}
+
+.op-nebula::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.08;
+  mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+}
+
+.op-glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+  mix-blend-mode:screen;
+}
+
+.op-g1{
+  width:65vw;
+  height:65vw;
+  left:-18vw;
+  top:-14vw;
+  background:
+    radial-gradient(
+      circle,
+      rgba(205,183,155,.58),
+      rgba(95,66,50,.26) 48%,
+      transparent 72%
+    );
+}
+
+.op-g2{
+  width:58vw;
+  height:58vw;
+  right:-16vw;
+  top:28vh;
+  background:
+    radial-gradient(
+      circle,
+      rgba(154,120,74,.42),
+      rgba(205,183,155,.14) 45%,
+      transparent 74%
+    );
+}
+
+.op-g3{
+  width:62vw;
+  height:62vw;
+  left:26vw;
+  bottom:-30vw;
+  background:
+    radial-gradient(
+      circle,
+      rgba(70,45,35,.48),
+      rgba(154,120,74,.13) 48%,
+      transparent 75%
+    );
+}
+
+/* soften the old background so the new palette reads */
+.cosmos{
+  background:transparent !important;
+}
+.glow.g1,.glow.g2,.glow.g3{
+  opacity:.18 !important;
+}
+
+/* -------- FINAL NEXT PROJECT -------- */
+.final-project{
+  min-height:88svh;
+  padding:16vh 0 11vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+.final-project .small{
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  margin-bottom:18px;
+}
+.final-project h2{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  font-size:clamp(4rem,8vw,8.5rem);
+  line-height:.84;
+  letter-spacing:-.06em;
+  color:var(--op-ivory);
+}
+.final-project a{
+  margin-top:34px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  width:max-content;
+  text-decoration:none;
+  color:#ff00c8;
+  font-size:11px;
+  letter-spacing:.16em;
+}
+.final-project::before,
+.final-project::after{
+  content:"";
+  position:absolute;
+  left:-8vw;
+  right:-8vw;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,0,200,.38),transparent);
+  transform:rotate(-5deg);
+  opacity:.35;
+}
+.final-project::before{top:28%}
+.final-project::after{bottom:24%;transform:rotate(4deg)}
+
+.op-footer{
+  width:var(--page, min(1240px,calc(100vw - 72px)));
+  margin:0 auto;
+  padding:28px 0 38px;
+  border-top:1px solid rgba(255,255,255,.14);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  font-size:9px;
+  letter-spacing:.17em;
+  color:rgba(255,255,255,.48);
+}
+
+@media(max-width:620px){
+  .op-footer{flex-direction:column}
+}
+
+
+/* RESPONSIVE FIX — MOBILE + TABLET */
+@media (max-width:1100px){
+main{padding:100px 28px 64px}.section{margin-bottom:84px}.hero{min-height:auto;grid-template-columns:1fr;gap:36px;align-items:start}.hero h1{font-size:clamp(72px,13vw,112px);margin-top:18px}.hero-mark{display:none}.intro{grid-template-columns:1fr;gap:30px}.identity-box{grid-template-columns:1.35fr .65fr;padding:58px 42px;gap:38px;min-height:430px}.identity-box img:first-child{max-height:210px}.identity-box img:last-child{max-height:230px;max-width:78%;justify-self:center}.caption-grid{gap:34px}.color-grid{grid-template-columns:repeat(2,1fr)}.app-grid{grid-template-columns:1fr 1fr;gap:16px}.cup-card,.menu{min-height:380px}.cup-card img{max-height:340px;width:auto;max-width:92%}.menu img{max-height:520px;width:auto;max-width:90%}.store{grid-column:1/-1;aspect-ratio:auto;min-height:0}.store img{width:100%;height:auto;object-fit:contain}.final-project{min-height:68svh}}
+@media (max-width:700px){main{padding:88px 16px 50px}.section{margin-bottom:72px}.hero{display:block}.hero h1{font-size:clamp(58px,20vw,88px);line-height:.82;margin:18px 0 24px}.hero .meta{font-size:10px;line-height:1.55;letter-spacing:.11em}.hero-mark{display:none}.intro h2,.display-title{font-size:clamp(46px,15vw,70px)}.copy{font-size:14px}.identity-box{grid-template-columns:1fr;padding:38px 22px;min-height:auto;gap:26px}.identity-box img:first-child{width:100%;max-height:170px}.identity-box img:last-child{max-height:150px;max-width:42%;justify-self:center}.caption-grid{grid-template-columns:1fr;gap:12px;font-size:13px}.color-grid{grid-template-columns:1fr 1fr;gap:10px}.color-card{border-radius:16px}.color-meta{padding:13px}.color-meta p{font-size:10px}.statement{font-size:clamp(34px,11vw,54px)}.app-grid{grid-template-columns:1fr;gap:14px}.card{min-height:0;width:100%}.cup-card,.menu{padding:20px}.cup-card img{width:auto;max-width:94%;max-height:420px;object-fit:contain}.menu img{width:auto;max-width:90%;max-height:none;height:auto;object-fit:contain}.store{grid-column:auto;aspect-ratio:auto}.store img{width:100%;height:auto;object-fit:contain}.final-project{min-height:62svh;padding:11vh 0 8vh}.final-project h2{font-size:clamp(64px,21vw,96px)}.op-footer{width:calc(100% - 32px)}}
+@media (max-width:420px){.navright{gap:10px}.navright a{font-size:7.5px}.color-grid{grid-template-columns:1fr}}
+
+
+/* =========================================================
+   HEADER FIX — MATCH HERBARIUM
+   ========================================================= */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 28px;
+  background:linear-gradient(to bottom,rgba(8,13,21,.86),transparent);
+  backdrop-filter:blur(4px);
+}
+
+nav > a,
+.navright a{
+  color:#fff;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  white-space:nowrap;
+}
+
+.navright{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-left:auto;
+}
+
+/* Tablet */
+@media(max-width:900px){
+  nav{
+    padding:22px 24px;
+  }
+
+  .navright{
+    gap:18px;
+  }
+
+  nav > a,
+  .navright a{
+    font-size:10px;
+  }
+}
+
+/* Mobile — same behaviour as Herbarium */
+@media(max-width:620px){
+  nav{
+    padding:22px 28px;
+  }
+
+  .navright{
+    gap:12px;
+  }
+
+  .navright a:nth-child(2){
+    display:none;
+  }
+
+  nav > a,
+  .navright a{
+    font-size:10px;
+    letter-spacing:.18em;
+  }
+}
+
+/* Extra-narrow phones */
+@media(max-width:400px){
+  nav{
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  nav > a,
+  .navright a{
+    font-size:9px;
+    letter-spacing:.15em;
+  }
+
+  .navright{
+    gap:10px;
+  }
+}
+
+
+/* ===== WEMBLAZING CANONICAL HEADER ===== */
+.wem-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 28px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  line-height:1;
+  text-transform:uppercase;
+  color:#fff;
+  mix-blend-mode:difference;
+}
+.wem-header a{
+  color:inherit;
+  text-decoration:none;
+  font:inherit;
+  letter-spacing:inherit;
+  line-height:inherit;
+  white-space:nowrap;
+}
+.wem-header nav{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin:0;
+  padding:0;
+}
+@media(max-width:620px){
+  .wem-header{padding:22px 28px}
+  .wem-header nav{gap:12px}
+  .wem-header .optional-mobile{display:none}
+}
+@media(max-width:400px){
+  .wem-header{padding-left:20px;padding-right:20px;font-size:9px;letter-spacing:.15em}
+  .wem-header nav{gap:10px}
+}
+
+
+
+/* ===== WEMBLAZING RESPONSIVE CONSOLIDATION ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-width:0}
+img,svg,video,canvas{max-width:100%}
+img{height:auto}
+.wem-header{isolation:isolate}
+.wem-header nav{min-width:0}
+
+@media (max-width:1100px){
+  .wem-header{padding:20px 22px}
+  .wem-header nav{gap:16px}
+}
+
+@media (max-width:700px){
+  .wem-header{padding:18px 16px;font-size:9px;letter-spacing:.14em}
+  .wem-header nav{gap:12px}
+  .wem-header .optional-mobile{display:none}
+}
+
+@media (max-width:390px){
+  .wem-header{padding-left:14px;padding-right:14px;font-size:8px;letter-spacing:.11em}
+  .wem-header nav{gap:9px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+
+/* Opera Prima: authoritative tablet/mobile layout */
+@media (max-width:1100px){
+  main{padding:104px 24px 64px}
+  .section{margin-bottom:84px}
+  .hero,.intro{grid-template-columns:1fr}
+  .hero{min-height:auto;gap:34px}
+  .hero-mark{display:none}
+  .identity-box{grid-template-columns:1.3fr .7fr;padding:54px 38px;gap:34px;min-height:400px}
+  .app-grid{grid-template-columns:1fr 1fr}
+  .store{grid-column:1/-1}
+}
+
+@media (max-width:700px){
+  main{padding:92px 16px 52px}
+  .section{margin-bottom:70px}
+  .hero{display:block}
+  .hero h1{font-size:clamp(56px,19vw,84px);line-height:.84;overflow-wrap:anywhere}
+  .hero .meta{font-size:10px;line-height:1.55;letter-spacing:.1em}
+  .intro{gap:28px}
+  .intro h2,.display-title{font-size:clamp(44px,13vw,64px);line-height:.94}
+  .copy{font-size:14px;line-height:1.72}
+  .topline{flex-direction:column;gap:8px;margin-bottom:32px}
+  .identity-box{grid-template-columns:1fr;padding:34px 20px;gap:26px;min-height:auto;border-radius:22px}
+  .identity-box img:first-child{max-height:170px}
+  .identity-box img:last-child{max-height:140px;max-width:130px;justify-self:center}
+  .caption-grid{grid-template-columns:1fr;gap:12px;font-size:13px}
+  .color-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .color-card{border-radius:16px}
+  .color-meta{padding:13px}
+  .color-meta p{font-size:10px}
+  .statement{font-size:clamp(34px,10.5vw,52px);margin-bottom:36px}
+  .app-grid{grid-template-columns:1fr;gap:14px}
+  .card{min-height:0;border-radius:20px}
+  .cup-card,.menu{padding:20px;min-height:0}
+  .cup-card img,.menu img{width:auto;height:auto;max-width:94%;max-height:none;object-fit:contain}
+  .store{grid-column:auto;aspect-ratio:auto}
+  .store img{width:100%;height:auto;object-fit:contain}
+  .final-project{min-height:62svh;padding:86px 0 64px}
+  .final-project h2{font-size:clamp(58px,18vw,82px)}
+  .op-footer{width:100%;flex-direction:column;gap:8px}
+}
+
+@media (max-width:420px){
+  .color-grid{grid-template-columns:1fr}
+}
+</style>
+<style id="wem-final-responsive-qa">
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+img,svg,video{max-width:100%;height:auto}
+*,*::before,*::after{min-width:0}
+@media(max-width:760px){
+  .sitebar,.wem-header,nav{
+    box-sizing:border-box;
+    max-width:100vw;
+  }
+  .sitebar{
+    padding:18px 16px!important;
+    gap:10px;
+    mix-blend-mode:normal!important;
+    background:linear-gradient(to bottom,rgba(8,13,21,.94),rgba(8,13,21,.62),transparent)!important;
+  }
+  .sitebar nav{gap:11px!important}
+  .sitebar a{font-size:9px!important;letter-spacing:.11em!important;white-space:nowrap}
+  .sitebar nav a:nth-child(2){display:none}
+  .section,.wrap,footer,.op-footer{
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  .rulehead,.topline{
+    gap:12px!important;
+    font-size:8px!important;
+    letter-spacing:.12em!important;
+  }
+  h1,h2,h3{overflow-wrap:anywhere}
+  .hero,.intro,.identity-stage,.identity-note,.palette,.botanical,
+  .pack-render,.flat-grid,.concept,.reflection,.reflection-list,
+  .linkedin-wrap,.poster-wrap,.strategy-grid,.app-grid,.identity-box,
+  .caption-grid,.color-grid{
+    grid-template-columns:1fr!important;
+  }
+  .hero-media,.botanical-art,.glass-card,.flat-card,.label-card,.card{
+    min-height:0!important;
+    height:auto!important;
+  }
+  .hero-media img,.botanical-art img,.glass-card img,.flat-card img,
+  .label-card img,.card img,.asset img,.store img,.menu img,.cup-card img{
+    position:static!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+  .hero-media::before{inset:0!important}
+  .store{grid-column:auto!important;aspect-ratio:auto!important}
+  .asset-caption{flex-direction:column!important;gap:7px!important}
+  footer,.op-footer{flex-direction:column!important}
+}
+@media(max-width:420px){
+  .section,.wrap,footer,.op-footer{width:calc(100% - 28px)!important}
+  .sitebar{padding-left:14px!important;padding-right:14px!important}
+  .hero h1{font-size:clamp(3rem,16vw,4.6rem)!important}
+}
+</style>
+<style id="opera-prima-final-header-fix">
+/* FINAL OPERA PRIMA HEADER FIX
+   The original page has a global `nav{position:fixed...}` rule.
+   Explicitly reset the NAV nested inside the canonical WEMBLAZING header. */
+
+.wem-header{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+  max-width:100vw !important;
+  z-index:1000 !important;
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+}
+
+.wem-header > nav{
+  position:static !important;
+  top:auto !important;
+  left:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+  width:auto !important;
+  max-width:none !important;
+  height:auto !important;
+  z-index:auto !important;
+
+  display:flex !important;
+  flex-direction:row !important;
+  justify-content:flex-start !important;
+  align-items:center !important;
+  gap:22px !important;
+
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  background-color:transparent !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
+
+.wem-header > nav > a{
+  position:static !important;
+  display:inline-block !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  white-space:nowrap !important;
+}
+
+@media(max-width:700px){
+  .wem-header{
+    padding:18px 16px !important;
+  }
+
+  .wem-header > nav{
+    gap:12px !important;
+  }
+
+  .wem-header .optional-mobile{
+    display:none !important;
+  }
+}
+
+@media(max-width:420px){
+  .wem-header{
+    padding-left:14px !important;
+    padding-right:14px !important;
+    font-size:8px !important;
+    letter-spacing:.11em !important;
+  }
+
+  .wem-header > nav{
+    gap:9px !important;
+  }
+}
+</style>
+<link href="opera-prima.html" hreflang="en" rel="alternate"/><link href="opera-prima-it.html" hreflang="it" rel="alternate"/><style id="wem-language-switch">.lang-switch{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.lang-switch a{opacity:.48;text-decoration:none}.lang-switch a[aria-current="page"]{opacity:1}.lang-switch .sep{opacity:.32}@media(max-width:700px){.lang-switch{gap:4px}}</style></head>
+<body>
+<div aria-hidden="true" class="op-nebula">
+<div class="op-glow op-g1"></div>
+<div class="op-glow op-g2"></div>
+<div class="op-glow op-g3"></div>
+</div>
+<header class="wem-header"><a href="index.html">WEMBLAZING</a><nav><a href="index.html#work">WORK</a><a class="optional-mobile" href="index.html#about">ABOUT</a><a href="index.html#connect">CONNECT</a><span aria-label="Language" class="lang-switch"><a aria-current="page" href="opera-prima.html">EN</a><span class="sep">/</span><a href="opera-prima-it.html">IT</a></span></nav></header>
+<main>
+<section class="section hero reveal">
+<div><div class="kicker">02 / CASE STUDY</div><h1>OPERA<br/>PRIMA</h1><div class="meta">BRAND IDENTITY · HOSPITALITY · ART DIRECTION<br/>ITALIAN GELATO · PREMIUM RETAIL CONCEPT</div></div>
+<div class="hero-mark"><img alt="Opera Prima monogram" src="assets/op-monogram.png"/></div>
+</section>
+<section class="section intro" id="process">
+<div><div class="kicker">THE CONCEPT</div><h2>Gelato as<br/><span>an art form.</span></h2></div>
+<div class="copy"><p>Opera Prima is a premium identity concept for an Italian gelateria built around restraint, craftsmanship and the ritual of serving gelato.</p><p>The visual system treats the spoon as both object and symbol. Its silhouette becomes part of the monogram, while fine circular geometry creates a language that can expand from signage to packaging and editorial applications.</p></div>
+</section>
+<section class="section">
+<div class="rule"></div><div class="topline"><span>01 / IDENTITY SYSTEM</span><span>OPERA PRIMA · GELATO ITALIANO</span></div>
+<div class="identity-box"><img alt="Opera Prima primary logo" src="assets/op-logo.png"/><img alt="Opera Prima monogram" src="assets/op-monogram.png"/></div>
+<div class="caption-grid"><p>The primary signature combines an elegant high-contrast wordmark with generous spacing, creating a restrained visual language suited to a contemporary Italian gelateria.</p><p>The OP monogram condenses the concept into a compact mark. The spoon becomes the vertical axis of the symbol, connecting the initials directly to the product and the act of serving.</p></div>
+</section>
+<section class="section color-system reveal">
+<div class="section-kicker">02 / COLOR SYSTEM</div>
+<div class="color-grid">
+<article class="color-card" style="--swatch:#211B18; --text:#F3EEE8;">
+<div class="color-fill"></div>
+<div class="color-meta">
+<strong>ESPRESSO BLACK</strong>
+<span>#211B18</span>
+<p>Primary brand colour. Used for packaging, menus and dark identity surfaces.</p>
+</div>
+</article>
+<article class="color-card" style="--swatch:#E8E3DE; --text:#211B18;">
+<div class="color-fill"></div>
+<div class="color-meta">
+<strong>WARM IVORY</strong>
+<span>#E8E3DE</span>
+<p>Core light neutral used for typography, negative space and refined contrast.</p>
+</div>
+</article>
+<article class="color-card" style="--swatch:#CDB79B; --text:#211B18;">
+<div class="color-fill"></div>
+<div class="color-meta">
+<strong>TRAVERTINE</strong>
+<span>#CDB79B</span>
+<p>Architectural neutral inspired by natural stone and the gelateria interior.</p>
+</div>
+</article>
+<article class="color-card" style="--swatch:#9A784A; --text:#F3EEE8;">
+<div class="color-fill"></div>
+<div class="color-meta">
+<strong>MUTED BRONZE</strong>
+<span>#9A784A</span>
+<p>Warm accent for signage, fine details and premium material references.</p>
+</div>
+</article>
+</div>
+</section>
+<section class="section">
+<div class="kicker">VISUAL LANGUAGE</div><div class="statement">A restrained palette, architectural neutrals and fine-line geometry shape the gelateria into a <em>quiet, tactile experience.</em></div>
+<div class="app-grid">
+<div class="card cup-card"><img alt="Opera Prima gelato cup packaging" src="assets/op-cup.png"/></div>
+<div class="card menu"><img alt="Opera Prima gelato menu design" src="assets/op-menu.png"/></div>
+<div class="card store"><img alt="Opera Prima storefront concept" src="assets/op-storefront.png"/></div>
+</div>
+</section>
+<section class="section final-project reveal">
+<div class="small">NEXT PROJECT</div>
+<h2>HYDRO</h2>
+<a href="hydro.html">EXPLORE CASE STUDY 03 →</a>
+</section>
+<footer class="op-footer">
+<span>WEMBLAZING ✦</span>
+<span>OPERA PRIMA — CASE STUDY 02</span>
+</footer>
+</main>
+</body>
+</html>
