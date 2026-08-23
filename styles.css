@@ -1042,9 +1042,15 @@ main, section, article, div { min-width:0; }
     transform:none!important;
   }
   .hero h1{
-    font-size:clamp(3rem,15.2vw,4.8rem)!important;
-    line-height:.88!important;
-    letter-spacing:-.055em!important;
+    width:100%;
+    max-width:100%;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center;
+    white-space:nowrap;
+    font-size:11vw!important;
+    line-height:.9!important;
+    letter-spacing:-.06em!important;
     overflow-wrap:normal;
   }
   .eyebrow{
@@ -1212,7 +1218,7 @@ main, section, article, div { min-width:0; }
   .wem-header nav a:nth-child(2){display:none}
 
   .hero h1{
-    font-size:clamp(2.7rem,14.8vw,4rem)!important;
+    font-size:10.6vw!important;
   }
   .tagline{
     max-width:300px;
