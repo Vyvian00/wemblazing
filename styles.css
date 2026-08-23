@@ -1396,7 +1396,6 @@ img{height:auto}
   .scene,.work,.project-brief{padding-left:28px!important;padding-right:28px!important}
   .hero{min-height:100svh}
   .hero-lockup{max-width:100%}
-  .hero h1{font-size:clamp(72px,12vw,128px)!important;line-height:.84!important;overflow-wrap:anywhere}
   .editorial-manifesto{font-size:clamp(48px,7.5vw,86px)!important;line-height:.94!important}
   .manifesto{display:grid!important;grid-template-columns:1fr!important;gap:34px!important}
   .manifesto-note{max-width:620px!important}
