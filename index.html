@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<script>try{var wl=localStorage.getItem('wemblazing-lang');if(wl==='en'||wl==='it')document.documentElement.lang=wl;}catch(e){}</script><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="WEMBLAZING è lo studio di Enrico Esposto: identità visive, graphic design, packaging, progetti editoriali e digitali." data-en="WEMBLAZING is Enrico Esposto’s graphic and visual design studio: visual identities, packaging, editorial and digital design." data-it="WEMBLAZING è lo studio di Enrico Esposto: identità visive, graphic design, packaging, progetti editoriali e digitali." name="description"/>
+<meta content="#F4EEE1" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="WEMBLAZING — Graphic &amp; Visual Design" property="og:title"/>
+<meta content="Identità visive, graphic design e progetti digitali seguiti dall'idea fino alla produzione." data-en="Visual identities, graphic design and digital projects developed from concept through production." data-it="Identità visive, graphic design e progetti digitali seguiti dall'idea fino alla produzione." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="it_IT" data-en="en_GB" data-it="it_IT" property="og:locale"/><meta content="en_GB" property="og:locale:alternate"/>
+<meta content="summary" name="twitter:card"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234A5A42' d='M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z'/%3E%3C/svg%3E" rel="icon"/>
+<title>WEMBLAZING — Graphic &amp; Visual Design</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,50,1;1,9..144,300..600,50,1&amp;family=Instrument+Sans:wght@400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   WEMBLAZING — sistema visivo
+   Tema unico e deliberato: mondo avorio caldo.
+   Ogni colore è dichiarato, niente eredita dall'host.
+   ═══════════════════════════════════════════ */
+:root{
+  color-scheme:light;
+
+  --avorio:#F4EEE1;
+  --avorio-alto:#FBF7EE;
+  --crema:#EBE2CF;
+  --taupe:#CDC1AB;
+  --taupe-scuro:#9A8B73;
+  --salvia:#7C8F73;
+  --salvia-chiara:#A7B79C;
+  --salvia-scura:#4A5A42;
+  --carbone:#1E1C19;
+  --inchiostro:#2A2723;
+  --grigio:#67665A;
+  --brace:#8F4E22;
+
+  --f-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-testo:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-util:"DM Mono",ui-monospace,Menlo,monospace;
+
+  --linea:rgba(30,28,25,.16);
+  --linea-tenue:rgba(30,28,25,.08);
+  --pad:clamp(1.25rem,5vw,5rem);
+  --lento:1.15s cubic-bezier(.16,.84,.28,1);
+}
+
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth;}
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:var(--avorio);
+  color:var(--inchiostro);
+  font-family:var(--f-testo);
+  font-size:clamp(1rem,.96rem + .22vw,1.09rem);
+  line-height:1.62;
+  font-weight:400;
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+  font-family:var(--f-display);
+  font-weight:400;
+  margin:0;
+  line-height:.96;
+  letter-spacing:-.025em;
+  text-wrap:balance;
+  font-variation-settings:"SOFT" 50,"WONK" 1;
+}
+p{margin:0;}
+a{color:inherit;}
+img{max-width:100%;}
+::selection{background:var(--salvia);color:var(--avorio-alto);}
+:focus-visible{outline:2px solid var(--salvia-scura);outline-offset:4px;border-radius:1px;}
+
+/* texture carta, fissa sopra tutto, inerte */
+.grana{
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:60;
+  opacity:.055;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── etichette di servizio ── */
+.eti{
+  font-family:var(--f-util);
+  font-size:.7rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--grigio);
+  font-weight:500;
+  display:inline-block;
+}
+.eti-salvia{color:var(--salvia-scura);}
+
+/* ── la stella: firma, usata poco ── */
+.stella{
+  width:1em;height:1em;
+  display:inline-block;
+  vertical-align:-.09em;
+  fill:currentColor;
+  flex:none;
+}
+
+/* ═══ TESTATA ═══ */
+.linea-scroll{
+  position:fixed;top:0;left:0;right:0;height:2px;
+  z-index:55;
+  background:var(--salvia);
+  transform:scaleX(0);
+  transform-origin:0 50%;
+}
+.testata{
+  position:fixed;top:0;left:0;right:0;
+  z-index:50;
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.05rem var(--pad);
+  background:rgba(244,238,225,0);
+  border-bottom:1px solid transparent;
+  transition:background .6s ease,border-color .6s ease,padding .6s ease;
+}
+.testata[data-solida="true"]{
+  background:rgba(244,238,225,.9);
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+  border-bottom-color:var(--linea-tenue);
+  padding-top:.8rem;padding-bottom:.8rem;
+}
+.wordmark{
+  display:flex;align-items:center;gap:.6rem;
+  text-decoration:none;
+  font-family:var(--f-testo);
+  font-weight:600;
+  font-size:.82rem;
+  letter-spacing:.2em;
+  color:var(--carbone);
+}
+.wordmark .stella{color:var(--salvia);transition:transform 1.1s cubic-bezier(.16,.84,.28,1);}
+.wordmark:hover .stella{transform:rotate(90deg);}
+.nav{
+  margin-left:auto;
+  display:flex;gap:1.6rem;align-items:center;
+}
+.nav a{
+  font-family:var(--f-util);
+  font-size:.76rem;
+  text-decoration:none;
+  color:var(--grigio);
+  position:relative;
+  padding:.2rem 0;
+  transition:color .5s ease;
+}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--salvia-scura);
+  transform:scaleX(0);transform-origin:100% 50%;
+  transition:transform .7s cubic-bezier(.16,.84,.28,1);
+}
+.nav a:hover,.nav a:focus-visible{color:var(--carbone);}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1);transform-origin:0 50%;}
+@media (max-width:760px){
+  .nav{gap:1rem;}
+  .nav a[data-min="1"]{display:none;}
+  .wordmark{font-size:.72rem;letter-spacing:.16em;}
+}
+
+/* ═══ IMPIANTO ═══ */
+main{position:relative;}
+section{
+  position:relative;
+  padding:clamp(5rem,12vw,10rem) var(--pad);
+  scroll-margin-top:4.5rem;
+}
+.contenuto{max-width:82rem;margin:0 auto;position:relative;}
+
+/* parola fantasma che rompe la griglia */
+.fantasma{
+  position:absolute;
+  max-width:none;
+  font-family:var(--f-display);
+  font-weight:300;
+  font-size:clamp(5rem,20vw,15rem);
+  line-height:.8;
+  letter-spacing:-.05em;
+  color:var(--taupe-scuro);
+  opacity:.17;
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+}
+.sopra{position:relative;z-index:1;}
+
+/* ═══ APERTURA ═══ */
+.apertura{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:clamp(7rem,16vh,11rem);
+  padding-bottom:clamp(3rem,7vh,5rem);
+  overflow:clip;
+}
+.apertura h1{
+  font-size:clamp(2.9rem,11.6vw,9.3rem);
+  line-height:.86;
+  letter-spacing:-.045em;
+  font-weight:300;
+}
+.riga{display:block;overflow:hidden;padding-bottom:.06em;}
+.riga > span{display:block;transform:translateY(105%);}
+.apertura h1 em{
+  font-style:italic;
+  color:var(--salvia);
+  font-weight:400;
+}
+.apertura h1 .stella{
+  width:.32em;height:.32em;
+  color:var(--brace);
+  vertical-align:.52em;
+  margin-left:.12em;
+}
+.apertura-piede{
+  margin-top:clamp(2.5rem,6vw,4.5rem);
+  display:grid;gap:2rem;
+  align-items:end;
+}
+@media (min-width:900px){
+  .apertura-piede{grid-template-columns:minmax(0,1fr) minmax(18rem,26rem);gap:clamp(2rem,6vw,5rem);}
+}
+.manifesto{
+  font-size:clamp(1.05rem,.95rem + .45vw,1.32rem);
+  line-height:1.5;
+  max-width:38ch;
+  color:var(--inchiostro);
+}
+.apertura-dati{
+  display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.4rem;
+  font-family:var(--f-util);font-size:.78rem;
+  border-top:1px solid var(--linea);
+  padding-top:1.1rem;
+}
+.apertura-dati dt{
+  color:var(--grigio);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding-top:.2rem;
+}
+.apertura-dati dd{margin:0;}
+.pallino{
+  width:.5rem;height:.5rem;border-radius:50%;
+  background:var(--brace);
+  display:inline-block;margin-right:.45rem;vertical-align:.02em;
+}
+@media (prefers-reduced-motion:no-preference){
+  .pallino{animation:respiro 3.4s ease-in-out infinite;}
+}
+@keyframes respiro{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* archi decorativi dell'apertura */
+.arco-apertura{
+  position:absolute;
+  right:-14vw;top:-6vw;
+  width:min(62vw,52rem);
+  color:var(--salvia);
+  opacity:.3;
+  pointer-events:none;
+  z-index:0;
+}
+@media (max-width:820px){.arco-apertura{opacity:.22;right:-34vw;top:-2rem;width:90vw;}}
+
+/* ═══ TRE MOVIMENTI ═══ */
+.movimenti{background:var(--avorio-alto);overflow:clip;}
+.mov-testa{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.8rem 1.5rem;
+  border-bottom:1px solid var(--linea);
+  padding-bottom:1rem;
+  margin-bottom:clamp(3rem,7vw,5.5rem);
+}
+.mov-testa h2{font-size:clamp(1.6rem,1.1rem + 1.9vw,2.6rem);}
+.mov-testa .eti{margin-left:auto;}
+.movimento{
+  display:grid;gap:1.2rem clamp(2rem,6vw,5rem);
+  padding:clamp(2.2rem,5vw,3.6rem) 0;
+  border-top:1px solid var(--linea-tenue);
+  align-items:start;
+}
+.movimento:first-of-type{border-top:0;}
+@media (min-width:880px){
+  .movimento{grid-template-columns:minmax(0,1.05fr) minmax(0,1.25fr) 7rem;}
+}
+.mov-titolo{
+  font-family:var(--f-display);
+  font-size:clamp(2.1rem,1.2rem + 3.6vw,4.2rem);
+  line-height:.92;
+  letter-spacing:-.04em;
+  font-weight:300;
+}
+.mov-titolo b{font-weight:400;font-style:italic;color:var(--salvia);}
+.mov-testo{max-width:52ch;color:var(--inchiostro);}
+.mov-testo p + p{margin-top:.9rem;}
+.mov-voci{
+  list-style:none;margin:.2rem 0 0;padding:0;
+  font-family:var(--f-util);font-size:.72rem;
+  color:var(--grigio);
+  display:flex;flex-direction:column;gap:.3rem;
+}
+.mov-figura{color:var(--salvia);opacity:.55;}
+@media (max-width:879px){.mov-figura{display:none;}}
+
+/* ═══ LAVORI ═══ */
+.lavori{overflow:clip;padding-left:0;padding-right:0;}
+.riquadro{max-width:calc(82rem + 2 * var(--pad));margin:0 auto;padding-inline:var(--pad);position:relative;}
+.lavoro{
+  position:relative;
+  padding:clamp(3.5rem,9vw,7rem) 0;
+  border-top:1px solid var(--linea);
+}
+.lavoro-griglia{
+  display:grid;gap:clamp(1.8rem,4vw,3.5rem);
+  align-items:center;
+}
+@media (min-width:900px){
+  .lavoro-griglia{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);}
+  .lavoro:nth-of-type(even) .lavoro-testo{order:2;}
+}
+.lavoro-eti{display:flex;gap:1.2rem;align-items:baseline;margin-bottom:1rem;}
+.lavoro h3{
+  font-size:clamp(2.2rem,1.3rem + 4vw,4.6rem);
+  line-height:.9;
+  letter-spacing:-.04em;
+  font-weight:300;
+  margin-bottom:1.1rem;
+}
+.lavoro-testo p{max-width:50ch;}
+.lavoro-testo p + p{margin-top:.9rem;}
+.lavoro-fatti{
+  margin:1.6rem 0 0;
+  display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.3rem;
+  font-family:var(--f-util);font-size:.75rem;
+  border-top:1px solid var(--linea-tenue);padding-top:1rem;
+  max-width:34rem;
+}
+.lavoro-fatti dt{color:var(--grigio);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding-top:.2rem;}
+.lavoro-fatti dd{margin:0;}
+
+/* la tavola: composizione che può uscire dalla griglia */
+.blocco-tavola{min-width:0;}
+.tavola{
+  position:relative;
+  aspect-ratio:1.65;
+  background:var(--crema);
+  overflow:hidden;
+}
+.tavola-int{
+  position:absolute;
+  inset:-5% 0;
+  display:grid;place-items:center;
+  will-change:transform;
+}
+.tavola svg{width:100%;height:100%;display:block;}
+.tavola-bleed{border-radius:0;}
+@media (min-width:1200px){
+  .lavoro:nth-of-type(odd) .tavola-bleed{margin-right:calc(var(--pad) * -1);}
+  .lavoro:nth-of-type(even) .tavola-bleed{margin-left:calc(var(--pad) * -1);}
+}
+.tavola-nota{
+  display:block;
+  margin-top:.75rem;
+  font-family:var(--f-util);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--taupe-scuro);
+}
+
+
+/* ── tinta propria di ogni progetto ── */
+.lavoro[data-tinta="herbarium"]{--tinta:#8AA6C6;--tinta-scura:#41556E;}
+.lavoro[data-tinta="opera"]{--tinta:#211C18;--tinta-scura:#6F5228;}
+.lavoro[data-tinta="hydro"]{--tinta:#414B55;--tinta-scura:#2F3841;}
+.lavoro .eti-salvia{color:var(--tinta-scura);}
+
+.tavola{background:var(--tinta,var(--crema));}
+.tavola-int img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* ── striscia orizzontale dei materiali ── */
+.striscia{
+  margin-top:clamp(2rem,4vw,3.2rem);
+  position:relative;
+}
+.binario{
+  user-select:none;
+  display:flex;
+  align-items:flex-end;
+  gap:clamp(1rem,2.2vw,2rem);
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding-left:max(var(--pad),calc((100vw - 82rem) / 2));
+  padding-right:22vw;
+  padding-bottom:.4rem;
+  cursor:grab;
+}
+.binario::-webkit-scrollbar{display:none;}
+.binario.trascino{cursor:grabbing;scroll-snap-type:none;}
+.binario.trascino .pezzo{pointer-events:none;}
+.binario:focus-visible{outline:2px solid var(--salvia-scura);outline-offset:6px;}
+
+.pezzo{
+  margin:0;flex:none;
+  scroll-snap-align:center;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.pezzo img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none;user-select:none;}
+.pezzo .telaio{
+  height:var(--alt);
+  background:var(--crema);
+  overflow:hidden;
+  display:flex;
+  align-self:flex-start;
+  width:max-content;
+}
+.pezzo--alto{--alt:clamp(17rem,52vh,29rem);}
+.pezzo--medio{--alt:clamp(13rem,40vh,22rem);}
+.pezzo--basso{--alt:clamp(10rem,31vh,17rem);}
+/* i loghi chiari vanno su una piastra della tinta del progetto */
+.pezzo .telaio--piastra{
+  background:var(--tinta);
+  align-items:center;justify-content:center;
+  padding:clamp(1.2rem,3vw,2.4rem);
+  aspect-ratio:4/3;
+}
+.pezzo .telaio--piastra img{height:100%;width:auto;object-fit:contain;}
+.pezzo figcaption{
+  font-family:var(--f-util);
+  font-size:.68rem;
+  letter-spacing:.06em;
+  color:var(--grigio);
+  max-width:22rem;
+}
+
+/* rotaia di avanzamento */
+.rotaia{
+  height:1px;
+  background:var(--linea-tenue);
+  margin:clamp(1.4rem,3vw,2.2rem) var(--pad) 0;
+  max-width:82rem;
+  margin-left:max(var(--pad),calc((100vw - 82rem) / 2));
+  margin-right:max(var(--pad),calc((100vw - 82rem) / 2));
+  position:relative;
+  overflow:hidden;
+}
+.cursore{
+  position:absolute;inset:0 auto 0 0;
+  width:100%;
+  background:var(--tinta-scura,var(--salvia));
+  transform-origin:0 50%;
+  transform:scaleX(0);
+}
+.striscia-eti{
+  display:flex;gap:1rem;align-items:baseline;
+  margin:.7rem max(var(--pad),calc((100vw - 82rem) / 2)) 0;
+}
+.striscia-eti .scorri{margin-left:auto;}
+@media (hover:none){.striscia-eti .scorri::after{content:" — scorri con il dito";}}
+
+/* ═══ SERVIZI ═══ */
+.servizi{background:var(--crema);overflow:clip;}
+.catena{
+  display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;
+  font-family:var(--f-util);font-size:.74rem;color:var(--grigio);
+  margin-bottom:clamp(2.5rem,6vw,4rem);
+  padding-bottom:1.2rem;
+  border-bottom:1px solid var(--linea);
+}
+.catena b{color:var(--carbone);font-weight:400;}
+.catena .sep{color:var(--salvia);}
+.aree{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:0;
+}
+@media (min-width:720px){.aree{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(2rem,6vw,5rem);}}
+.aree li{
+  border-bottom:1px solid var(--linea-tenue);
+  padding:1.05rem 0;
+  display:flex;align-items:baseline;gap:1rem;
+}
+.aree .nome{
+  font-family:var(--f-display);
+  font-size:clamp(1.15rem,1rem + .5vw,1.5rem);
+  font-weight:400;letter-spacing:-.02em;
+  transition:color .5s ease,transform .8s cubic-bezier(.16,.84,.28,1);
+}
+.aree .det{margin-left:auto;font-family:var(--f-util);font-size:.68rem;color:var(--grigio);text-align:right;}
+.aree li:hover .nome{color:var(--salvia-scura);transform:translateX(.35rem);}
+
+/* ═══ STUDIO ═══ */
+.studio{overflow:clip;}
+.studio-griglia{display:grid;gap:clamp(2.5rem,6vw,4.5rem);}
+@media (min-width:960px){.studio-griglia{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);}}
+.citazione{
+  font-family:var(--f-display);
+  font-size:clamp(1.5rem,1.1rem + 2.1vw,2.9rem);
+  line-height:1.08;
+  letter-spacing:-.03em;
+  font-weight:300;
+  max-width:19ch;
+  margin-bottom:1.8rem;
+}
+.citazione i{font-style:italic;color:var(--salvia);}
+.studio-testo p{max-width:56ch;}
+.studio-testo p + p{margin-top:1rem;}
+.scheda{
+  border:1px solid var(--linea);
+  padding:clamp(1.4rem,3vw,2rem);
+  background:var(--avorio-alto);
+  align-self:start;
+}
+.scheda h3{font-family:var(--f-util);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--salvia-scura);margin-bottom:1rem;}
+.scheda dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;font-size:.88rem;}
+.scheda dt{font-family:var(--f-util);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grigio);padding-top:.25rem;}
+.scheda dd{margin:0;}
+
+/* ═══ CONTATTI ═══ */
+.contatti{
+  background:var(--carbone);
+  color:var(--avorio);
+  overflow:clip;
+}
+.contatti .eti{color:var(--taupe);}
+.contatti .fantasma{color:var(--salvia);opacity:.13;}
+.contatti-testa{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.8rem 1.5rem;
+  border-bottom:1px solid rgba(244,238,225,.18);
+  padding-bottom:1rem;margin-bottom:clamp(2.5rem,6vw,4rem);
+}
+.contatti-testa h2{font-size:clamp(1.6rem,1.1rem + 1.9vw,2.6rem);}
+.mail{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:var(--f-display);
+  font-weight:300;
+  font-size:clamp(1.35rem,.7rem + 3.4vw,3.6rem);
+  letter-spacing:-.035em;
+  line-height:1.06;
+  text-decoration:none;
+  color:var(--avorio);
+  word-break:break-word;
+  transition:color .7s cubic-bezier(.16,.84,.28,1);
+}
+.mail .stella{width:.42em;height:.42em;color:var(--salvia-chiara);transition:transform 1.1s cubic-bezier(.16,.84,.28,1),color .7s ease;}
+.mail u{text-decoration:none;background-image:linear-gradient(var(--salvia-chiara),var(--salvia-chiara));background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat;padding-bottom:.08em;transition:background-size .9s cubic-bezier(.16,.84,.28,1);}
+.mail:hover u,.mail:focus-visible u{background-size:100% 2px;}
+.mail:hover{color:var(--salvia-chiara);}
+.mail:hover .stella{transform:rotate(180deg) scale(1.15);}
+.contatti-colonne{
+  display:grid;gap:2rem clamp(2rem,5vw,4rem);
+  margin-top:clamp(3rem,6vw,4.5rem);
+  padding-top:1.5rem;
+  border-top:1px solid rgba(244,238,225,.18);
+}
+@media (min-width:820px){.contatti-colonne{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.contatti-colonne h3{font-family:var(--f-util);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--salvia-chiara);margin-bottom:.7rem;}
+.contatti-colonne p,.contatti-colonne li{color:rgba(244,238,225,.82);font-size:.95rem;}
+.contatti-colonne ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem;}
+.contatti-colonne a{text-decoration:none;border-bottom:1px solid rgba(167,183,156,.5);transition:border-color .5s ease,color .5s ease;}
+.contatti-colonne a:hover,.contatti-colonne a:focus-visible{color:var(--salvia-chiara);border-bottom-color:var(--salvia-chiara);}
+
+.telefono{
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+  padding-top:1.5rem;
+  border-top:1px solid rgba(244,238,225,.18);
+  display:flex;flex-direction:column;gap:.7rem;align-items:flex-start;
+}
+.telefono .eti{color:var(--taupe);}
+.tel{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:var(--f-display);
+  font-weight:300;
+  font-size:clamp(1.6rem,1rem + 2.4vw,2.6rem);
+  letter-spacing:-.03em;
+  line-height:1.06;
+  text-decoration:none;
+  color:var(--avorio);
+  font-variant-numeric:tabular-nums;
+  transition:color .7s cubic-bezier(.16,.84,.28,1);
+}
+.tel .stella{width:.36em;height:.36em;color:var(--salvia-chiara);transition:transform 1.1s cubic-bezier(.16,.84,.28,1);}
+.tel u{
+  text-decoration:none;
+  background-image:linear-gradient(var(--salvia-chiara),var(--salvia-chiara));
+  background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat;
+  padding-bottom:.08em;
+  transition:background-size .9s cubic-bezier(.16,.84,.28,1);
+}
+.tel:hover,.tel:focus-visible{color:var(--salvia-chiara);}
+.tel:hover u,.tel:focus-visible u{background-size:100% 2px;}
+.tel:hover .stella{transform:rotate(180deg) scale(1.15);}
+
+.piede{
+  background:var(--carbone);
+  color:rgba(244,238,225,.55);
+  border-top:1px solid rgba(244,238,225,.12);
+  padding:1.3rem var(--pad);
+  font-family:var(--f-util);font-size:.68rem;letter-spacing:.06em;
+  display:flex;flex-wrap:wrap;gap:.6rem 1.8rem;justify-content:space-between;
+}
+
+/* ═══ MOVIMENTO ═══ */
+
+/* comparse: direzioni opposte nella stessa sezione */
+[data-rv]{
+  opacity:0;
+  transition:opacity var(--lento) var(--rd,0s),transform var(--lento) var(--rd,0s);
+  will-change:transform,opacity;
+}
+[data-rv="su"]{transform:translate3d(0,2.6rem,0);}
+[data-rv="sin"]{transform:translate3d(-4.5rem,1rem,0);}
+[data-rv="des"]{transform:translate3d(4.5rem,1rem,0);}
+[data-rv].dentro{opacity:1;transform:none;}
+
+/* la tavola non sfuma: si apre come un crop.
+   Il taglio sta sul figlio, non sul contenitore osservato:
+   un elemento con clip-path a zero area non viene mai visto dall'observer. */
+[data-rv="crop"]{opacity:1;transform:none;transition:none;}
+[data-rv="crop"] .tavola-int{
+  clip-path:inset(0 0 100% 0);
+  transition:clip-path 1.5s cubic-bezier(.16,.84,.28,1) var(--rd,0s);
+}
+[data-rv="crop"].dentro .tavola-int{clip-path:inset(0 0 0 0);}
+
+/* titoli composti parola per parola */
+.w{
+  display:inline-block;
+  overflow:hidden;
+  vertical-align:bottom;
+  padding:.02em .07em .12em 0;
+  margin:0 -.07em -.12em 0;
+}
+.w > span{
+  display:inline-block;
+  transform:translate3d(0,110%,0) rotate(3deg);
+  transform-origin:0 100%;
+  transition:transform 1.25s cubic-bezier(.16,.84,.28,1) var(--wd,0s);
+  will-change:transform;
+}
+[data-split].dentro .w > span{transform:none;}
+/* a corsa finita la maschera si toglie di mezzo: niente tagli
+   sui corsivi né sulle discendenti */
+[data-split].aperto .w{overflow:visible;}
+/* se un titolo è già spezzato in parole, non serve muovere anche il contenitore */
+[data-split][data-rv]{opacity:1;transform:none;transition:none;}
+
+/* righe di sezione che si tirano da sinistra */
+.mov-testa[data-rv],.contatti-testa[data-rv],.catena[data-rv]{
+  border-bottom-color:transparent;
+  position:relative;
+}
+.mov-testa[data-rv]::after,.contatti-testa[data-rv]::after,.catena[data-rv]::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:var(--linea);
+  transform:scaleX(0);transform-origin:0 50%;
+  transition:transform 1.7s cubic-bezier(.16,.84,.28,1) .2s;
+}
+.contatti-testa[data-rv]::after{background:rgba(244,238,225,.22);}
+.mov-testa[data-rv].dentro::after,.contatti-testa[data-rv].dentro::after,.catena[data-rv].dentro::after{transform:scaleX(1);}
+.nolinea::after{display:none !important;}
+
+/* apertura */
+.riga > span{
+  animation:sali 1.5s cubic-bezier(.16,.84,.28,1) forwards;
+  animation-delay:var(--rd,0s);
+}
+@keyframes sali{to{transform:translateY(0);}}
+.tardo{opacity:0;animation:emergi 1.5s cubic-bezier(.16,.84,.28,1) .55s forwards;}
+@keyframes emergi{from{opacity:0;transform:translate3d(0,1.6rem,0);}to{opacity:1;transform:none;}}
+
+/* elementi che continuano a muoversi durante lo scroll */
+[data-px],[data-py]{will-change:transform;}
+
+@media (max-width:760px){
+  [data-px],[data-py]{will-change:auto;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-delay:0s !important;transition-duration:.001ms !important;}
+  [data-rv]{opacity:1;transform:none;}
+  [data-rv="crop"] .tavola-int{clip-path:none;}
+  .w > span{transform:none;}
+  .riga > span{transform:none;}
+  .tardo{opacity:1;}
+  [data-px],[data-py]{transform:none !important;}
+  .mov-testa[data-rv]::after,.contatti-testa[data-rv]::after,.catena[data-rv]::after{transform:none;}
+}
+
+
+/* ═══ SELETTORE LINGUA ═══ */
+.lang-it,.lang-en{display:contents;}
+html[lang="it"] .lang-en{display:none !important;}
+html[lang="en"] .lang-it{display:none !important;}
+.lingua{
+  display:flex;align-items:center;gap:.28rem;flex:none;
+  padding-left:1.15rem;margin-left:.05rem;
+  border-left:1px solid var(--linea);
+  font-family:var(--f-util);font-size:.7rem;letter-spacing:.08em;
+  color:var(--taupe-scuro);
+}
+.lingua-btn{
+  appearance:none;-webkit-appearance:none;border:0;background:transparent;
+  padding:.18rem .08rem;margin:0;font:inherit;letter-spacing:inherit;
+  color:var(--taupe-scuro);cursor:pointer;line-height:1;
+  transition:color .35s ease,opacity .35s ease;
+}
+.lingua-btn:hover,.lingua-btn:focus-visible{color:var(--carbone);}
+.lingua-btn[aria-pressed="true"]{color:var(--carbone);font-weight:500;}
+.lingua-btn[aria-pressed="false"]{opacity:.58;}
+.lingua-sep{opacity:.42;user-select:none;}
+@media (max-width:760px){
+  .testata{gap:.85rem;}
+  .lingua{padding-left:.7rem;gap:.16rem;font-size:.66rem;}
+}
+@media (max-width:520px){
+  .nav a[data-min="2"]{display:none;}
+  .nav{gap:.75rem;}
+  .testata{gap:.65rem;}
+}
+</style>
+</head>
+<body>
+<div aria-hidden="true" class="grana"></div>
+<div aria-hidden="true" class="linea-scroll" id="progresso"></div>
+<svg aria-hidden="true" height="0" style="position:absolute" width="0">
+<defs>
+<symbol id="star" viewbox="0 0 24 24">
+<path d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"></path>
+</symbol>
+</defs>
+</svg>
+<header class="testata" id="testata">
+<a aria-label="WEMBLAZING, torna in cima" class="wordmark" data-aria-en="WEMBLAZING, back to top" data-aria-it="WEMBLAZING, torna in cima" href="#alto">
+<svg aria-hidden="true" class="stella"><use href="#star"></use></svg>
+    WEMBLAZING
+  </a>
+<nav aria-label="Principale" class="nav" data-aria-en="Primary navigation" data-aria-it="Principale">
+<a data-min="1" href="#metodo"><span class="lang-it">Metodo</span><span class="lang-en">Method</span></a>
+<a href="#lavori"><span class="lang-it">Lavori</span><span class="lang-en">Work</span></a>
+<a data-min="2" href="#servizi"><span class="lang-it">Servizi</span><span class="lang-en">Services</span></a>
+<a data-min="1" href="#studio"><span class="lang-it">Studio</span><span class="lang-en">Studio</span></a>
+<a href="#contatti"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
+</nav><div aria-label="Lingua / Language" class="lingua" role="group"><button aria-pressed="true" class="lingua-btn" data-lang="it" title="Italiano" type="button">IT</button><span aria-hidden="true" class="lingua-sep">/</span><button aria-pressed="false" class="lingua-btn" data-lang="en" title="English" type="button">EN</button></div>
+</header>
+<main id="alto">
+<!-- ════ APERTURA ════ -->
+<section class="apertura">
+<svg aria-hidden="true" class="arco-apertura" data-px="-90" data-py="-40" data-vel="1" fill="none" stroke="currentColor" stroke-width="1" viewbox="0 0 600 600">
+<circle cx="300" cy="300" r="298"></circle>
+<circle cx="300" cy="300" r="232"></circle>
+<circle cx="300" cy="300" r="166"></circle>
+<path d="M2 300a298 298 0 0 1 596 0" stroke-width="2.5"></path>
+</svg>
+<div class="contenuto sopra">
+<p class="eti tardo" data-px="26" style="margin-bottom:clamp(1.5rem,4vw,2.5rem);">Brand identity · Graphic &amp; visual design</p>
+<h1>
+<span class="riga"><span><span class="lang-it">Lasciare</span><span class="lang-en">Leave</span></span></span>
+<span class="riga" style="--rd:.1s"><span><span class="lang-it">un segno</span><span class="lang-en">a mark</span></span></span>
+<span class="riga" style="--rd:.2s"><span><em><span class="lang-it">che resta</span><span class="lang-en">that lasts</span></em><svg aria-hidden="true" class="stella"><use href="#star"></use></svg></span></span>
+</h1>
+<div class="apertura-piede">
+<p class="manifesto tardo" data-px="-24"><span class="lang-it">
+          WEMBLAZING è il mio studio di graphic e visual design. Progetto identità visive e le seguo
+          fino a quando diventano qualcosa di reale — stampato, pubblicato, messo in movimento.
+          Dall'idea alla produzione, senza passaggi di mano.
+        </span><span class="lang-en">WEMBLAZING is my graphic and visual design studio. I build visual identities and follow them until they become something real — printed, published, put into motion. From idea to production, without hand-offs.</span></p>
+<dl class="apertura-dati tardo" data-px="26" style="animation-delay:.7s">
+<dt><span class="lang-it">Ambiti</span><span class="lang-en">Focus</span></dt><dd><span class="lang-it">Identità · Packaging · Editoriale · Digitale</span><span class="lang-en">Identity · Packaging · Editorial · Digital</span></dd>
+<dt><span class="lang-it">Metodo</span><span class="lang-en">Method</span></dt><dd>Explore · Create · Connect</dd>
+<dt><span class="lang-it">Base</span><span class="lang-en">Based</span></dt><dd><span class="lang-it">Italia — progetti da remoto</span><span class="lang-en">Italy — remote projects</span></dd>
+<dt><span class="lang-it">Stato</span><span class="lang-en">Status</span></dt><dd><span class="lang-it"><span aria-hidden="true" class="pallino"></span>Disponibile per nuovi progetti in autunno</span><span class="lang-en">Available for new projects this autumn</span></dd>
+</dl>
+</div>
+</div>
+</section>
+<!-- ════ TRE MOVIMENTI ════ -->
+<section class="movimenti" id="metodo">
+<div class="fantasma" data-px="180" data-py="30" data-vel="1" style="right:-4vw;top:-6.5rem;"><span class="lang-it">METODO</span><span class="lang-en">METHOD</span></div>
+<div class="contenuto sopra">
+<div class="mov-testa" data-rv="su">
+<h2 data-split=""><span class="lang-it">Come lavoro</span><span class="lang-en">How I work</span></h2>
+<span class="eti"><span class="lang-it">Tre passaggi, sempre nello stesso ordine</span><span class="lang-en">Three steps, always in the same order</span></span>
+</div>
+<div class="movimento">
+<h3 class="mov-titolo" data-px="34" data-rv="sin" data-split="">WE <b>EXPLORE</b></h3>
+<div class="mov-testo" data-rv="des" style="--rd:.12s">
+<p><span class="lang-it">Prima di disegnare, guardo cosa c'è già. Il settore, i concorrenti, il modo in cui le persone
+            parlano del prodotto e, soprattutto, i vincoli reali: budget, tempi e produzione.</span><span class="lang-en">Before I start designing, I look at what’s already there: the industry, the competition, how people talk about the product and, above all, the practical constraints — budget, timing and production.</span></p>
+<p><span class="lang-it">Da questa ricerca emerge lo spazio su cui vale la pena lavorare: cosa può distinguere il progetto
+            e cosa, invece, è meglio lasciare agli altri.</span><span class="lang-en">That research shows where there is room to do something distinctive, and what is better left to everyone else.</span></p>
+</div>
+<svg aria-hidden="true" class="mov-figura" data-px="-46" data-py="14" data-rv="su" fill="none" stroke="currentColor" stroke-width="1" style="--rd:.2s" viewbox="0 0 100 100">
+<path d="M6 74c14-4 20-22 34-26s22 10 36 4"></path>
+<path d="M6 62c14-4 20-22 34-26s22 10 36 4" opacity=".6"></path>
+<path d="M6 86c14-4 20-22 34-26s22 10 36 4" opacity=".35"></path>
+<circle cx="72" cy="30" fill="currentColor" r="3" stroke="none"></circle>
+</svg>
+</div>
+<div class="movimento">
+<h3 class="mov-titolo" data-px="-34" data-rv="sin" data-split="">WE <b>CREATE</b></h3>
+<div class="mov-testo" data-rv="des" style="--rd:.12s">
+<p><span class="lang-it">Marchio, tipografia, colore, griglia, immagini. Non una serie di proposte scollegate,
+            ma un sistema coerente, con regole semplici da capire e da usare.</span><span class="lang-en">Logo, type, colour, grid, imagery. Not a set of disconnected options, but one coherent system with simple rules that are easy to understand and use.</span></p>
+<p><span class="lang-it">Poi arriva la parte meno visibile, ma fondamentale: esecutivi corretti, tracciati di fustella,
+            file per la stampa e versioni adatte a tutti i formati in cui il progetto dovrà vivere.</span><span class="lang-en">Then comes the less visible but essential part: production-ready artwork, dielines, print files and versions built for every format the project needs to live in.</span></p>
+</div>
+<svg aria-hidden="true" class="mov-figura" data-rv="su" fill="none" stroke="currentColor" stroke-width="1" style="--rd:.2s" viewbox="0 0 100 100">
+<rect height="58" width="46" x="12" y="20"></rect>
+<rect height="44" opacity=".55" width="46" x="30" y="34"></rect>
+<path d="M12 49h64M44 20v58" opacity=".4"></path>
+</svg>
+</div>
+<div class="movimento">
+<h3 class="mov-titolo" data-px="34" data-rv="sin" data-split="">WE <b>CONNECT</b></h3>
+<div class="mov-testo" data-rv="des" style="--rd:.12s">
+<p><span class="lang-it">Un'identità non deve funzionare solo sul mio schermo. Deve essere facile da usare per il tipografo,
+            per chi gestisce i social, per chi prepara una presentazione o dovrà riprenderla tra qualche mese.</span><span class="lang-en">A visual identity should not only work on my screen. It needs to be easy to use for the printer, the person managing social media, whoever is building a presentation, or anyone who comes back to it months later.</span></p>
+<p><span class="lang-it">Per questo consegno linee guida chiare, cartelle ordinate, file aperti e template pronti.
+            L'obiettivo è che il progetto continui a funzionare anche senza di me.</span><span class="lang-en">That is why I deliver clear guidelines, tidy folders, editable files and ready-to-use templates. The goal is for the project to keep working without me.</span></p>
+</div>
+<svg aria-hidden="true" class="mov-figura" data-rv="su" fill="none" stroke="currentColor" stroke-width="1" style="--rd:.2s" viewbox="0 0 100 100">
+<circle cx="30" cy="42" r="20"></circle>
+<circle cx="58" cy="58" opacity=".6" r="20"></circle>
+<circle cx="66" cy="30" opacity=".4" r="12"></circle>
+</svg>
+</div>
+</div>
+</section>
+<!-- ════ LAVORI ════ -->
+<section class="lavori" id="lavori">
+<div class="riquadro">
+<div class="mov-testa nolinea" data-rv="su" style="border-bottom:0;margin-bottom:0;">
+<h2 data-split=""><span class="lang-it">Lavori</span><span class="lang-en">Work</span></h2>
+<span class="eti"><span class="lang-it">Tre progetti — 2025 / 2026</span><span class="lang-en">Three projects — 2025 / 2026</span></span>
+</div>
+</div>
+<!-- Herbarium -->
+<article class="lavoro" data-tinta="herbarium">
+<div class="riquadro">
+<div class="lavoro-griglia">
+<div class="lavoro-testo" data-rv="sin">
+<div class="lavoro-eti">
+<span class="eti eti-salvia">2025</span>
+<span class="eti"><span class="lang-it">Identità · Packaging · Digitale</span><span class="lang-en">Identity · Packaging · Digital</span></span>
+</div>
+<h3 data-split="">Herbarium</h3>
+<p><span class="lang-it">L'idea di partenza non era una semplice linea di prodotti, ma un archivio botanico. Ogni pianta
+              viene trattata come un esemplare da erbario, con numero di specimen, famiglia, parte utilizzata,
+              metodo di estrazione e origine. L'etichetta diventa così una scheda di catalogo, non una vetrina pubblicitaria.</span><span class="lang-en">The starting point was not simply a product line, but a botanical archive. Each plant is treated as a herbarium specimen, with a specimen number, family, part used, extraction method and origin. The label becomes a catalogue entry rather than an advertisement.</span></p>
+<p><span class="lang-it">Le illustrazioni botaniche usano un tratto costante in verde salvia, abbastanza pulito da funzionare
+              sia nella stampa a un colore sull'astuccio sia in piccolo sulla boccetta. Italiano e inglese convivono
+              sulla stessa griglia senza appesantire la lettura.</span><span class="lang-en">The botanical illustrations use a consistent sage-green line, clean enough to work both as a single-colour print on the box and at a small scale on the bottle. Italian and English share the same grid without making the layout feel crowded.</span></p>
+<p><span class="lang-it">Lo stesso sistema continua anche online: la pagina shop riprende la logica dello schedario,
+              mentre la fascia blu distingue in modo netto il catalogo dalla parte commerciale.</span><span class="lang-en">The same system carries over online: the shop page follows the logic of a filing system, while the blue band clearly separates the catalogue from the commercial content.</span></p>
+<dl class="lavoro-fatti">
+<dt><span class="lang-it">Ruolo</span><span class="lang-en">Role</span></dt><dd><span class="lang-it">Identità, packaging, illustrazione, interfaccia</span><span class="lang-en">Identity, packaging, illustration, interface</span></dd>
+<dt><span class="lang-it">Consegna</span><span class="lang-en">Deliverables</span></dt><dd><span class="lang-it">Marchio, sistema etichetta e astuccio, tavole botaniche, pagina shop</span><span class="lang-en">Logo, label and box system, botanical illustrations, shop page</span></dd>
+</dl>
+</div>
+<div class="blocco-tavola"><div class="tavola tavola-bleed" data-rv="crop" style="--rd:.1s">
+<div class="tavola-int" data-py="14">
+<img alt="Astuccio dell'olio essenziale di lavanda Herbarium accanto al wordmark, su fondo blu" data-alt-en="Herbarium lavender essential-oil box next to the wordmark on a blue background" data-alt-it="Astuccio dell'olio essenziale di lavanda Herbarium accanto al wordmark, su fondo blu" decoding="async" height="1200" loading="lazy" src="img/herbarium-hero.webp" width="1800"/>
+</div>
+</div>
+<span class="tavola-nota"><span class="lang-it">Astuccio 10 ml — specimen No. 004</span><span class="lang-en">10 ml box — specimen No. 004</span></span>
+</div>
+</div>
+</div>
+<div class="striscia" data-px="-36">
+<p class="striscia-eti" data-rv="su">
+<span class="eti"><span class="lang-it">Materiali</span><span class="lang-en">Materials</span></span>
+<span class="eti scorri"><span class="lang-it">Trascina o scorri</span><span class="lang-en">Drag or scroll</span></span>
+</p>
+<div aria-label="Altri materiali del progetto Herbarium" class="binario" data-aria-en="More materials from the Herbarium project" data-aria-it="Altri materiali del progetto Herbarium" data-rv="su" role="region" style="--rd:.1s" tabindex="0">
+<figure class="pezzo pezzo--alto">
+<div class="telaio"><img alt="Mockup della pagina shop del sito Herbarium" data-alt-en="Mockup of the Herbarium shop page" data-alt-it="Mockup della pagina shop del sito Herbarium" decoding="async" height="788" loading="lazy" src="img/herbarium-sito.webp" width="1400"/></div>
+<figcaption><span class="lang-it">Interfaccia — pagina shop</span><span class="lang-en">Interface — shop page</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--medio">
+<div class="telaio"><img alt="Etichetta fronte dell'olio essenziale di lavanda" data-alt-en="Front label for the lavender essential oil" data-alt-it="Etichetta fronte dell'olio essenziale di lavanda" decoding="async" height="1100" loading="lazy" src="img/herbarium-etichetta.webp" width="674"/></div>
+<figcaption><span class="lang-it">Etichetta fronte — Lavandula angustifolia</span><span class="lang-en">Front label — Lavandula angustifolia</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--medio">
+<div class="telaio"><img alt="Pannello dell'astuccio con i dati dello specimen" data-alt-en="Box panel with specimen information" data-alt-it="Pannello dell'astuccio con i dati dello specimen" decoding="async" height="1100" loading="lazy" src="img/herbarium-specimen.webp" width="673"/></div>
+<figcaption><span class="lang-it">Astuccio — scheda specimen, IT / EN</span><span class="lang-en">Box — specimen sheet, IT / EN</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--medio">
+<div class="telaio"><img alt="Pannello dell'astuccio con le precauzioni d'uso" data-alt-en="Box panel with usage precautions" data-alt-it="Pannello dell'astuccio con le precauzioni d'uso" decoding="async" height="1100" loading="lazy" src="img/herbarium-precauzioni.webp" width="672"/></div>
+<figcaption><span class="lang-it">Astuccio — precauzioni d'uso</span><span class="lang-en">Box — usage precautions</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--medio">
+<div class="telaio"><img alt="Cartiglio blu con numero di specimen" data-alt-en="Blue panel with specimen number" data-alt-it="Cartiglio blu con numero di specimen" decoding="async" height="1100" loading="lazy" src="img/herbarium-cartiglio.webp" width="674"/></div>
+<figcaption><span class="lang-it">Cartiglio — specimen No. 004</span><span class="lang-en">Specimen panel — No. 004</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--alto">
+<div class="telaio"><img alt="Variante di etichetta con illustrazione diagonale" data-alt-en="Label variant with diagonal botanical illustration" data-alt-it="Variante di etichetta con illustrazione diagonale" decoding="async" height="1100" loading="lazy" src="img/herbarium-lavanda.webp" width="707"/></div>
+<figcaption><span class="lang-it">Etichetta — variante diagonale</span><span class="lang-en">Label — diagonal variant</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--basso">
+<div class="telaio telaio--piastra"><img alt="Monogramma h del marchio Herbarium" data-alt-en="Herbarium h monogram" data-alt-it="Monogramma h del marchio Herbarium" decoding="async" height="700" loading="lazy" src="img/herbarium-monogramma.webp" width="382"/></div>
+<figcaption><span class="lang-it">Monogramma</span><span class="lang-en">Monogram</span></figcaption>
+</figure>
+</div>
+<div class="rotaia"><div class="cursore"></div></div>
+</div>
+</article>
+<!-- Opera Prima -->
+<article class="lavoro" data-tinta="opera">
+<div class="riquadro">
+<div class="lavoro-griglia">
+<div class="lavoro-testo" data-rv="des">
+<div class="lavoro-eti">
+<span class="eti eti-salvia">2025</span>
+<span class="eti"><span class="lang-it">Identità · Gelateria · Egitto</span><span class="lang-en">Identity · Gelato shop · Egypt</span></span>
+</div>
+<h3 data-split="">Opera Prima</h3>
+<p><span class="lang-it">Opera Prima nasce per una gelateria italiana destinata al mercato egiziano. Il punto era raccontare
+              il gelato italiano senza ricadere nei codici più prevedibili del settore. Da qui il riferimento al teatro:
+              opera prima, cartellone, prima serata, al posto dei soliti colori pastello e dei coni illustrati.</span><span class="lang-en">Opera Prima was created for an Italian gelato shop intended for the Egyptian market. The challenge was to communicate Italian gelato without falling back on the category’s most predictable codes. The visual language therefore draws on theatre — première, playbill, opening night — rather than pastel colours and illustrated cones.</span></p>
+<p><span class="lang-it">Il marchio parte da un unico segno che può ricordare insieme un cucchiaino, un calice e un sipario.
+              Cambia scala e funzione a seconda dell'applicazione: diventa monogramma sulla coppetta, arco sulla vetrina
+              e filigrana sul menù.</span><span class="lang-en">The logo starts from a single shape that can suggest a spoon, a glass and a curtain at the same time. It changes scale and function across applications: a monogram on the cup, an arch on the storefront and a watermark on the menu.</span></p>
+<p><span class="lang-it">Il progetto è stato commissionato e consegnato per intero, ma la gelateria non ha poi aperto.
+              Quello che mostro qui è quindi un'identità completa che non è mai arrivata alla produzione.</span><span class="lang-en">The project was fully commissioned and delivered, but the shop ultimately never opened. What I am showing here is therefore a complete identity that never reached production.</span></p>
+<dl class="lavoro-fatti">
+<dt><span class="lang-it">Ruolo</span><span class="lang-en">Role</span></dt><dd><span class="lang-it">Art direction, marchio, materiali</span><span class="lang-en">Art direction, logo, collateral</span></dd>
+<dt><span class="lang-it">Consegna</span><span class="lang-en">Deliverables</span></dt><dd><span class="lang-it">Marchio, coppette, menù, insegna e vetrina</span><span class="lang-en">Logo, cups, menu, signage and storefront</span></dd>
+<dt><span class="lang-it">Stato</span><span class="lang-en">Status</span></dt><dd><span class="lang-it">Commissionato e consegnato — attività non avviata</span><span class="lang-en">Commissioned and delivered — business not launched</span></dd>
+</dl>
+</div>
+<div class="blocco-tavola"><div class="tavola tavola-bleed" data-rv="crop" style="--rd:.1s">
+<div class="tavola-int" data-py="14">
+<img alt="Vetrina della gelateria Opera Prima accanto al pannello con marchio e claim" data-alt-en="Opera Prima gelato shop storefront next to the panel with logo and tagline" data-alt-it="Vetrina della gelateria Opera Prima accanto al pannello con marchio e claim" decoding="async" height="1200" loading="lazy" src="img/opera-hero.webp" width="1800"/>
+</div>
+</div>
+<span class="tavola-nota"><span class="lang-it">Vetrina — insegna e serigrafia</span><span class="lang-en">Storefront — signage and window graphics</span></span>
+</div>
+</div>
+</div>
+<div class="striscia" data-px="32">
+<p class="striscia-eti" data-rv="su">
+<span class="eti"><span class="lang-it">Materiali</span><span class="lang-en">Materials</span></span>
+<span class="eti scorri"><span class="lang-it">Trascina o scorri</span><span class="lang-en">Drag or scroll</span></span>
+</p>
+<div aria-label="Altri materiali del progetto Opera Prima" class="binario" data-aria-en="More materials from the Opera Prima project" data-aria-it="Altri materiali del progetto Opera Prima" data-rv="su" role="region" style="--rd:.1s" tabindex="0">
+<figure class="pezzo pezzo--medio">
+<div class="telaio"><img alt="Coppetta nera con il marchio Opera Prima" data-alt-en="Black cup with the Opera Prima logo" data-alt-it="Coppetta nera con il marchio Opera Prima" decoding="async" height="1021" loading="lazy" src="img/opera-coppetta.webp" width="1181"/></div>
+<figcaption><span class="lang-it">Coppetta — stampa a un colore</span><span class="lang-en">Cup — single-colour print</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--alto">
+<div class="telaio"><img alt="Menù dei gelati Opera Prima" data-alt-en="Opera Prima gelato menu" data-alt-it="Menù dei gelati Opera Prima" decoding="async" height="1100" loading="lazy" src="img/opera-menu.webp" width="745"/></div>
+<figcaption><span class="lang-it">Menù — classici e sorbetti</span><span class="lang-en">Menu — classics and sorbets</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--basso">
+<div class="telaio telaio--piastra"><img alt="Lockup completo del marchio Opera Prima" data-alt-en="Full Opera Prima brand lockup" data-alt-it="Lockup completo del marchio Opera Prima" decoding="async" height="595" loading="lazy" src="img/opera-lockup.webp" width="1000"/></div>
+<figcaption><span class="lang-it">Lockup principale</span><span class="lang-en">Primary lockup</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--medio">
+<div class="telaio telaio--piastra"><img alt="Marchio Opera Prima isolato" data-alt-en="Opera Prima logo on its own" data-alt-it="Marchio Opera Prima isolato" decoding="async" height="700" loading="lazy" src="img/opera-marchio.webp" width="484"/></div>
+<figcaption><span class="lang-it">Marchio — cucchiaino, calice, sipario</span><span class="lang-en">Logo — spoon, glass, curtain</span></figcaption>
+</figure>
+</div>
+<div class="rotaia"><div class="cursore"></div></div>
+</div>
+</article>
+<!-- Hydro -->
+<article class="lavoro" data-tinta="hydro">
+<div class="riquadro">
+<div class="lavoro-griglia">
+<div class="lavoro-testo" data-rv="sin">
+<div class="lavoro-eti">
+<span class="eti eti-salvia">2026</span>
+<span class="eti"><span class="lang-it">Concept di campagna · Non commissionato</span><span class="lang-en">Campaign concept · Self-initiated</span></span>
+</div>
+<h3 data-split="">Hydro</h3>
+<p><span class="lang-it">L'alluminio viene raccontato quasi sempre attraverso impianti, colate e macchinari. In questo concept
+              ho scelto di spostare l'attenzione sulle persone che rendono possibile quel lavoro: <i>the people behind progress</i>.</span><span class="lang-en">Aluminium is almost always communicated through industrial facilities, molten metal and machinery. For this concept I chose to shift the focus to the people who make that work possible: <i>the people behind progress</i>.</span></p>
+<p><span class="lang-it">La direzione visiva unisce una tipografia serif importante, tutta in maiuscolo, alla fotografia del paesaggio
+              industriale nordico. Il titolo entra direttamente nell'immagine e il sistema si adatta poi a banner,
+              post social e formati verticali senza perdere riconoscibilità.</span><span class="lang-en">The visual direction pairs a bold, all-caps serif with photography of Nordic industrial landscapes. The headline sits directly within the image, while the system adapts to banners, social posts and vertical formats without losing recognition.</span></p>
+<p><span class="lang-it">Non è un progetto commissionato. L'ho sviluppato come esercizio di art direction per capire se l'idea
+              fosse abbastanza solida da funzionare su formati diversi.</span><span class="lang-en">This was not a commissioned project. I developed it as an art-direction exercise to test whether the idea was strong enough to work across different formats.</span></p>
+<dl class="lavoro-fatti">
+<dt><span class="lang-it">Ruolo</span><span class="lang-en">Role</span></dt><dd><span class="lang-it">Concept, art direction, declinazioni</span><span class="lang-en">Concept, art direction, adaptations</span></dd>
+<dt><span class="lang-it">Consegna</span><span class="lang-en">Deliverables</span></dt><dd><span class="lang-it">Key visual, banner, formati social</span><span class="lang-en">Key visual, banner, social formats</span></dd>
+<dt><span class="lang-it">Stato</span><span class="lang-en">Status</span></dt><dd><span class="lang-it">Concept non commissionato</span><span class="lang-en">Self-initiated concept</span></dd>
+</dl>
+</div>
+<div class="blocco-tavola"><div class="tavola tavola-bleed" data-rv="crop" style="--rd:.1s">
+<div class="tavola-int" data-py="14">
+<img alt="Key visual della campagna: operaio di spalle in un paesaggio innevato, con il titolo The people behind progress" data-alt-en="Campaign key visual: a worker seen from behind in a snowy landscape, with the headline The people behind progress" data-alt-it="Key visual della campagna: operaio di spalle in un paesaggio innevato, con il titolo The people behind progress" decoding="async" height="1200" loading="lazy" src="img/hydro-hero.webp" width="1800"/>
+</div>
+</div>
+<span class="tavola-nota"><span class="lang-it">Key visual — formato orizzontale</span><span class="lang-en">Key visual — landscape format</span></span>
+</div>
+</div>
+</div>
+<div class="striscia" data-px="-30">
+<p class="striscia-eti" data-rv="su">
+<span class="eti"><span class="lang-it">Materiali</span><span class="lang-en">Materials</span></span>
+<span class="eti scorri"><span class="lang-it">Trascina o scorri</span><span class="lang-en">Drag or scroll</span></span>
+</p>
+<div aria-label="Altri materiali del progetto Hydro" class="binario" data-aria-en="More materials from the Hydro project" data-aria-it="Altri materiali del progetto Hydro" data-rv="su" role="region" style="--rd:.1s" tabindex="0">
+<figure class="pezzo pezzo--alto">
+<div class="telaio"><img alt="Banner di apertura del sito con il claim della campagna" data-alt-en="Website hero banner with the campaign headline" data-alt-it="Banner di apertura del sito con il claim della campagna" decoding="async" height="525" loading="lazy" src="img/hydro-banner.webp" width="1400"/></div>
+<figcaption><span class="lang-it">Banner — apertura sito</span><span class="lang-en">Banner — website hero</span></figcaption>
+</figure>
+<figure class="pezzo pezzo--alto">
+<div class="telaio"><img alt="Mockup del post LinkedIn della campagna" data-alt-en="Mockup of the campaign LinkedIn post" data-alt-it="Mockup del post LinkedIn della campagna" decoding="async" height="770" loading="lazy" src="img/hydro-linkedin.webp" width="557"/></div>
+<figcaption><span class="lang-it">Post social — declinazione verticale</span><span class="lang-en">Social post — vertical adaptation</span></figcaption>
+</figure>
+</div>
+<div class="rotaia"><div class="cursore"></div></div>
+</div>
+</article>
+</section>
+<!-- ════ SERVIZI ════ -->
+<section class="servizi" id="servizi">
+<div class="fantasma" data-px="-170" data-py="-30" data-vel="1" style="left:-6vw;bottom:-2rem;">CREATE</div>
+<div class="contenuto sopra">
+<div class="mov-testa" data-rv="su">
+<h2 data-split=""><span class="lang-it">Cosa faccio</span><span class="lang-en">What I do</span></h2>
+<span class="eti"><span class="lang-it">Sette aree che possono far parte dello stesso progetto</span><span class="lang-en">Seven areas that can be part of the same project</span></span>
+</div>
+<p class="catena" data-rv="su">
+<b><span class="lang-it">idea</span><span class="lang-en">idea</span></b><span class="sep">→</span><b><span class="lang-it">concept</span><span class="lang-en">concept</span></b><span class="sep">→</span><b><span class="lang-it">identità</span><span class="lang-en">identity</span></b>
+<span class="sep">→</span><b><span class="lang-it">sviluppo</span><span class="lang-en">development</span></b><span class="sep">→</span><b><span class="lang-it">applicazione</span><span class="lang-en">application</span></b>
+<span class="sep">→</span><b><span class="lang-it">produzione</span><span class="lang-en">production</span></b>
+</p>
+<ul class="aree" data-stagger="sin">
+<li><span class="nome">Brand identity</span><span class="det"><span class="lang-it">marchio · sistema · linee guida</span><span class="lang-en">logo · system · guidelines</span></span></li>
+<li><span class="nome">Graphic design</span><span class="det"><span class="lang-it">stampati · editoriale</span><span class="lang-en">print · editorial</span></span></li>
+<li><span class="nome">Digital design</span><span class="det"><span class="lang-it">interfacce · social</span><span class="lang-en">interfaces · social</span></span></li>
+<li><span class="nome">Packaging</span><span class="det"><span class="lang-it">etichette · fustelle · esecutivi</span><span class="lang-en">labels · dielines · production artwork</span></span></li>
+<li><span class="nome"><span class="lang-it">Concept di campagna</span><span class="lang-en">Campaign concept</span></span><span class="det"><span class="lang-it">key visual · declinazioni</span><span class="lang-en">key visual · adaptations</span></span></li>
+<li><span class="nome"><span class="lang-it">Comunicazione visiva</span><span class="lang-en">Visual communication</span></span><span class="det"><span class="lang-it">segnaletica · fiere</span><span class="lang-en">signage · trade shows</span></span></li>
+<li><span class="nome">Art direction</span><span class="det"><span class="lang-it">immagine · coerenza</span><span class="lang-en">imagery · consistency</span></span></li>
+</ul>
+<p class="eti" data-rv="su" style="margin-top:1.6rem;line-height:1.9;"><span class="lang-it">
+        Posso entrare nel progetto in qualsiasi momento.<br/>
+        Quando è possibile, però, preferisco esserci fin dall'inizio.
+      </span><span class="lang-en">I can join a project at any stage.<br/>Whenever possible, though, I prefer to be involved from the start.</span></p>
+</div>
+</section>
+<!-- ════ STUDIO ════ -->
+<section class="studio" id="studio">
+<div class="contenuto">
+<div class="mov-testa" data-rv="su">
+<h2 data-split=""><span class="lang-it">Studio</span><span class="lang-en">Studio</span></h2>
+<span class="eti"><span class="lang-it">Chi c'è dietro</span><span class="lang-en">Who's behind it</span></span>
+</div>
+<div class="studio-griglia">
+<div class="studio-testo" data-rv="sin">
+<p class="citazione"><span class="lang-it">Un progetto funziona davvero quando <i>regge all'uso</i>: una stampa non perfetta,
+            uno schermo piccolo, qualcuno che lo riprende e lo aggiorna mesi dopo.</span><span class="lang-en">A project really works when it <i>holds up in use</i>: an imperfect print, a small screen, someone else picking it up and updating it months later.</span></p>
+<p><span class="lang-it">WEMBLAZING è il mio studio. Mi chiamo Enrico Esposto e sono un graphic &amp; visual designer.
+            Progetto identità visive e tutto quello che serve per portarle nel mondo reale: packaging,
+            stampati, materiali digitali, campagne e allestimenti.</span><span class="lang-en">WEMBLAZING is my studio. I’m Enrico Esposto, a graphic &amp; visual designer. I create visual identities and everything needed to bring them into the real world: packaging, print, digital materials, campaigns and exhibition materials.</span></p>
+<p><span class="lang-it">Parto quasi sempre dalla struttura: una griglia, un sistema tipografico e poche regole chiare.
+            Da lì costruisco tutto il resto.</span><span class="lang-en">I almost always start with structure: a grid, a typographic system and a few clear rules. Everything else grows from there.</span></p>
+<p><span class="lang-it">Lavoro da solo, e per me è una scelta precisa: chi mi contatta parla direttamente con la persona
+            che progetta. Significa anche che seguo pochi lavori alla volta, così posso dedicarci il tempo necessario.</span><span class="lang-en">I work independently, and that is a deliberate choice: whoever gets in touch speaks directly with the person doing the design. It also means I take on a limited number of projects at a time, so each one gets the attention it needs.</span></p>
+</div>
+<div class="scheda" data-rv="des" style="--rd:.12s">
+<h3><span class="lang-it">In breve</span><span class="lang-en">At a glance</span></h3>
+<dl>
+<dt><span class="lang-it">Nome</span><span class="lang-en">Name</span></dt><dd>Enrico Esposto</dd>
+<dt><span class="lang-it">Ruolo</span><span class="lang-en">Role</span></dt><dd>Graphic &amp; visual designer</dd>
+<dt><span class="lang-it">Strumenti</span><span class="lang-en">Tools</span></dt><dd>Illustrator, InDesign</dd>
+<dt><span class="lang-it">Tempi</span><span class="lang-en">Timing</span></dt><dd><span class="lang-it">Identità completa: in genere 3–6 settimane. Per gli altri progetti, dipende dal lavoro.</span><span class="lang-en">Full identity: usually 3–6 weeks. Other projects depend on scope.</span></dd>
+<dt><span class="lang-it">Consegna</span><span class="lang-en">Deliverables</span></dt><dd><span class="lang-it">File aperti, cartella ordinata, linee guida brevi</span><span class="lang-en">Editable files, organised folder, concise guidelines</span></dd>
+<dt><span class="lang-it">Lingue</span><span class="lang-en">Languages</span></dt><dd><span class="lang-it">Italiano, inglese</span><span class="lang-en">Italian, English</span></dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<!-- ════ CONTATTI ════ -->
+<section class="contatti" id="contatti">
+<div class="fantasma" data-px="190" data-py="30" data-vel="1" style="right:-8vw;bottom:-4.5rem;">CONNECT</div>
+<div class="contenuto sopra">
+<div class="contatti-testa" data-rv="su">
+<h2 data-split=""><span class="lang-it">Parliamone</span><span class="lang-en">Let's talk</span></h2>
+<span class="eti"><span class="lang-it">Il primo passo può essere una mail, anche breve</span><span class="lang-en">The first step can be a short email</span></span>
+</div>
+<a class="mail" data-href-en="mailto:espostoenricopio@outlook.it?subject=WEMBLAZING%20%E2%80%94%20new%20project" data-href-it="mailto:espostoenricopio@outlook.it?subject=WEMBLAZING%20%E2%80%94%20nuovo%20progetto" data-px="20" href="mailto:espostoenricopio@outlook.it?subject=WEMBLAZING%20%E2%80%94%20nuovo%20progetto">
+<svg aria-hidden="true" class="stella"><use href="#star"></use></svg>
+<u>espostoenricopio@outlook.it</u>
+</a>
+<div class="contatti-colonne">
+<div data-rv="su">
+<h3><span class="lang-it">Cosa scrivere</span><span class="lang-en">What to include</span></h3>
+<p><span class="lang-it">Raccontami in poche righe cosa stai facendo, a chi è rivolto il progetto, che tempi hai e se esiste già
+            del materiale da cui partire. Non serve preparare un brief perfetto: possiamo mettere ordine insieme.</span><span class="lang-en">Tell me in a few lines what you’re working on, who the project is for, your timeline, and whether there is already any material to build from. You do not need a perfect brief — we can shape it together.</span></p>
+</div>
+<div data-rv="su" style="--rd:.1s">
+<h3><span class="lang-it">Tempi di risposta</span><span class="lang-en">Response time</span></h3>
+<p><span class="lang-it">Di solito rispondo entro due giorni lavorativi, con una prima indicazione su percorso, tempi e costi.
+            Se penso di non essere la persona giusta per quel progetto, preferisco dirlo subito.</span><span class="lang-en">I usually reply within two working days with an initial outline of approach, timing and costs. If I do not think I am the right person for the project, I would rather say so straight away.</span></p>
+</div>
+</div>
+<div class="telefono" data-rv="su" style="--rd:.15s">
+<span class="eti"><span class="lang-it">Oppure, se fai prima</span><span class="lang-en">Or, if you prefer</span></span>
+<a class="tel" href="tel:+393343700168">
+<svg aria-hidden="true" class="stella"><use href="#star"></use></svg>
+<u>334 370 0168</u>
+</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="piede">
+<span>© 2026 WEMBLAZING — Enrico Esposto</span>
+<span>We explore · We create · We connect</span>
+<span>Fraunces · Instrument Sans · DM Mono</span>
+</footer>
+<script>
+(function () {
+  var ridotto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var parallaxDisattivato = ridotto || window.matchMedia('(max-width: 760px)').matches;
+
+
+  /* ─────────────────────────────────────────────
+     0. Lingua IT / EN
+     Un solo documento: il selettore mostra la versione
+     scelta e la ricorda per la visita successiva.
+     ───────────────────────────────────────────── */
+  function impostaLingua(codice) {
+    var lingua = codice === 'en' ? 'en' : 'it';
+    document.documentElement.lang = lingua;
+    try { localStorage.setItem('wemblazing-lang', lingua); } catch (_) {}
+
+    document.querySelectorAll('.lingua-btn').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-lang') === lingua ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-alt-it][data-alt-en]').forEach(function (el) {
+      el.setAttribute('alt', el.getAttribute('data-alt-' + lingua));
+    });
+    document.querySelectorAll('[data-aria-it][data-aria-en]').forEach(function (el) {
+      el.setAttribute('aria-label', el.getAttribute('data-aria-' + lingua));
+    });
+    document.querySelectorAll('[data-href-it][data-href-en]').forEach(function (el) {
+      el.setAttribute('href', el.getAttribute('data-href-' + lingua));
+    });
+    document.querySelectorAll('meta[data-it][data-en]').forEach(function (el) {
+      el.setAttribute('content', el.getAttribute('data-' + lingua));
+    });
+  }
+
+  var linguaIniziale = document.documentElement.lang === 'en' ? 'en' : 'it';
+  impostaLingua(linguaIniziale);
+  document.querySelectorAll('.lingua-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      impostaLingua(btn.getAttribute('data-lang'));
+    });
+  });
+
+  /* ─────────────────────────────────────────────
+     1. Titoli spezzati in parole, con maschera
+     ───────────────────────────────────────────── */
+  function spezza(nodo, parole) {
+    Array.prototype.slice.call(nodo.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) {
+        if (!n.textContent.trim()) return;
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+          var mask = document.createElement('span');
+          mask.className = 'w';
+          var dentro = document.createElement('span');
+          dentro.textContent = t;
+          mask.appendChild(dentro);
+          frag.appendChild(mask);
+          parole.push(dentro);
+        });
+        n.parentNode.replaceChild(frag, n);
+      } else if (n.nodeType === 1) {
+        spezza(n, parole);
+      }
+    });
+  }
+
+  if (!ridotto) {
+    document.querySelectorAll('[data-split]').forEach(function (el) {
+      var parole = [];
+      spezza(el, parole);
+      parole.forEach(function (w, i) { w.style.setProperty('--wd', (i * 0.065).toFixed(3) + 's'); });
+    });
+  }
+
+  /* ─────────────────────────────────────────────
+     2. Liste sfalsate: ogni riga entra per conto suo
+     ───────────────────────────────────────────── */
+  document.querySelectorAll('[data-stagger]').forEach(function (lista) {
+    var verso = lista.getAttribute('data-stagger') || 'su';
+    Array.prototype.slice.call(lista.children).forEach(function (figlio, i) {
+      figlio.setAttribute('data-rv', verso);
+      figlio.style.setProperty('--rd', (i * 0.06).toFixed(3) + 's');
+    });
+  });
+
+  /* ─────────────────────────────────────────────
+     3. Comparse
+     ───────────────────────────────────────────── */
+  var pezzi = document.querySelectorAll('[data-rv],[data-split]');
+  if (ridotto || !('IntersectionObserver' in window)) {
+    pezzi.forEach(function (el) { el.classList.add('dentro'); });
+  } else {
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) {
+        if (!v.isIntersecting) return;
+        var el = v.target;
+        el.classList.add('dentro');
+        io.unobserve(el);
+        if (el.hasAttribute('data-split')) {
+          var n = el.querySelectorAll('.w').length;
+          setTimeout(function () { el.classList.add('aperto'); }, 1300 + n * 65);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -8% 0px' });
+    pezzi.forEach(function (el) { io.observe(el); });
+  }
+
+
+  /* ─────────────────────────────────────────────
+     3-bis. Strisce orizzontali dei materiali
+            trascinamento con il mouse, avanzamento,
+            tocco e tastiera lasciati al browser
+     ───────────────────────────────────────────── */
+  document.querySelectorAll('.striscia').forEach(function (striscia) {
+    var binario = striscia.querySelector('.binario');
+    var cursore = striscia.querySelector('.cursore');
+    var giu = false, xIniziale = 0, scrollIniziale = 0;
+
+    function avanzamento() {
+      var corsa = binario.scrollWidth - binario.clientWidth;
+      var q = corsa > 4 ? binario.scrollLeft / corsa : 0;
+      cursore.style.transform = 'scaleX(' + (0.07 + q * 0.93).toFixed(4) + ')';
+    }
+    binario.addEventListener('scroll', avanzamento, { passive: true });
+    window.addEventListener('resize', avanzamento);
+    avanzamento();
+
+    binario.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    binario.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch') return;
+      giu = true;
+      xIniziale = e.clientX;
+      scrollIniziale = binario.scrollLeft;
+      binario.classList.add('trascino');
+      try { binario.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    binario.addEventListener('pointermove', function (e) {
+      if (!giu) return;
+      binario.scrollLeft = scrollIniziale - (e.clientX - xIniziale);
+    });
+    function rilascia(e) {
+      if (!giu) return;
+      giu = false;
+      binario.classList.remove('trascino');
+      try { binario.releasePointerCapture(e.pointerId); } catch (_) {}
+    }
+    binario.addEventListener('pointerup', rilascia);
+    binario.addEventListener('pointercancel', rilascia);
+  });
+
+  /* ─────────────────────────────────────────────
+     4. Motore di scorrimento
+        parallasse su due assi + inerzia + inclinazione
+        proporzionale alla velocità dello scroll
+     ───────────────────────────────────────────── */
+  var strati = Array.prototype.slice.call(document.querySelectorAll('[data-px],[data-py]')).map(function (el) {
+    return {
+      el: el,
+      px: parseFloat(el.getAttribute('data-px')) || 0,
+      py: parseFloat(el.getAttribute('data-py')) || 0,
+      vel: el.hasAttribute('data-vel'),
+      x: 0, y: 0
+    };
+  });
+
+  var testata = document.getElementById('testata');
+  var barra = document.getElementById('progresso');
+  var ultimoY = window.scrollY || 0;
+  var velocita = 0;
+  var girando = false;
+  var fermo = 0;
+
+  function fotogramma() {
+    var h = window.innerHeight;
+    var y = window.scrollY || 0;
+    var delta = y - ultimoY;
+    ultimoY = y;
+
+    /* velocità smorzata: sale in fretta, torna a zero con calma */
+    velocita += (delta - velocita) * 0.18;
+    if (Math.abs(velocita) < 0.02) velocita = 0;
+    var inclina = Math.max(-2.4, Math.min(2.4, velocita * 0.05));
+
+    var movimento = Math.abs(velocita);
+
+    strati.forEach(function (s) {
+      var r = s.el.getBoundingClientRect();
+      var centro = r.top + r.height / 2 - h / 2;
+      /* progresso normalizzato: -1 sotto lo schermo, 0 al centro, +1 sopra */
+      var corsa = h / 2 + r.height / 2;
+      var q = corsa > 0 ? Math.max(-1, Math.min(1, centro / corsa)) : 0;
+      var bx = q * s.px;
+      var by = q * s.py;
+      /* inerzia: l'elemento insegue la sua posizione, non ci salta sopra */
+      s.x += (bx - s.x) * 0.085;
+      s.y += (by - s.y) * 0.085;
+      movimento = Math.max(movimento, Math.abs(bx - s.x), Math.abs(by - s.y));
+      s.el.style.transform =
+        'translate3d(' + s.x.toFixed(2) + 'px,' + s.y.toFixed(2) + 'px,0)' +
+        (s.vel ? ' skewY(' + inclina.toFixed(3) + 'deg)' : '');
+    });
+
+    testata.setAttribute('data-solida', y > 40 ? 'true' : 'false');
+
+    var totale = document.documentElement.scrollHeight - h;
+    barra.style.transform = 'scaleX(' + (totale > 0 ? Math.min(y / totale, 1) : 0) + ')';
+
+    /* si spegne da solo quando non c'è più niente da muovere */
+    if (movimento < 0.15) { fermo++; } else { fermo = 0; }
+    if (fermo > 40) { girando = false; return; }
+    requestAnimationFrame(fotogramma);
+  }
+
+  function accendi() {
+    fermo = 0;
+    if (!girando) { girando = true; requestAnimationFrame(fotogramma); }
+  }
+
+  if (parallaxDisattivato) {
+    testata.setAttribute('data-solida', (window.scrollY || 0) > 40 ? 'true' : 'false');
+    window.addEventListener('scroll', function () {
+      var h = window.innerHeight;
+      var y = window.scrollY || 0;
+      testata.setAttribute('data-solida', y > 40 ? 'true' : 'false');
+      var totale = document.documentElement.scrollHeight - h;
+      barra.style.transform = 'scaleX(' + (totale > 0 ? Math.min(y / totale, 1) : 0) + ')';
+    }, { passive: true });
+  } else {
+    window.addEventListener('scroll', accendi, { passive: true });
+    window.addEventListener('resize', accendi);
+    accendi();
+  }
+})();
+</script>
+</body>
+</html>
