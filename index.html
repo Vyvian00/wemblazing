@@ -11,7 +11,13 @@
 <meta content="Identità visive, graphic design e progetti digitali seguiti dall'idea fino alla produzione." data-en="Visual identities, graphic design and digital projects developed from concept through production." data-it="Identità visive, graphic design e progetti digitali seguiti dall'idea fino alla produzione." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="it_IT" data-en="en_GB" data-it="it_IT" property="og:locale"/><meta content="en_GB" property="og:locale:alternate"/>
-<meta content="summary" name="twitter:card"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="img/og-wemblazing.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="WEMBLAZING — Graphic &amp; Visual Design" property="og:image:alt"/>
+<meta content="img/og-wemblazing.jpg" name="twitter:image"/>
+<link as="font" crossorigin="anonymous" href="fonts/Yuyu-Regular.ttf" rel="preload" type="font/ttf"/>
 <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234A5A42' d='M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z'/%3E%3C/svg%3E" rel="icon"/>
 <title>WEMBLAZING — Graphic &amp; Visual Design</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -120,6 +126,16 @@ img{max-width:100%;}
   flex:none;
 }
 
+/* ═══ MICROINTERAZIONI GLOBALI ═══ */
+body.lightbox-aperta{overflow:hidden;}
+
+/* Wordmark: ingresso una sola volta al caricamento */
+.wordmark-maschera{display:inline-block;overflow:hidden;padding:.08em 0;}
+.wordmark-testo{display:block;transform:translate3d(-108%,0,0);animation:wordmarkRivela .82s cubic-bezier(.16,.84,.28,1) .16s forwards;}
+.wordmark > .stella{opacity:0;transform:scale(.45) rotate(-55deg);animation:wordmarkStella .76s cubic-bezier(.16,.84,.28,1) .03s forwards;}
+@keyframes wordmarkRivela{to{transform:none;}}
+@keyframes wordmarkStella{to{opacity:1;transform:none;}}
+
 /* ═══ TESTATA ═══ */
 .linea-scroll{
   position:fixed;top:0;left:0;right:0;height:2px;
@@ -176,6 +192,9 @@ img{max-width:100%;}
 }
 .nav a:hover,.nav a:focus-visible{color:var(--carbone);}
 .nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1);transform-origin:0 50%;}
+.nav a[aria-current="page"]{color:var(--salvia-scura);font-weight:600;}
+.nav a[aria-current="page"]::after{transform:scaleX(1);transform-origin:0 50%;}
+
 @media (max-width:760px){
   .nav{gap:1rem;}
   .nav a[data-min="1"]{display:none;}
@@ -478,8 +497,60 @@ section{
   display:flex;gap:1rem;align-items:baseline;
   margin:.7rem max(var(--pad),calc((100vw - 82rem) / 2)) 0;
 }
-.striscia-eti .scorri{margin-left:auto;}
+.striscia-eti .scorri{margin-left:auto;display:inline-flex;align-items:center;gap:.55rem;}
+.striscia-eti .scorri::before{
+  content:"→";
+  display:inline-block;
+  color:var(--tinta-scura,var(--salvia-scura));
+  font-size:1rem;
+  line-height:1;
+  animation:invitoTrascina 1.65s cubic-bezier(.16,.84,.28,1) infinite;
+}
+.striscia[data-hint-visto="true"] .scorri::before{animation-iteration-count:2;}
+@keyframes invitoTrascina{
+  0%,100%{transform:translateX(0);opacity:.42;}
+  55%{transform:translateX(.5rem);opacity:1;}
+}
+.binario.hint-scroll{scroll-behavior:smooth;}
+.pezzo .telaio img,.tavola-int img{cursor:zoom-in;}
+
 @media (hover:none){.striscia-eti .scorri::after{content:" — scorri con il dito";}}
+
+/* ═══ LIGHTBOX PROGETTI ═══ */
+.lightbox{
+  position:fixed;inset:0;z-index:100;
+  display:grid;grid-template-rows:auto 1fr auto;
+  background:rgba(30,28,25,.94);
+  color:var(--avorio);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease;
+}
+.lightbox.aperta{opacity:1;visibility:visible;}
+.lightbox-barra{
+  display:flex;align-items:center;gap:1rem;
+  padding:clamp(1rem,2vw,1.5rem) var(--pad);
+  border-bottom:1px solid rgba(244,238,225,.15);
+  font-family:var(--f-util);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+}
+.lightbox-contatore{color:var(--taupe);}
+.lightbox-caption{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lightbox-chiudi,.lightbox-nav{
+  appearance:none;border:0;background:transparent;color:inherit;cursor:pointer;
+  font:inherit;display:grid;place-items:center;
+}
+.lightbox-chiudi{margin-left:auto;width:2.7rem;height:2.7rem;font-size:1.6rem;line-height:1;}
+.lightbox-corpo{min-height:0;position:relative;display:grid;place-items:center;padding:clamp(1rem,3vw,2.5rem) clamp(3.8rem,8vw,7rem);}
+.lightbox-immagine{max-width:min(92vw,110rem);max-height:calc(100vh - 10rem);width:auto;height:auto;object-fit:contain;display:block;box-shadow:0 18px 70px rgba(0,0,0,.22);}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:3.1rem;height:4.6rem;font-size:1.7rem;color:var(--taupe);transition:color .25s ease,transform .25s ease;}
+.lightbox-nav:hover,.lightbox-nav:focus-visible{color:var(--avorio);}
+.lightbox-prev{left:clamp(.5rem,2vw,1.6rem);}
+.lightbox-next{right:clamp(.5rem,2vw,1.6rem);}
+.lightbox-piede{padding:.85rem var(--pad) 1.1rem;text-align:center;font-family:var(--f-util);font-size:.62rem;letter-spacing:.09em;color:var(--taupe);}
+@media (max-width:640px){
+  .lightbox-corpo{padding-inline:3rem;}
+  .lightbox-nav{width:2.5rem;}
+  .lightbox-immagine{max-height:calc(100vh - 9rem);}
+}
 
 /* ═══ SERVIZI ═══ */
 .servizi{background:var(--crema);overflow:clip;}
@@ -636,19 +707,19 @@ section{
   overflow:visible;
   isolation:isolate;
 }
-.studio-ritratto::before{
-  content:"";
+.studio-luna{
   position:absolute;
-  width:76%;
-  aspect-ratio:1;
-  border:1px solid var(--linea);
-  border-radius:50%;
-  right:-1%;
-  top:8%;
-  z-index:-1;
-  transform:translate3d(48vw,0,0) scale(.84) rotate(-7deg);
+  width:86%;
+  height:auto;
+  right:18%;
+  top:2%;
+  z-index:0;
   opacity:0;
+  transform:translate3d(48vw,0,0) scale(.84) rotate(-7deg);
   transition:opacity 1.05s ease .28s,transform 1.75s cubic-bezier(.16,.84,.28,1) .18s;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
 }
 .studio-ritratto::after{
   content:"";
@@ -662,6 +733,8 @@ section{
 }
 .studio-ritratto[data-rv="persona"]{opacity:1;transform:none;transition:none;}
 .studio-ritratto[data-rv="persona"] .studio-ritratto-maschera{
+  position:relative;
+  z-index:1;
   width:min(112%,40rem);
   opacity:1;
   transform:translate3d(115vw,0,0) rotate(1.5deg);
@@ -670,7 +743,7 @@ section{
   will-change:transform;
 }
 .studio-ritratto[data-rv="persona"].dentro .studio-ritratto-maschera{opacity:1;transform:translate3d(0,0,0) rotate(0deg);}
-.studio-ritratto[data-rv="persona"].dentro::before{opacity:.72;transform:translate3d(0,0,0) scale(1) rotate(0deg);}
+.studio-ritratto[data-rv="persona"].dentro .studio-luna{opacity:.28;transform:translate3d(0,0,0) scale(1) rotate(0deg);}
 .studio-ritratto[data-rv="persona"].dentro::after{transform:scaleX(1);}
 .studio-ritratto-moto{will-change:transform;}
 .studio-persona{
@@ -704,7 +777,7 @@ section{
 }
 @media (prefers-reduced-motion:reduce){
   .studio-ritratto[data-rv="persona"] .studio-ritratto-maschera{transform:none;}
-  .studio-ritratto[data-rv="persona"]::before{opacity:.72;transform:none;}
+  .studio-ritratto[data-rv="persona"] .studio-luna{opacity:.28;transform:none;}
   .studio-ritratto[data-rv="persona"]::after{transform:none;}
   .studio-persona{animation:none;}
   .scheda-titolo-lettera,.scheda-scrittura-lettera{opacity:1;transform:none;filter:none;transition:none;}
@@ -878,6 +951,8 @@ section{
   .w > span{transform:none;}
   .riga > span{transform:none;}
   .tardo{opacity:1;}
+  .wordmark-testo,.wordmark > .stella{animation:none;opacity:1;transform:none;}
+  .striscia-eti .scorri::before{animation:none;}
   [data-px],[data-py]{transform:none !important;}
   .mov-testa[data-rv]::after,.contatti-testa[data-rv]::after,.catena[data-rv]::after{transform:none;}
 }
@@ -928,7 +1003,7 @@ html[lang="en"] .lang-it{display:none !important;}
 <header class="testata" id="testata">
 <a aria-label="WEMBLAZING, torna in cima" class="wordmark" data-aria-en="WEMBLAZING, back to top" data-aria-it="WEMBLAZING, torna in cima" href="#alto">
 <svg aria-hidden="true" class="stella"><use href="#star"></use></svg>
-    WEMBLAZING
+    <span class="wordmark-maschera"><span class="wordmark-testo">WEMBLAZING</span></span>
   </a>
 <nav aria-label="Principale" class="nav" data-aria-en="Primary navigation" data-aria-it="Principale">
 <a data-min="1" href="#metodo"><span class="lang-it">Metodo</span><span class="lang-en">Method</span></a>
@@ -1266,6 +1341,7 @@ html[lang="en"] .lang-it{display:none !important;}
 </div>
 <div class="studio-lato">
 <div class="studio-ritratto" data-rv="persona">
+<img class="studio-luna" src="img/luna.png" alt="" aria-hidden="true" decoding="async"/>
 <div class="studio-ritratto-maschera">
 <div class="studio-ritratto-moto" data-px="-14" data-py="42">
 <img class="studio-persona" src="img/Risorsa 1.png" width="768" height="1120" loading="lazy" decoding="async" alt="Ritratto illustrato di Enrico Esposto seduto su una sedia" data-alt-it="Ritratto illustrato di Enrico Esposto seduto su una sedia" data-alt-en="Illustrated portrait of Enrico Esposto seated on a chair"/>
@@ -1310,6 +1386,19 @@ html[lang="en"] .lang-it{display:none !important;}
 </div>
 </section>
 </main>
+<div aria-hidden="true" aria-modal="true" class="lightbox" id="lightbox" role="dialog">
+  <div class="lightbox-barra">
+    <span class="lightbox-contatore" id="lightbox-contatore"></span>
+    <span class="lightbox-caption" id="lightbox-caption"></span>
+    <button aria-label="Chiudi immagine" class="lightbox-chiudi" data-aria-en="Close image" data-aria-it="Chiudi immagine" type="button">×</button>
+  </div>
+  <div class="lightbox-corpo">
+    <button aria-label="Immagine precedente" class="lightbox-nav lightbox-prev" data-aria-en="Previous image" data-aria-it="Immagine precedente" type="button">←</button>
+    <img alt="" class="lightbox-immagine" id="lightbox-immagine"/>
+    <button aria-label="Immagine successiva" class="lightbox-nav lightbox-next" data-aria-en="Next image" data-aria-it="Immagine successiva" type="button">→</button>
+  </div>
+  <div class="lightbox-piede"><span class="lang-it">← → per navigare · ESC per chiudere</span><span class="lang-en">← → to navigate · ESC to close</span></div>
+</div>
 <footer class="piede">
 <span>© 2026 WEMBLAZING — Enrico Esposto</span>
 <span>We explore · We create · We connect</span>
@@ -1445,27 +1534,146 @@ html[lang="en"] .lang-it{display:none !important;}
 
     binario.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
+    var mosso = false;
     binario.addEventListener('pointerdown', function (e) {
       if (e.pointerType === 'touch') return;
       giu = true;
+      mosso = false;
       xIniziale = e.clientX;
       scrollIniziale = binario.scrollLeft;
-      binario.classList.add('trascino');
-      try { binario.setPointerCapture(e.pointerId); } catch (_) {}
+      binario.setAttribute('data-appena-trascinato','false');
+      /* Non catturare subito il puntatore: altrimenti il click sulle immagini
+         viene attribuito al binario e la lightbox non si apre. La cattura
+         parte solo quando il gesto diventa davvero un trascinamento. */
     });
     binario.addEventListener('pointermove', function (e) {
       if (!giu) return;
-      binario.scrollLeft = scrollIniziale - (e.clientX - xIniziale);
+      if (!mosso && Math.abs(e.clientX - xIniziale) > 6) {
+        mosso = true;
+        binario.classList.add('trascino');
+        try { binario.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+      if (mosso) binario.scrollLeft = scrollIniziale - (e.clientX - xIniziale);
     });
     function rilascia(e) {
       if (!giu) return;
       giu = false;
       binario.classList.remove('trascino');
+      if (mosso) {
+        binario.setAttribute('data-appena-trascinato','true');
+        setTimeout(function(){ binario.setAttribute('data-appena-trascinato','false'); }, 120);
+      }
       try { binario.releasePointerCapture(e.pointerId); } catch (_) {}
     }
     binario.addEventListener('pointerup', rilascia);
     binario.addEventListener('pointercancel', rilascia);
   });
+
+  /* 3-ter. Invito al drag: una sola micro-traslazione quando ogni gallery entra in vista. */
+  if (!ridotto && 'IntersectionObserver' in window) {
+    var hintIO = new IntersectionObserver(function (voci) {
+      voci.forEach(function (voce) {
+        if (!voce.isIntersecting) return;
+        var striscia = voce.target;
+        var binario = striscia.querySelector('.binario');
+        if (!binario || binario.scrollWidth <= binario.clientWidth + 8) { hintIO.unobserve(striscia); return; }
+        striscia.setAttribute('data-hint-visto','true');
+        var partenza = binario.scrollLeft;
+        binario.classList.add('hint-scroll');
+        setTimeout(function () { binario.scrollTo({ left: Math.min(partenza + 42, binario.scrollWidth), behavior:'smooth' }); }, 320);
+        setTimeout(function () { binario.scrollTo({ left: partenza, behavior:'smooth' }); }, 820);
+        setTimeout(function () { binario.classList.remove('hint-scroll'); }, 1350);
+        hintIO.unobserve(striscia);
+      });
+    }, { threshold:.28 });
+    document.querySelectorAll('.striscia').forEach(function (s) { hintIO.observe(s); });
+  }
+
+  /* 3-quater. Lightbox immagini dei progetti, senza librerie esterne. */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-immagine');
+  var lbCaption = document.getElementById('lightbox-caption');
+  var lbCount = document.getElementById('lightbox-contatore');
+  var lbClose = lightbox.querySelector('.lightbox-chiudi');
+  var lbPrev = lightbox.querySelector('.lightbox-prev');
+  var lbNext = lightbox.querySelector('.lightbox-next');
+  var immaginiLightbox = Array.prototype.slice.call(document.querySelectorAll('#lavori .tavola-int img,#lavori .pezzo img'));
+  var indiceLightbox = 0;
+  var ultimoFocus = null;
+
+  immaginiLightbox.forEach(function (img) {
+    img.setAttribute('tabindex','0');
+    img.setAttribute('role','button');
+    img.setAttribute('data-aria-it','Apri immagine grande: ' + (img.getAttribute('data-alt-it') || img.alt || 'progetto'));
+    img.setAttribute('data-aria-en','Open large image: ' + (img.getAttribute('data-alt-en') || img.alt || 'project'));
+  });
+
+  function mostraLightbox(i) {
+    if (!immaginiLightbox.length) return;
+    indiceLightbox = (i + immaginiLightbox.length) % immaginiLightbox.length;
+    var originale = immaginiLightbox[indiceLightbox];
+    lbImg.src = originale.currentSrc || originale.src;
+    lbImg.alt = originale.alt || '';
+    lbCaption.textContent = originale.alt || '';
+    lbCount.textContent = (indiceLightbox + 1) + ' / ' + immaginiLightbox.length;
+  }
+  function apriLightbox(i, sorgente) {
+    ultimoFocus = sorgente || document.activeElement;
+    mostraLightbox(i);
+    lightbox.classList.add('aperta');
+    lightbox.setAttribute('aria-hidden','false');
+    document.body.classList.add('lightbox-aperta');
+    setTimeout(function(){ lbClose.focus(); }, 30);
+  }
+  function chiudiLightbox() {
+    lightbox.classList.remove('aperta');
+    lightbox.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lightbox-aperta');
+    lbImg.removeAttribute('src');
+    if (ultimoFocus && typeof ultimoFocus.focus === 'function') ultimoFocus.focus();
+  }
+  immaginiLightbox.forEach(function (img, i) {
+    img.addEventListener('click', function () {
+      var binario = img.closest('.binario');
+      if (binario && binario.getAttribute('data-appena-trascinato') === 'true') return;
+      apriLightbox(i, img);
+    });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apriLightbox(i, img); }
+    });
+  });
+  lbClose.addEventListener('click', chiudiLightbox);
+  lbPrev.addEventListener('click', function(){ mostraLightbox(indiceLightbox - 1); });
+  lbNext.addEventListener('click', function(){ mostraLightbox(indiceLightbox + 1); });
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox || e.target.classList.contains('lightbox-corpo')) chiudiLightbox(); });
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('aperta')) return;
+    if (e.key === 'Escape') chiudiLightbox();
+    else if (e.key === 'ArrowLeft') mostraLightbox(indiceLightbox - 1);
+    else if (e.key === 'ArrowRight') mostraLightbox(indiceLightbox + 1);
+    else if (e.key === 'Tab') {
+      var focusabili = [lbClose,lbPrev,lbNext];
+      var pos = focusabili.indexOf(document.activeElement);
+      if (e.shiftKey && pos <= 0) { e.preventDefault(); lbNext.focus(); }
+      else if (!e.shiftKey && pos === focusabili.length - 1) { e.preventDefault(); lbClose.focus(); }
+    }
+  });
+
+  /* 3-quinquies. Menu attivo in base alla sezione visibile. */
+  var linkNav = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var sezioniNav = linkNav.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function aggiornaMenuAttivo() {
+    var riferimento = window.scrollY + Math.max(110, window.innerHeight * .24);
+    var attiva = null;
+    sezioniNav.forEach(function(sec){ if (sec.offsetTop <= riferimento) attiva = sec; });
+    linkNav.forEach(function(a){
+      var corrente = attiva && a.getAttribute('href') === '#' + attiva.id;
+      if (corrente) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', aggiornaMenuAttivo, { passive:true });
+  window.addEventListener('resize', aggiornaMenuAttivo);
+  aggiornaMenuAttivo();
 
   /* 3-ter. Precarica in background tutte le immagini dei progetti.
      Restano lazy nel markup, ma vengono messe in cache in modo progressivo
