@@ -126,35 +126,6 @@ img{max-width:100%;}
   flex:none;
 }
 
-
-/* ═══ PRELOADER WEMBLAZING ═══ */
-.preloader{
-  position:fixed;inset:0;z-index:9999;
-  display:grid;place-items:center;
-  background:var(--avorio);
-  opacity:1;visibility:visible;
-  transition:opacity .38s ease,visibility .38s ease;
-}
-.preloader.via{opacity:0;visibility:hidden;pointer-events:none;}
-.preloader-stella{
-  width:2.15rem;height:2.15rem;
-  color:var(--salvia-scura);
-  animation:preloaderRotazione 1.15s linear infinite;
-  transform-origin:50% 50%;
-}
-@keyframes preloaderStella{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
-}
-body.caricamento{overflow:hidden;}
-body.caricamento .wordmark-testo,
-body.caricamento .wordmark > .stella,
-body.caricamento .riga > span,
-body.caricamento .tardo{animation-play-state:paused !important;}
-@media (prefers-reduced-motion:reduce){
-  .preloader-stella{animation:preloaderRotazione 1.15s linear infinite;opacity:.8;transform:none;}
-}
-
 /* ═══ MICROINTERAZIONI GLOBALI ═══ */
 body.lightbox-aperta{overflow:hidden;}
 
@@ -576,9 +547,65 @@ section{
 .lightbox-next{right:clamp(.5rem,2vw,1.6rem);}
 .lightbox-piede{padding:.85rem var(--pad) 1.1rem;text-align:center;font-family:var(--f-util);font-size:.62rem;letter-spacing:.09em;color:var(--taupe);}
 @media (max-width:640px){
-  .lightbox-corpo{padding-inline:3rem;}
-  .lightbox-nav{width:2.5rem;}
-  .lightbox-immagine{max-height:calc(100vh - 9rem);}
+  .lightbox{
+    width:100%;
+    max-width:100vw;
+    overflow:hidden;
+  }
+
+  .lightbox-barra{
+    padding:.8rem 1rem;
+    gap:.6rem;
+    min-width:0;
+  }
+
+  .lightbox-contatore{
+    flex-shrink:0;
+  }
+
+  .lightbox-caption{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+  .lightbox-chiudi{
+    flex-shrink:0;
+  }
+
+  .lightbox-corpo{
+    width:100%;
+    min-width:0;
+    padding:1rem 2.8rem;
+    box-sizing:border-box;
+  }
+
+  .lightbox-immagine{
+    max-width:100%;
+    max-height:calc(100dvh - 9rem);
+    width:auto;
+    height:auto;
+    object-fit:contain;
+  }
+
+  .lightbox-nav{
+    width:2.5rem;
+    height:4rem;
+  }
+
+  .lightbox-prev{
+    left:.15rem;
+  }
+
+  .lightbox-next{
+    right:.15rem;
+  }
+
+  .lightbox-piede{
+    padding:.7rem 1rem 1rem;
+    font-size:.56rem;
+  }
 }
 
 /* ═══ SERVIZI ═══ */
@@ -1017,14 +1044,9 @@ html[lang="en"] .lang-it{display:none !important;}
   .nav{gap:.75rem;}
   .testata{gap:.65rem;}
 }
-@keyframes preloaderRotazione{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 </style>
 </head>
-<body class="caricamento">
-<div aria-hidden="true" class="preloader" id="preloader">
-  <svg class="preloader-stella" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"></path></svg>
-</div>
-
+<body>
 <div aria-hidden="true" class="grana"></div>
 <div aria-hidden="true" class="linea-scroll" id="progresso"></div>
 <svg aria-hidden="true" height="0" style="position:absolute" width="0">
@@ -1831,25 +1853,5 @@ html[lang="en"] .lang-it{display:none !important;}
   }
 })();
 </script>
-
-<script>
-(function(){
-  var p=document.getElementById('preloader');
-  if(!p) return;
-  var start=performance.now();
-  function chiudiPreloader(){
-    var elapsed=performance.now()-start;
-    var wait=Math.max(0,1100-elapsed);
-    setTimeout(function(){
-      p.classList.add('via');
-      document.body.classList.remove('caricamento');
-      setTimeout(function(){ if(p&&p.parentNode) p.parentNode.removeChild(p); },400);
-    },wait);
-  }
-  if(document.readyState==='complete') chiudiPreloader();
-  else window.addEventListener('load',chiudiPreloader,{once:true});
-})();
-</script>
-
 </body>
 </html>
