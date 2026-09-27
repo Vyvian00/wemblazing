@@ -1056,6 +1056,215 @@ html[lang="en"] .lang-it{display:none !important;}
   .nav{gap:.75rem;}
   .testata{gap:.65rem;}
 }
+
+/* ═══ NOVITÀ / UPDATES + POPUP ═══ */
+body.popup-novita-aperto{overflow:hidden;}
+
+.popup-novita{
+  position:fixed;
+  inset:0;
+  z-index:180;
+  display:grid;
+  place-items:center;
+  padding:1rem;
+  background:rgba(30,28,25,.34);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .28s ease,visibility .28s ease;
+}
+.popup-novita.aperto{opacity:1;visibility:visible;}
+
+.popup-novita-card{
+  position:relative;
+  width:min(94vw,760px);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:1.35rem;
+  align-items:center;
+  padding:1.35rem 1.4rem 1.35rem 1.55rem;
+  background:var(--avorio-alto);
+  border:1px solid var(--linea);
+  box-shadow:0 20px 65px rgba(30,28,25,.16);
+}
+.popup-novita-copy{min-width:0;padding-right:.4rem;}
+.popup-novita-kicker{
+  margin-bottom:.55rem;
+  color:var(--salvia-scura);
+}
+.popup-novita h2{
+  font-size:clamp(1.55rem,1.15rem + 1.25vw,2.35rem);
+  line-height:.96;
+  margin-bottom:.55rem;
+}
+.popup-novita-testo{
+  max-width:54ch;
+  color:var(--grigio);
+  font-size:.94rem;
+  line-height:1.5;
+}
+
+.popup-novita-azioni{
+  display:flex;
+  gap:.45rem;
+  align-items:center;
+  padding-right:2.55rem;
+}
+.popup-azione{
+  width:2.8rem;
+  height:2.8rem;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--linea);
+  background:transparent;
+  color:var(--carbone);
+  text-decoration:none;
+  transition:background .28s ease,color .28s ease,border-color .28s ease,transform .28s ease;
+}
+.popup-azione:hover,
+.popup-azione:focus-visible{
+  background:var(--salvia-scura);
+  color:var(--avorio-alto);
+  border-color:var(--salvia-scura);
+  transform:translateY(-2px);
+}
+.popup-azione svg{
+  width:1.15rem;
+  height:1.15rem;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.popup-azione.ig svg{fill:currentColor;stroke:none;}
+
+.popup-novita-chiudi{
+  position:absolute;
+  top:.55rem;
+  right:.55rem;
+  width:2.25rem;
+  height:2.25rem;
+  display:grid;
+  place-items:center;
+  border:0;
+  background:transparent;
+  color:var(--carbone);
+  font:300 1.45rem/1 var(--f-testo);
+  cursor:pointer;
+  transition:color .25s ease,transform .25s ease;
+}
+.popup-novita-chiudi:hover,
+.popup-novita-chiudi:focus-visible{
+  color:var(--salvia-scura);
+  transform:rotate(90deg);
+}
+
+.novita{
+  background:var(--avorio-alto);
+  overflow:clip;
+}
+.novita-testa{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:.8rem 1.5rem;
+  border-bottom:1px solid var(--linea);
+  padding-bottom:1rem;
+  margin-bottom:clamp(2.5rem,6vw,4.5rem);
+}
+.novita-testa h2{
+  font-size:clamp(1.9rem,1.2rem + 2vw,3rem);
+}
+.novita-testa .eti{margin-left:auto;}
+
+.novita-griglia{
+  display:grid;
+  gap:0;
+  border-top:1px solid var(--linea-tenue);
+}
+.novita-card{
+  display:grid;
+  gap:1rem 2rem;
+  padding:clamp(1.6rem,3.5vw,2.5rem) 0;
+  border-bottom:1px solid var(--linea-tenue);
+}
+@media (min-width:860px){
+  .novita-card{
+    grid-template-columns:9rem minmax(0,.95fr) minmax(0,1.2fr) auto;
+    align-items:start;
+  }
+}
+.novita-data{
+  font-family:var(--f-util);
+  font-size:.68rem;
+  letter-spacing:.08em;
+  color:var(--taupe-scuro);
+}
+.novita-card h3{
+  font-size:clamp(1.5rem,1.1rem + 1.4vw,2.35rem);
+  line-height:1;
+}
+.novita-card p{
+  max-width:58ch;
+  color:var(--grigio);
+}
+.novita-link{
+  align-self:start;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:var(--f-util);
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-bottom:1px solid var(--salvia-scura);
+  padding-bottom:.24rem;
+  white-space:nowrap;
+}
+.novita-link::after{content:"→";color:var(--salvia-scura);}
+
+.instagram-contatto{
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+  align-items:flex-start;
+  margin-top:1.7rem;
+}
+.instagram-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  font-family:var(--f-display);
+  font-weight:300;
+  font-size:clamp(1.3rem,1rem + 1.1vw,1.8rem);
+  text-decoration:none;
+  color:var(--avorio);
+}
+.instagram-link svg{
+  width:1.05em;
+  height:1.05em;
+  fill:currentColor;
+}
+.instagram-link:hover,
+.instagram-link:focus-visible{color:var(--salvia-chiara);}
+
+@media (max-width:700px){
+  .popup-novita{align-items:end;padding:0;}
+  .popup-novita-card{
+    width:100%;
+    grid-template-columns:1fr;
+    gap:1rem;
+    padding:1.35rem 1.2rem 1.25rem;
+    border-left:0;border-right:0;border-bottom:0;
+  }
+  .popup-novita-copy{padding-right:2.2rem;}
+  .popup-novita-azioni{padding-right:0;}
+}
+
 </style>
 </head>
 <body>
@@ -1076,6 +1285,7 @@ html[lang="en"] .lang-it{display:none !important;}
 <nav aria-label="Principale" class="nav" data-aria-en="Primary navigation" data-aria-it="Principale">
 <a data-min="1" href="#metodo"><span class="lang-it">Metodo</span><span class="lang-en">Method</span></a>
 <a href="#lavori"><span class="lang-it">Lavori</span><span class="lang-en">Work</span></a>
+<a data-min="2" href="#novita"><span class="lang-it">Novità</span><span class="lang-en">Updates</span></a>
 <a data-min="2" href="#servizi"><span class="lang-it">Servizi</span><span class="lang-en">Services</span></a>
 <a data-min="1" href="#studio"><span class="lang-it">Studio</span><span class="lang-en">Studio</span></a>
 <a href="#contatti"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
@@ -1348,6 +1558,51 @@ html[lang="en"] .lang-it{display:none !important;}
 </div>
 </article>
 </section>
+
+<!-- ════ NOVITÀ / UPDATES ════ -->
+<section class="novita" id="novita">
+  <div class="contenuto">
+    <div class="novita-testa" data-rv="su">
+      <h2 data-split=""><span class="lang-it">Novità</span><span class="lang-en">Updates</span></h2>
+      <span class="eti"><span class="lang-it">Dal progetto allo studio</span><span class="lang-en">From projects to studio news</span></span>
+    </div>
+
+    <div class="novita-griglia">
+      <article class="novita-card" data-rv="su">
+        <div class="novita-data">27.09.2026</div>
+        <h3>
+          <span class="lang-it">Progetti per piccole realtà.</span>
+          <span class="lang-en">Projects for small organisations.</span>
+        </h3>
+        <p>
+          <span class="lang-it">Sto aprendo alcuni spazi per progetti di piccola o media entità dedicati a piccole aziende, associazioni ed enti di volontariato. Posso valutare collaborazioni pro bono o a tariffa ridotta quando progetto, tempistiche ed esigenze lo permettono.</span>
+          <span class="lang-en">I’m opening a limited number of slots for small to medium-sized projects for small businesses, associations and volunteer organisations. I can consider pro bono or reduced-fee collaborations when scope, timing and needs make it possible.</span>
+        </p>
+        <a class="novita-link" href="mailto:espostoenricopio@outlook.it?subject=WEMBLAZING%20%E2%80%94%20progetto%20pro%20bono%20o%20ridotto">
+          <span class="lang-it">Raccontami il progetto</span>
+          <span class="lang-en">Tell me about your project</span>
+        </a>
+      </article>
+
+      <article class="novita-card" data-rv="su" style="--rd:.08s">
+        <div class="novita-data">27.09.2026</div>
+        <h3>
+          <span class="lang-it">Herbarium è online.</span>
+          <span class="lang-en">Herbarium is now online.</span>
+        </h3>
+        <p>
+          <span class="lang-it">Un nuovo progetto di identità, packaging e digital design costruito come un archivio botanico contemporaneo è entrato nel portfolio.</span>
+          <span class="lang-en">A new identity, packaging and digital design project built as a contemporary botanical archive has joined the portfolio.</span>
+        </p>
+        <a class="novita-link" href="#lavori">
+          <span class="lang-it">Vedi il progetto</span>
+          <span class="lang-en">View project</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ════ SERVIZI ════ -->
 <section class="servizi" id="servizi">
 <div class="fantasma" data-px="-170" data-py="-30" data-vel="1" style="left:-6vw;bottom:-2rem;">CREATE</div>
@@ -1450,10 +1705,66 @@ html[lang="en"] .lang-it{display:none !important;}
 <svg aria-hidden="true" class="stella"><use href="#star"></use></svg>
 <u>334 370 0168</u>
 </a>
+
+<div class="instagram-contatto" data-rv="su" style="--rd:.2s">
+  <span class="eti">Instagram</span>
+  <a class="instagram-link" href="https://www.instagram.com/wemblazing/" target="_blank" rel="noopener noreferrer" aria-label="WEMBLAZING su Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7.1 2h9.8A5.1 5.1 0 0 1 22 7.1v9.8a5.1 5.1 0 0 1-5.1 5.1H7.1A5.1 5.1 0 0 1 2 16.9V7.1A5.1 5.1 0 0 1 7.1 2Zm0 1.9a3.2 3.2 0 0 0-3.2 3.2v9.8a3.2 3.2 0 0 0 3.2-3.2V7.1a3.2 3.2 0 0 0-3.2-3.2H7.1Zm10.2 1.45a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36ZM12 6.75A5.25 5.25 0 1 1 6.75 12 5.25 5.25 0 0 1 12 6.75Zm0 1.9A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
+    </svg>
+    <span>@wemblazing</span>
+  </a>
+</div>
+
 </div>
 </div>
 </section>
 </main>
+
+<!-- ════ POPUP NOVITÀ ════ -->
+<div class="popup-novita" id="popup-novita" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="popup-novita-titolo">
+  <div class="popup-novita-card">
+    <button class="popup-novita-chiudi" id="popup-novita-chiudi" type="button"
+            aria-label="Chiudi novità" data-aria-it="Chiudi novità" data-aria-en="Close update">×</button>
+
+    <div class="popup-novita-copy">
+      <p class="eti popup-novita-kicker">
+        <span class="lang-it">Novità</span>
+        <span class="lang-en">Update</span>
+      </p>
+
+      <h2 id="popup-novita-titolo">
+        <span class="lang-it">Progetti per piccole realtà.</span>
+        <span class="lang-en">Projects for small organisations.</span>
+      </h2>
+
+      <p class="popup-novita-testo">
+        <span class="lang-it">Sto valutando alcuni progetti pro bono o a tariffa ridotta per piccole aziende, associazioni ed enti di volontariato.</span>
+        <span class="lang-en">I’m considering selected pro bono or reduced-fee projects for small businesses, associations and volunteer organisations.</span>
+      </p>
+    </div>
+
+    <div class="popup-novita-azioni" aria-label="Contatti rapidi">
+      <a class="popup-azione" href="mailto:espostoenricopio@outlook.it?subject=WEMBLAZING%20%E2%80%94%20nuovo%20progetto"
+         title="Email" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
+      </a>
+
+      <a class="popup-azione" href="tel:+393343700168"
+         title="Telefono" aria-label="Telefono" data-aria-it="Telefono" data-aria-en="Phone">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5 9.3 6c.5.5.6 1.2.2 1.8L8.3 9.7c1.4 2.8 3.2 4.6 6 6l1.9-1.2c.6-.4 1.3-.3 1.8.2l2.5 2.7c.5.5.5 1.3.1 1.8-1 1.3-2.5 1.9-4.1 1.5C9.3 19 5 14.7 3.3 7.5 2.9 5.9 3.5 4.4 4.8 3.4c.5-.4 1.3-.4 1.8.1Z"/></svg>
+      </a>
+
+      <a class="popup-azione ig" href="https://www.instagram.com/wemblazing/" target="_blank" rel="noopener noreferrer"
+         title="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.1 2h9.8A5.1 5.1 0 0 1 22 7.1v9.8a5.1 5.1 0 0 1-5.1 5.1H7.1A5.1 5.1 0 0 1 2 16.9V7.1A5.1 5.1 0 0 1 7.1 2Zm0 1.9a3.2 3.2 0 0 0-3.2 3.2v9.8a3.2 3.2 0 0 0 3.2 3.2h9.8a3.2 3.2 0 0 0 3.2-3.2V7.1a3.2 3.2 0 0 0-3.2-3.2H7.1Zm10.2 1.45a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36ZM12 6.75A5.25 5.25 0 1 1 6.75 12 5.25 5.25 0 0 1 12 6.75Zm0 1.9A3.35 3.35 0 1 0 15.35 12 3.35 3.35 0 0 0 12 8.65Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
 <div aria-hidden="true" aria-modal="true" class="lightbox" id="lightbox" role="dialog">
   <div class="lightbox-barra">
     <span class="lightbox-contatore" id="lightbox-contatore"></span>
@@ -1476,6 +1787,46 @@ html[lang="en"] .lang-it{display:none !important;}
 (function () {
   var ridotto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var parallaxDisattivato = ridotto || window.matchMedia('(max-width: 760px)').matches;
+
+
+
+  /* ─────────────────────────────────────────────
+     POPUP NOVITÀ
+     Compare ad ogni visita. Per disattivarlo imposta:
+     var popupNovitaAttivo = false;
+     ───────────────────────────────────────────── */
+  var popupNovitaAttivo = true;
+  var popupNovita = document.getElementById('popup-novita');
+  var popupNovitaClose = document.getElementById('popup-novita-chiudi');
+
+  function apriPopupNovita(){
+    if(!popupNovitaAttivo || !popupNovita) return;
+    popupNovita.classList.add('aperto');
+    popupNovita.setAttribute('aria-hidden','false');
+    document.body.classList.add('popup-novita-aperto');
+    setTimeout(function(){ if(popupNovitaClose) popupNovitaClose.focus(); },40);
+  }
+
+  function chiudiPopupNovita(){
+    if(!popupNovita) return;
+    popupNovita.classList.remove('aperto');
+    popupNovita.setAttribute('aria-hidden','true');
+    document.body.classList.remove('popup-novita-aperto');
+  }
+
+  if(popupNovitaClose) popupNovitaClose.addEventListener('click',chiudiPopupNovita);
+  if(popupNovita) popupNovita.addEventListener('click',function(e){
+    if(e.target===popupNovita) chiudiPopupNovita();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && popupNovita && popupNovita.classList.contains('aperto')) chiudiPopupNovita();
+  });
+
+  if(popupNovitaAttivo){
+    window.addEventListener('load',function(){
+      setTimeout(apriPopupNovita,650);
+    },{once:true});
+  }
 
 
   /* ─────────────────────────────────────────────
