@@ -1093,7 +1093,7 @@ body.popup-novita-aperto .testata .lingua{
 
 .popup-novita-card{
   position:relative;
-  width:min(94vw,920px);
+  width:min(96vw,1120px);
   min-height:340px;
   display:grid;
   grid-template-columns:minmax(235px,31%) minmax(0,1fr);
@@ -1126,17 +1126,6 @@ body.popup-novita-aperto .testata .lingua{
   left:-5.3rem;
   bottom:-5rem;
 }
-.popup-novita-visual::after{
-  content:"";
-  position:absolute;
-  width:4.2rem;
-  height:4.2rem;
-  background:var(--salvia);
-  opacity:.10;
-  border-radius:50%;
-  top:1.2rem;
-  right:1.25rem;
-}
 .popup-novita-volpe{
   position:relative;
   z-index:1;
@@ -1159,10 +1148,11 @@ body.popup-novita-aperto .testata .lingua{
   color:var(--salvia-scura);
 }
 .popup-novita h2{
-  max-width:18ch;
-  font-size:clamp(1.8rem,1.15rem + 2.05vw,3.05rem);
-  line-height:.98;
-  letter-spacing:-.035em;
+  max-width:none;
+  font-size:clamp(1.28rem,1.03rem + .62vw,1.72rem);
+  line-height:1.05;
+  letter-spacing:-.025em;
+  white-space:nowrap;
 }
 
 /* Segno grafico tra titolo e testo */
@@ -1173,26 +1163,6 @@ body.popup-novita-aperto .testata .lingua{
   margin:1.05rem 0 1.05rem;
   background:var(--linea);
 }
-.popup-novita-segno::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:-1px;
-  width:22%;
-  height:3px;
-  background:var(--salvia);
-}
-.popup-novita-segno::after{
-  content:"";
-  position:absolute;
-  left:22%;
-  top:50%;
-  width:.42rem;
-  height:.42rem;
-  background:var(--brace);
-  transform:translate(-50%,-50%) rotate(45deg);
-}
-
 .popup-novita-testo{
   max-width:56ch;
   color:var(--grigio);
@@ -1377,8 +1347,9 @@ body.popup-novita-aperto .testata .lingua{
     padding:1.65rem 1.15rem 1.35rem;
   }
   .popup-novita h2{
-    font-size:clamp(1.45rem,6vw,2rem);
+    font-size:clamp(1.35rem,5.6vw,1.9rem);
     padding-right:1.3rem;
+    white-space:normal;
   }
   .popup-novita-testo{font-size:.88rem;}
   .popup-azione{
@@ -1968,8 +1939,8 @@ body.popup-novita-aperto .testata .lingua{
       </p>
 
       <h2 id="popup-novita-titolo">
-        <span class="lang-it">L'AUTUNNO È ARRIVATO | PROGETTI PER PICCOLE REALTÀ</span>
-        <span class="lang-en">AUTUMN IS HERE | PROJECTS FOR SMALL ORGANISATIONS</span>
+        <span class="lang-it">L’autunno è arrivato | Progetti per piccole realtà</span>
+        <span class="lang-en">Autumn is here | Projects for small organisations</span>
       </h2>
 
       <div class="popup-novita-segno" aria-hidden="true"></div>
