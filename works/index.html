@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#8f735e">
+<title>Works — WEMBLAZING</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F4EEE1;--ink:#2A2723;--sage:#7C8F73;--sage-dark:#4A5A42;
+  --display:"Fraunces",Georgia,serif;--body:"Instrument Sans",Arial,sans-serif;--mono:"DM Mono",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#75604f}
+body{font-family:var(--body);color:var(--ivory);overflow-x:hidden}
+a{color:inherit}
+.room{
+  position:relative;min-height:100vh;overflow:hidden;
+  background:
+    linear-gradient(rgba(42,29,20,.10),rgba(42,29,20,.12)),
+    url("/works/assets/room-bg.webp") center center/cover no-repeat;
+}
+.room:after{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(26,17,12,.18),transparent 22%,transparent 78%,rgba(26,17,12,.16));
+}
+.top{
+  position:absolute;z-index:50;left:0;right:0;top:0;height:4.6rem;
+  display:flex;align-items:center;padding:0 clamp(1rem,3.5vw,4rem);gap:1rem;
+  background:linear-gradient(180deg,rgba(30,20,14,.28),transparent);
+  text-shadow:0 1px 9px rgba(0,0,0,.28)
+}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.18em}
+.brand svg{width:.86rem;color:#d7dfcf}
+.nav{margin-left:auto;display:flex;align-items:center;gap:1rem}
+.nav a,.lang button{
+  border:0;background:none;color:inherit;text-decoration:none;padding:.2rem 0;
+  font:500 .63rem/1 var(--mono);cursor:pointer
+}
+.lang{display:flex;gap:.35rem;align-items:center}
+.lang button{opacity:.55}.lang button[aria-pressed="true"]{opacity:1}
+.gallery{
+  position:absolute;z-index:20;left:1%;right:1%;top:4.5rem;bottom:1rem;
+  perspective:1500px;
+}
+.hanger{
+  --x:50%;--rope:8rem;--size:13rem;
+  position:absolute;left:var(--x);top:0;width:var(--size);
+  height:calc(var(--rope) + var(--size));transform:translateX(-50%);
+  transform-origin:50% 0;pointer-events:none;
+  animation:sway var(--dur,12s) ease-in-out infinite alternate;animation-delay:var(--delay,0s)
+}
+@keyframes sway{
+  from{transform:translateX(-50%) rotate(-.32deg)}
+  to{transform:translateX(-50%) rotate(.32deg)}
+}
+.wire{
+  position:absolute;left:50%;top:0;width:1px;height:var(--rope);transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(32,29,27,.46),rgba(255,255,255,.22));
+  box-shadow:1px 0 rgba(255,255,255,.12)
+}
+.wire:after{
+  content:"";position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:#54504b;opacity:.82
+}
+.card{
+  position:absolute;left:50%;top:var(--rope);width:100%;aspect-ratio:360/328;
+  transform:translateX(-50%);pointer-events:auto;perspective:1300px;text-decoration:none;outline:none
+}
+.flip{
+  position:absolute;inset:0;transform-style:preserve-3d;
+  transition:transform 1.85s cubic-bezier(.22,.61,.36,1)
+}
+.side{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  transform-style:preserve-3d
+}
+.front{filter:drop-shadow(0 18px 20px rgba(34,22,14,.24))}
+.preview{
+  position:absolute;inset:0;
+  clip-path:polygon(29.1% 15.3%,79.3% 23.8%,72.8% 77.2%,22.5% 69.3%);
+  overflow:hidden;background:#d6c7b5
+}
+.preview img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.85s cubic-bezier(.22,.61,.36,1)}
+.placeholder{width:100%;height:100%;display:grid;place-items:center;color:white;font:400 1.45rem/1 var(--display);letter-spacing:-.03em}
+.p4{background:linear-gradient(145deg,#302922,#88735f)}
+.p5{background:linear-gradient(145deg,#efc56f,#d97743 55%,#71886d)}
+.p6{background:linear-gradient(145deg,#eee6d9 0 34%,#a53230 34% 66%,#1f1c1a 66%)}
+.frame,.back-frame{
+  position:absolute;inset:0;width:100%;height:100%;background-position:center;background-size:contain;background-repeat:no-repeat;
+  pointer-events:none;user-select:none
+}
+.frame{background-image:url("/works/assets/polaroid-front.png")}
+.back{transform:rotateY(180deg);filter:drop-shadow(0 18px 20px rgba(34,22,14,.24))}
+.back-frame{background-image:url("/works/assets/polaroid-back.png")}
+.back-copy{
+  position:absolute;left:24%;right:20%;top:22%;bottom:18%;display:flex;flex-direction:column;justify-content:center;
+  color:#2c2925;transform:rotate(7.3deg);text-shadow:none
+}
+.code{font:500 .47rem/1 var(--mono);letter-spacing:.08em;color:#8a7e72}
+.back-copy h2{margin:auto 0 .5rem;font:400 clamp(1rem,1.55vw,1.45rem)/.94 var(--display)}
+.back-copy p{margin:0;color:#6f655b;font:500 .45rem/1.5 var(--mono);text-transform:uppercase}
+.open{align-self:flex-start;margin-top:.8rem;border-bottom:1px solid currentColor;padding-bottom:.12rem;font:500 .44rem/1 var(--mono);text-transform:uppercase}
+@media(hover:hover) and (pointer:fine){
+  .card:hover .flip,.card:focus-visible .flip{transform:rotateY(180deg)}
+  .card:hover .preview img{transform:scale(1.07)}
+}
+.h1{--x:13%;--rope:6rem;--size:12.4rem;--dur:13.4s;--delay:-2s}
+.h2{--x:30%;--rope:12.4rem;--size:13.6rem;--dur:14.8s;--delay:-7s}
+.h3{--x:47%;--rope:7.4rem;--size:11.9rem;--dur:12.8s;--delay:-4s}
+.h4{--x:64%;--rope:15rem;--size:12.8rem;--dur:15.2s;--delay:-9s}
+.h5{--x:80%;--rope:8.5rem;--size:11.6rem;--dur:13.8s;--delay:-5s}
+.h6{--x:94%;--rope:13.2rem;--size:11rem;--dur:15.6s;--delay:-10s}
+.micro{
+  position:absolute;z-index:45;left:clamp(1rem,3.5vw,4rem);bottom:1.35rem;
+  font:500 .52rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  text-shadow:0 1px 8px rgba(0,0,0,.3)
+}
+.lang-en{display:none}
+html[data-lang="en"] .lang-it{display:none}
+html[data-lang="en"] .lang-en{display:inline}
+@media(max-width:1050px){
+  .h1{--x:10%;--size:10.7rem}.h2{--x:29%;--size:11.5rem}.h3{--x:49%;--size:10.4rem}
+  .h4{--x:69%;--size:11.1rem}.h5{--x:87%;--size:10rem}.h6{display:none}
+}
+@media(max-width:760px){
+  .room{min-height:1050px;background-position:48% center}
+  .nav .home-link{display:none}
+  .gallery{top:4.7rem;bottom:2rem}
+  .h1{--x:18%;--rope:4.2rem;--size:9rem}.h2{--x:50%;--rope:8.4rem;--size:9.5rem}.h3{--x:82%;--rope:4.8rem;--size:8.6rem}
+  .h4{--x:20%;--rope:23rem;--size:9.1rem}.h5{--x:54%;--rope:25.4rem;--size:8.6rem}.h6{display:block;--x:84%;--rope:22.3rem;--size:8rem}
+  .card.flipped .flip{transform:rotateY(180deg)}
+}
+@media(max-width:430px){
+  .h1{--x:17%;--size:8.2rem}.h2{--x:50%;--size:8.6rem}.h3{--x:82%;--size:7.8rem}
+  .h4{--x:18%;--size:8.3rem}.h5{--x:52%;--size:7.9rem}.h6{--x:83%;--size:7.4rem}
+}
+@media(prefers-reduced-motion:reduce){.hanger{animation:none}.flip,.preview img{transition:none}}
+</style>
+</head>
+<body>
+<main class="room">
+<header class="top">
+  <a class="brand" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>
+    WEMBLAZING
+  </a>
+  <nav class="nav">
+    <a class="home-link" href="/">Home</a>
+    <a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
+    <div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+  </nav>
+</header>
+
+<section class="gallery" aria-label="Selected works">
+  <div class="hanger h1"><div class="wire"></div><a class="card" href="/works/herbarium/" aria-label="Herbarium"><div class="flip">
+    <div class="side front"><div class="preview"><img src="/img/herbarium-hero.webp" alt="Herbarium"></div><span class="frame"></span></div>
+    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 001</div><h2>Herbarium</h2><p>2025<br>Identity · Packaging · Digital</p><span class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</span></div></div>
+  </div></a></div>
+
+  <div class="hanger h2"><div class="wire"></div><a class="card" href="/works/opera-prima/" aria-label="Opera Prima"><div class="flip">
+    <div class="side front"><div class="preview"><img src="/img/opera-hero.webp" alt="Opera Prima"></div><span class="frame"></span></div>
+    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 002</div><h2>Opera Prima</h2><p>2025<br>Brand identity · Art direction</p><span class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</span></div></div>
+  </div></a></div>
+
+  <div class="hanger h3"><div class="wire"></div><a class="card" href="/works/hydro/" aria-label="Hydro"><div class="flip">
+    <div class="side front"><div class="preview"><img src="/img/hydro-hero.webp" alt="Hydro"></div><span class="frame"></span></div>
+    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 003</div><h2>Hydro</h2><p>2026<br>Campaign · Art direction</p><span class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</span></div></div>
+  </div></a></div>
+
+  <div class="hanger h4"><div class="wire"></div><a class="card" href="/works/brado/" aria-label="Brado"><div class="flip">
+    <div class="side front"><div class="preview"><div class="placeholder p4">Brado</div></div><span class="frame"></span></div>
+    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 004</div><h2>Brado</h2><p>2026<br>Work in progress</p><span class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</span></div></div>
+  </div></a></div>
+
+  <div class="hanger h5"><div class="wire"></div><a class="card" href="/works/juicy/" aria-label="Juicy"><div class="flip">
+    <div class="side front"><div class="preview"><div class="placeholder p5">Juicy</div></div><span class="frame"></span></div>
+    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 005</div><h2>Juicy</h2><p>2026<br>Work in progress</p><span class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</span></div></div>
+  </div></a></div>
+
+  <div class="hanger h6"><div class="wire"></div><a class="card" href="/works/mostra-arte/" aria-label="Mostra d’arte"><div class="flip">
+    <div class="side front"><div class="preview"><div class="placeholder p6">Mostra</div></div><span class="frame"></span></div>
+    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 006</div><h2>Mostra d’arte</h2><p>2026<br>Poster · Event communication</p><span class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</span></div></div>
+  </div></a></div>
+</section>
+
+<div class="micro">WEMBLAZING / SELECTED WORKS</div>
+</main>
+<script>
+(function(){
+  const root=document.documentElement;
+  const buttons=[...document.querySelectorAll("[data-lang]")];
+  function setLang(lang){
+    lang=lang==="en"?"en":"it";root.dataset.lang=lang;root.lang=lang;
+    buttons.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang?"true":"false"));
+    try{localStorage.setItem("wemblazing-lang",lang)}catch(e){}
+  }
+  let initial="it";
+  try{
+    const saved=localStorage.getItem("wemblazing-lang");
+    if(saved==="it"||saved==="en") initial=saved;
+    else if((navigator.language||"").toLowerCase().startsWith("en")) initial="en";
+  }catch(e){}
+  setLang(initial);
+  buttons.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+  const coarse=!matchMedia("(hover:hover) and (pointer:fine)").matches;
+  if(coarse){
+    document.querySelectorAll(".card").forEach(card=>{
+      let flipped=false;
+      card.addEventListener("click",e=>{
+        if(!flipped){
+          e.preventDefault();
+          document.querySelectorAll(".card.flipped").forEach(c=>c.classList.remove("flipped"));
+          card.classList.add("flipped");
+          flipped=true;
+        }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
