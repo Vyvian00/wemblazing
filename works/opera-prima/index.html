@@ -35,6 +35,8 @@
 /* striscia orizzontale dei materiali — coerente con la home */
 .striscia{margin-top:clamp(2rem,4vw,3.2rem);position:relative}
 .binario{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
   user-select:none;display:flex;align-items:flex-end;
   gap:clamp(1rem,2.2vw,2rem);
   overflow-x:auto;overscroll-behavior-x:contain;
@@ -120,54 +122,95 @@
 <footer class="project-foot"><a href="/works/herbarium/">← Herbarium</a><a href="/works/">Works</a><a href="/works/hydro/">Hydro →</a></footer>
 </main><script>
 (function(){
- const root=document.documentElement,bs=[...document.querySelectorAll("[data-lang]")];
- function setLang(l){l=l==="en"?"en":"it";root.dataset.lang=l;root.lang=l;bs.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));try{localStorage.setItem("wemblazing-lang",l)}catch(e){}}
- let l="it";try{const s=localStorage.getItem("wemblazing-lang");if(s==="it"||s==="en")l=s;else if((navigator.language||"").toLowerCase().startsWith("en"))l="en"}catch(e){}
- setLang(l);bs.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+  const root=document.documentElement;
+  const bs=[...document.querySelectorAll("[data-lang]")];
 
-  document.querySelectorAll('.striscia').forEach(function(striscia){
-    var binario=striscia.querySelector('.binario');
-    var cursore=striscia.querySelector('.cursore');
-    var giu=false,xIniziale=0,scrollIniziale=0,mosso=false;
-    function avanzamento(){
-      var corsa=binario.scrollWidth-binario.clientWidth;
-      var q=corsa>4?binario.scrollLeft/corsa:0;
-      if(cursore)cursore.style.transform='scaleX('+(0.07+q*0.93).toFixed(4)+')';
-    }
-    binario.addEventListener('scroll',avanzamento,{passive:true});
-    window.addEventListener('resize',avanzamento);
-    avanzamento();
-    binario.addEventListener('dragstart',function(e){e.preventDefault()});
-    binario.addEventListener('pointerdown',function(e){
-      if(e.pointerType==='touch')return;
-      giu=true;mosso=false;xIniziale=e.clientX;scrollIniziale=binario.scrollLeft;
-    });
-    binario.addEventListener('pointermove',function(e){
-      if(!giu)return;
-      if(!mosso&&Math.abs(e.clientX-xIniziale)>6){
-        mosso=true;binario.classList.add('trascino');
-        try{binario.setPointerCapture(e.pointerId)}catch(_){}
+  function setLang(l){
+    l=l==="en"?"en":"it";
+    root.dataset.lang=l;
+    root.lang=l;
+    bs.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));
+    try{localStorage.setItem("wemblazing-lang",l)}catch(e){}
+  }
+
+  let l="it";
+  try{
+    const s=localStorage.getItem("wemblazing-lang");
+    if(s==="it"||s==="en") l=s;
+    else if((navigator.language||"").toLowerCase().startsWith("en")) l="en";
+  }catch(e){}
+  setLang(l);
+  bs.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+  const strips=[
+    ...document.querySelectorAll(".binario"),
+    ...document.querySelectorAll(".track")
+  ];
+
+  strips.forEach(strip=>{
+    let down=false;
+    let moved=false;
+    let startX=0;
+    let startScroll=0;
+
+    const progressEl =
+      strip.closest(".striscia")?.querySelector(".cursore") ||
+      strip.closest(".materials")?.querySelector(".rail > span");
+
+    function updateProgress(){
+      if(!progressEl) return;
+      const range=Math.max(1,strip.scrollWidth-strip.clientWidth);
+      const q=Math.max(0,Math.min(1,strip.scrollLeft/range));
+
+      if(progressEl.classList.contains("cursore")){
+        progressEl.style.transform="scaleX("+(0.07+q*0.93).toFixed(4)+")";
+      }else{
+        const visible=Math.min(1,strip.clientWidth/strip.scrollWidth);
+        progressEl.style.transform="scaleX("+Math.max(visible,visible+(1-visible)*q)+")";
       }
-      if(mosso)binario.scrollLeft=scrollIniziale-(e.clientX-xIniziale);
-    });
-    function rilascia(e){
-      if(!giu)return;giu=false;binario.classList.remove('trascino');
-      try{binario.releasePointerCapture(e.pointerId)}catch(_){}
     }
-    binario.addEventListener('pointerup',rilascia);
-    binario.addEventListener('pointercancel',rilascia);
-  });
 
-    track.addEventListener("pointermove",e=>{
-      if(!down)return;
-      track.scrollLeft=startScroll-(e.clientX-startX);
+    strip.addEventListener("dragstart",e=>e.preventDefault());
+
+    strip.addEventListener("pointerdown",e=>{
+      if(e.pointerType==="touch") return;
+      down=true;
+      moved=false;
+      startX=e.clientX;
+      startScroll=strip.scrollLeft;
+      strip.classList.add("trascino","dragging");
+      try{strip.setPointerCapture(e.pointerId)}catch(_){}
     });
-    const end=()=>{down=false;track.classList.remove("dragging")};
-    track.addEventListener("pointerup",end);
-    track.addEventListener("pointercancel",end);
-    track.addEventListener("scroll",updateRail,{passive:true});
-    updateRail();
-  });
 
+    strip.addEventListener("pointermove",e=>{
+      if(!down) return;
+      const dx=e.clientX-startX;
+      if(Math.abs(dx)>3) moved=true;
+      strip.scrollLeft=startScroll-dx;
+    });
+
+    function endDrag(e){
+      if(!down) return;
+      down=false;
+      strip.classList.remove("trascino","dragging");
+      try{strip.releasePointerCapture(e.pointerId)}catch(_){}
+    }
+
+    strip.addEventListener("pointerup",endDrag);
+    strip.addEventListener("pointercancel",endDrag);
+    strip.addEventListener("mouseleave",e=>{ if(down) endDrag(e); });
+
+    strip.addEventListener("wheel",e=>{
+      if(strip.scrollWidth<=strip.clientWidth+2) return;
+      const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if(delta===0) return;
+      e.preventDefault();
+      strip.scrollLeft += delta;
+    },{passive:false});
+
+    strip.addEventListener("scroll",updateProgress,{passive:true});
+    window.addEventListener("resize",updateProgress);
+    updateProgress();
+  });
 })();
 </script></body></html>
