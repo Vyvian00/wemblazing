@@ -1496,11 +1496,11 @@ body.popup-novita-aperto .testata .lingua{
   white-space:nowrap;
 }
 .home-polaroids{
-  max-width:78rem;
+  max-width:88rem;
   margin:0 auto;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(1.3rem,4vw,4.5rem);
+  gap:clamp(.5rem,1.6vw,1.8rem);
   align-items:center;
   padding:clamp(1rem,3vw,2rem) 0;
 }
@@ -1530,7 +1530,7 @@ body.popup-novita-aperto .testata .lingua{
   height:100%;
   object-fit:cover;
   display:block;
-  transform:scale(1.18) rotate(6.7deg);
+  transform:scale(1.06) rotate(6.7deg);
   transition:transform 1.6s cubic-bezier(.22,.61,.36,1);
 }
 .home-polaroid .hp-frame{
@@ -1541,7 +1541,7 @@ body.popup-novita-aperto .testata .lingua{
   object-fit:contain;
   pointer-events:none;
   user-select:none;
-  filter:saturate(.12) brightness(1.02);
+  
 }
 .home-polaroid .hp-name{
   position:absolute;
@@ -1561,13 +1561,13 @@ body.popup-novita-aperto .testata .lingua{
     filter:drop-shadow(0 26px 24px rgba(45,35,27,.18));
   }
   .home-polaroid:hover .hp-preview img{
-    transform:scale(1.23) rotate(6.7deg);
+    transform:scale(1.10) rotate(6.7deg);
   }
 }
 @media(max-width:720px){
   .home-polaroids{
     grid-template-columns:1fr;
-    max-width:23rem;
+    max-width:25rem;
     gap:.7rem;
   }
   .home-polaroid:nth-child(2){transform:rotate(2deg)}
