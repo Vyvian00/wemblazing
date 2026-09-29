@@ -1474,7 +1474,7 @@ body.popup-novita-aperto .testata .lingua{
 }
 .home-works-head{
   max-width:82rem;
-  margin:0 auto clamp(2.5rem,5vw,4rem);
+  margin:0 auto clamp(2.4rem,5vw,4rem);
   display:flex;
   align-items:end;
   justify-content:space-between;
@@ -1496,60 +1496,80 @@ body.popup-novita-aperto .testata .lingua{
   white-space:nowrap;
 }
 .home-polaroids{
-  max-width:76rem;
+  max-width:78rem;
   margin:0 auto;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(1rem,4vw,4rem);
+  gap:clamp(1.3rem,4vw,4.5rem);
   align-items:center;
   padding:clamp(1rem,3vw,2rem) 0;
 }
 .home-polaroid{
   position:relative;
   display:block;
-  aspect-ratio:360/328;
+  aspect-ratio:767/693;
   text-decoration:none;
-  transition:transform .9s cubic-bezier(.22,.61,.36,1),filter .9s ease;
   filter:drop-shadow(0 18px 18px rgba(45,35,27,.14));
+  transition:transform 1s cubic-bezier(.22,.61,.36,1),filter 1s ease;
 }
 .home-polaroid:nth-child(1){transform:rotate(-3deg)}
-.home-polaroid:nth-child(2){transform:translateY(1.8rem) rotate(2deg)}
+.home-polaroid:nth-child(2){transform:translateY(1.4rem) rotate(2deg)}
 .home-polaroid:nth-child(3){transform:rotate(-1deg)}
 .home-polaroid .hp-preview{
   position:absolute;
-  inset:0;
-  clip-path:polygon(29.1% 15.3%,79.3% 23.8%,72.8% 77.2%,22.5% 69.3%);
+  left:20.4%;
+  top:14.5%;
+  width:61.5%;
+  height:64%;
+  clip-path:polygon(14% 0,100% 15%,87% 100%,0 85%);
   overflow:hidden;
   background:var(--crema);
 }
 .home-polaroid .hp-preview img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform 1.1s cubic-bezier(.22,.61,.36,1);
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform:scale(1.18) rotate(6.7deg);
+  transition:transform 1.6s cubic-bezier(.22,.61,.36,1);
 }
-.home-polaroid:after{
-  content:"";
-  position:absolute;inset:0;
-  background:url("/works/assets/polaroid-front.png") center/contain no-repeat;
+.home-polaroid .hp-frame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
   pointer-events:none;
+  user-select:none;
+  filter:saturate(.12) brightness(1.02);
 }
 .home-polaroid .hp-name{
-  position:absolute;z-index:2;
-  left:27%;right:22%;bottom:10.5%;
+  position:absolute;
+  z-index:3;
+  left:27%;
+  right:21%;
+  bottom:9.5%;
   transform:rotate(7deg);
   font-family:var(--f-display);
-  font-size:clamp(.85rem,1.4vw,1.18rem);
-  color:#3b342d;
+  font-size:clamp(.9rem,1.45vw,1.2rem);
+  color:#39322c;
   line-height:1;
 }
 @media(hover:hover){
   .home-polaroid:hover{
-    transform:translateY(-.55rem) rotate(0deg)!important;
-    filter:drop-shadow(0 25px 22px rgba(45,35,27,.2));
+    transform:translateY(-.7rem) rotate(0deg)!important;
+    filter:drop-shadow(0 26px 24px rgba(45,35,27,.18));
   }
-  .home-polaroid:hover .hp-preview img{transform:scale(1.05)}
+  .home-polaroid:hover .hp-preview img{
+    transform:scale(1.23) rotate(6.7deg);
+  }
 }
 @media(max-width:720px){
-  .home-polaroids{grid-template-columns:1fr;max-width:22rem;gap:1rem}
+  .home-polaroids{
+    grid-template-columns:1fr;
+    max-width:23rem;
+    gap:.7rem;
+  }
   .home-polaroid:nth-child(2){transform:rotate(2deg)}
   .home-works-head{align-items:baseline}
 }
@@ -1670,15 +1690,20 @@ body.popup-novita-aperto .testata .lingua{
 
   <div class="home-polaroids">
     <a class="home-polaroid" href="/works/herbarium/" aria-label="Herbarium">
-      <span class="hp-preview"><img src="img/herbarium-hero.webp" alt="Herbarium" loading="lazy"></span>
+      <span class="hp-preview"><img src="/img/herbarium-hero.webp" alt="Herbarium" loading="lazy"></span>
+      <img class="hp-frame" src="/img/polaroid%20fronte.png" alt="">
       <span class="hp-name">Herbarium</span>
     </a>
+
     <a class="home-polaroid" href="/works/opera-prima/" aria-label="Opera Prima">
-      <span class="hp-preview"><img src="img/opera-hero.webp" alt="Opera Prima" loading="lazy"></span>
+      <span class="hp-preview"><img src="/img/opera-hero.webp" alt="Opera Prima" loading="lazy"></span>
+      <img class="hp-frame" src="/img/polaroid%20fronte.png" alt="">
       <span class="hp-name">Opera Prima</span>
     </a>
+
     <a class="home-polaroid" href="/works/hydro/" aria-label="Hydro">
-      <span class="hp-preview"><img src="img/hydro-hero.webp" alt="Hydro" loading="lazy"></span>
+      <span class="hp-preview"><img src="/img/hydro-hero.webp" alt="Hydro" loading="lazy"></span>
+      <img class="hp-frame" src="/img/polaroid%20fronte.png" alt="">
       <span class="hp-name">Hydro</span>
     </a>
   </div>
