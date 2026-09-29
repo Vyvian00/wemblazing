@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Yuyu";src:url("fonts/Yuyu-Regular.ttf") format("woff2");font-display:swap;}
 :root{
   --display:"Fraunces",Georgia,serif;
   --body:"Instrument Sans",Arial,sans-serif;
@@ -107,7 +108,7 @@ img{display:block}
   transform:scale(1.06) rotate(6.7deg);
   transition:transform 2s cubic-bezier(.22,.61,.36,1)
 }
-.placeholder{width:100%;height:100%;display:grid;place-items:center;color:#fff;font:400 1.4rem/1 var(--display)}
+.placeholder{width:100%;height:100%;display:grid;place-items:center;color:#fff;font:400 2rem/1 "Yuyu",cursive;letter-spacing:.01em}
 .p4{background:linear-gradient(145deg,#332b25,#8c7763)}
 .p5{background:linear-gradient(145deg,#efc46d,#d97542 55%,#718567)}
 .p6{background:linear-gradient(145deg,#eee6d8 0 35%,#a5312f 35% 67%,#1e1b19 67%)}
@@ -121,19 +122,19 @@ img{display:block}
   color:#302b27;transform:rotate(7deg)
 }
 .code{font:500 .47rem/1 var(--mono);letter-spacing:.08em;color:#897e74}
-.back-copy h2{margin:auto 0 .5rem;font:400 clamp(1.05rem,1.7vw,1.55rem)/.94 var(--display)}
+.back-copy h2{margin:auto 0 .5rem;font:400 clamp(1.45rem,2.4vw,2.35rem)/.95 "Yuyu",cursive}
 .back-copy p{margin:0;color:#6b625a;font:500 .46rem/1.48 var(--mono);text-transform:uppercase;letter-spacing:.025em}
 .open{align-self:flex-start;margin-top:.85rem;padding-bottom:.12rem;border-bottom:1px solid currentColor;font:500 .46rem/1 var(--mono);text-transform:uppercase}
 @media(hover:hover) and (pointer:fine){
   .polaroid-link:hover .flip,.polaroid-link:focus-visible .flip{transform:rotateY(180deg)}
   .polaroid-link:hover .preview img{transform:scale(1.10) rotate(6.7deg)}
 }
-.h1{--x:18%;--wire:6.8rem;--size:17rem;--dur:15s;--delay:-3s}
-.h2{--x:31%;--wire:11.2rem;--size:18rem;--dur:16s;--delay:-7s}
-.h3{--x:44%;--wire:7.2rem;--size:16.5rem;--dur:15.5s;--delay:-5s}
-.h4{--x:57%;--wire:12.8rem;--size:17.2rem;--dur:16.5s;--delay:-9s}
-.h5{--x:70%;--wire:7.8rem;--size:16rem;--dur:15.8s;--delay:-4s}
-.h6{--x:83%;--wire:12.2rem;--size:15.5rem;--dur:17s;--delay:-8s}
+.h1{--x:14%;--wire:6.2rem;--size:25.5rem;--dur:15s;--delay:-3s}
+.h2{--x:29%;--wire:9.8rem;--size:27rem;--dur:16s;--delay:-7s}
+.h3{--x:44%;--wire:6.4rem;--size:24.75rem;--dur:15.5s;--delay:-5s}
+.h4{--x:59%;--wire:10.8rem;--size:25.8rem;--dur:16.5s;--delay:-9s}
+.h5{--x:74%;--wire:7rem;--size:24rem;--dur:15.8s;--delay:-4s}
+.h6{--x:89%;--wire:10.8rem;--size:23.25rem;--dur:17s;--delay:-8s}
 .signature{
   position:absolute;z-index:70;left:clamp(1rem,3vw,3.5rem);bottom:1.4rem;
   font:500 .52rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;
@@ -143,18 +144,18 @@ img{display:block}
 html[data-lang="en"] .lang-it{display:none}
 html[data-lang="en"] .lang-en{display:inline}
 @media(max-width:1080px){
-  .h1{--x:14%;--size:13rem}.h2{--x:31%;--size:13.8rem}.h3{--x:48%;--size:12.8rem}.h4{--x:65%;--size:13.4rem}.h5{--x:82%;--size:12.6rem}.h6{display:none}
+  .h1{--x:11%;--size:19.5rem}.h2{--x:29%;--size:20.7rem}.h3{--x:47%;--size:19.2rem}.h4{--x:65%;--size:20.1rem}.h5{--x:83%;--size:18.9rem}.h6{display:none}
 }
 @media(max-width:760px){
   .scene{min-height:1050px;background-position:47% center}
   .nav .home{display:none}
   .gallery{inset:4.6rem .35rem 1rem}
-  .h1{--x:17%;--wire:4rem;--size:10.4rem}
-  .h2{--x:49%;--wire:8.4rem;--size:11rem}
-  .h3{--x:81%;--wire:4.7rem;--size:10rem}
-  .h4{--x:18%;--wire:22rem;--size:10.5rem}
-  .h5{--x:52%;--wire:24rem;--size:10rem}
-  .h6{display:block;--x:82%;--wire:21.5rem;--size:9.5rem}
+  .h1{--x:15%;--wire:3.8rem;--size:14rem}
+  .h2{--x:50%;--wire:7.6rem;--size:14.8rem}
+  .h3{--x:85%;--wire:4.3rem;--size:13.5rem}
+  .h4{--x:16%;--wire:22rem;--size:14.2rem}
+  .h5{--x:52%;--wire:24rem;--size:13.5rem}
+  .h6{display:block;--x:86%;--wire:21.5rem;--size:12.8rem}
   .polaroid-link.flipped .flip{transform:rotateY(180deg)}
 }
 @media(prefers-reduced-motion:reduce){.hanger{animation:none}.flip,.preview img{transition:none}}
