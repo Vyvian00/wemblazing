@@ -2,225 +2,224 @@
 <html lang="it" data-lang="it">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#8f735e">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#A87554">
 <title>Works — WEMBLAZING</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ivory:#F4EEE1;--ink:#2A2723;--sage:#7C8F73;--sage-dark:#4A5A42;
-  --display:"Fraunces",Georgia,serif;--body:"Instrument Sans",Arial,sans-serif;--mono:"DM Mono",monospace;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Instrument Sans",Arial,sans-serif;
+  --mono:"DM Mono",monospace;
+  --ivory:#F4EEE1;
 }
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#75604f}
+html,body{margin:0;min-height:100%;background:#8f674e}
 body{font-family:var(--body);color:var(--ivory);overflow-x:hidden}
 a{color:inherit}
-.room{
-  position:relative;min-height:100vh;overflow:hidden;
+img{display:block}
+.scene{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
   background:
-    linear-gradient(rgba(42,29,20,.10),rgba(42,29,20,.12)),
-    url("/works/assets/room-bg.webp") center center/cover no-repeat;
+    linear-gradient(rgba(34,20,11,.08),rgba(34,20,11,.10)),
+    url("/img/sfondo%20sito%20pagina%20lavori.png") center center/cover no-repeat;
 }
-.room:after{
-  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(180deg,rgba(26,17,12,.18),transparent 22%,transparent 78%,rgba(26,17,12,.16));
+.scene::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,13,8,.14),transparent 22%,transparent 80%,rgba(20,13,8,.12));
 }
-.top{
-  position:absolute;z-index:50;left:0;right:0;top:0;height:4.6rem;
-  display:flex;align-items:center;padding:0 clamp(1rem,3.5vw,4rem);gap:1rem;
-  background:linear-gradient(180deg,rgba(30,20,14,.28),transparent);
-  text-shadow:0 1px 9px rgba(0,0,0,.28)
+.topbar{
+  position:absolute;z-index:100;left:0;right:0;top:0;
+  height:4.6rem;display:flex;align-items:center;gap:1rem;
+  padding:0 clamp(1rem,3vw,3.5rem);
+  background:linear-gradient(180deg,rgba(30,20,14,.30),transparent);
+  text-shadow:0 1px 12px rgba(0,0,0,.28)
 }
 .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.18em}
-.brand svg{width:.86rem;color:#d7dfcf}
+.brand svg{width:.85rem;color:#dce6d6}
 .nav{margin-left:auto;display:flex;align-items:center;gap:1rem}
-.nav a,.lang button{
-  border:0;background:none;color:inherit;text-decoration:none;padding:.2rem 0;
-  font:500 .63rem/1 var(--mono);cursor:pointer
-}
-.lang{display:flex;gap:.35rem;align-items:center}
+.nav a,.lang button{border:0;background:none;color:inherit;text-decoration:none;font:500 .63rem/1 var(--mono);padding:.2rem 0;cursor:pointer}
+.lang{display:flex;align-items:center;gap:.35rem}
 .lang button{opacity:.55}.lang button[aria-pressed="true"]{opacity:1}
 .gallery{
-  position:absolute;z-index:20;left:1%;right:1%;top:4.5rem;bottom:1rem;
-  perspective:1500px;
+  position:absolute;z-index:30;
+  inset:4.6rem 1.5rem 1.5rem;
+  perspective:1400px;
 }
 .hanger{
-  --x:50%;--rope:8rem;--size:13rem;
-  position:absolute;left:var(--x);top:0;width:var(--size);
-  height:calc(var(--rope) + var(--size));transform:translateX(-50%);
-  transform-origin:50% 0;pointer-events:none;
-  animation:sway var(--dur,12s) ease-in-out infinite alternate;animation-delay:var(--delay,0s)
+  --x:50%;--wire:8rem;--size:13rem;
+  position:absolute;left:var(--x);top:0;
+  width:var(--size);height:calc(var(--wire) + var(--size)*1.03);
+  transform:translateX(-50%);transform-origin:50% 0;
+  animation:sway var(--dur,14s) ease-in-out infinite alternate;
+  animation-delay:var(--delay,0s);
+  pointer-events:none;
 }
 @keyframes sway{
-  from{transform:translateX(-50%) rotate(-.32deg)}
-  to{transform:translateX(-50%) rotate(.32deg)}
+  from{transform:translateX(-50%) rotate(-.28deg)}
+  to{transform:translateX(-50%) rotate(.28deg)}
 }
 .wire{
-  position:absolute;left:50%;top:0;width:1px;height:var(--rope);transform:translateX(-50%);
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(32,29,27,.46),rgba(255,255,255,.22));
-  box-shadow:1px 0 rgba(255,255,255,.12)
+  position:absolute;left:50%;top:0;width:1px;height:var(--wire);
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(44,39,36,.42),rgba(255,255,255,.22));
+  box-shadow:1px 0 rgba(255,255,255,.10)
 }
-.wire:after{
-  content:"";position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);
-  width:4px;height:4px;border-radius:50%;background:#54504b;opacity:.82
+.wire::after{
+  content:"";position:absolute;left:50%;bottom:-2px;
+  width:4px;height:4px;border-radius:50%;
+  transform:translateX(-50%);background:#5e5954;opacity:.72
 }
-.card{
-  position:absolute;left:50%;top:var(--rope);width:100%;aspect-ratio:360/328;
-  transform:translateX(-50%);pointer-events:auto;perspective:1300px;text-decoration:none;outline:none
+.polaroid-link{
+  position:absolute;left:50%;top:var(--wire);
+  width:100%;aspect-ratio:767/693;
+  transform:translateX(-50%);
+  text-decoration:none;pointer-events:auto;
+  perspective:1200px;outline:none
 }
 .flip{
-  position:absolute;inset:0;transform-style:preserve-3d;
-  transition:transform 1.85s cubic-bezier(.22,.61,.36,1)
-}
-.side{
-  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  transform-style:preserve-3d
-}
-.front{filter:drop-shadow(0 18px 20px rgba(34,22,14,.24))}
-.preview{
   position:absolute;inset:0;
-  clip-path:polygon(29.1% 15.3%,79.3% 23.8%,72.8% 77.2%,22.5% 69.3%);
-  overflow:hidden;background:#d6c7b5
+  transform-style:preserve-3d;
+  transition:transform 2s cubic-bezier(.22,.61,.36,1);
 }
-.preview img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.85s cubic-bezier(.22,.61,.36,1)}
-.placeholder{width:100%;height:100%;display:grid;place-items:center;color:white;font:400 1.45rem/1 var(--display);letter-spacing:-.03em}
-.p4{background:linear-gradient(145deg,#302922,#88735f)}
-.p5{background:linear-gradient(145deg,#efc56f,#d97743 55%,#71886d)}
-.p6{background:linear-gradient(145deg,#eee6d9 0 34%,#a53230 34% 66%,#1f1c1a 66%)}
-.frame,.back-frame{
-  position:absolute;inset:0;width:100%;height:100%;background-position:center;background-size:contain;background-repeat:no-repeat;
-  pointer-events:none;user-select:none
+.face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
 }
-.frame{background-image:url("/works/assets/polaroid-front.png")}
-.back{transform:rotateY(180deg);filter:drop-shadow(0 18px 20px rgba(34,22,14,.24))}
-.back-frame{background-image:url("/works/assets/polaroid-back.png")}
+.front{filter:drop-shadow(0 18px 20px rgba(35,23,15,.22))}
+.preview{
+  position:absolute;
+  left:20.4%;top:14.5%;width:61.5%;height:64%;
+  clip-path:polygon(14% 0,100% 15%,87% 100%,0 85%);
+  overflow:hidden;
+  background:#d8c9b6;
+  transform:rotate(.2deg);
+}
+.preview img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.18) rotate(6.7deg);
+  transition:transform 2s cubic-bezier(.22,.61,.36,1)
+}
+.placeholder{width:100%;height:100%;display:grid;place-items:center;color:#fff;font:400 1.4rem/1 var(--display)}
+.p4{background:linear-gradient(145deg,#332b25,#8c7763)}
+.p5{background:linear-gradient(145deg,#efc46d,#d97542 55%,#718567)}
+.p6{background:linear-gradient(145deg,#eee6d8 0 35%,#a5312f 35% 67%,#1e1b19 67%)}
+.frame,.back-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+.frame{filter:saturate(.12) brightness(1.02)}
+.back{transform:rotateY(180deg);filter:drop-shadow(0 18px 20px rgba(35,23,15,.22))}
+.back-frame{filter:saturate(.10) brightness(1.02)}
 .back-copy{
-  position:absolute;left:24%;right:20%;top:22%;bottom:18%;display:flex;flex-direction:column;justify-content:center;
-  color:#2c2925;transform:rotate(7.3deg);text-shadow:none
+  position:absolute;left:24%;right:19%;top:21%;bottom:18%;
+  display:flex;flex-direction:column;justify-content:center;
+  color:#302b27;transform:rotate(7deg)
 }
-.code{font:500 .47rem/1 var(--mono);letter-spacing:.08em;color:#8a7e72}
-.back-copy h2{margin:auto 0 .5rem;font:400 clamp(1rem,1.55vw,1.45rem)/.94 var(--display)}
-.back-copy p{margin:0;color:#6f655b;font:500 .45rem/1.5 var(--mono);text-transform:uppercase}
-.open{align-self:flex-start;margin-top:.8rem;border-bottom:1px solid currentColor;padding-bottom:.12rem;font:500 .44rem/1 var(--mono);text-transform:uppercase}
+.code{font:500 .47rem/1 var(--mono);letter-spacing:.08em;color:#897e74}
+.back-copy h2{margin:auto 0 .5rem;font:400 clamp(1.05rem,1.7vw,1.55rem)/.94 var(--display)}
+.back-copy p{margin:0;color:#6b625a;font:500 .46rem/1.48 var(--mono);text-transform:uppercase;letter-spacing:.025em}
+.open{align-self:flex-start;margin-top:.85rem;padding-bottom:.12rem;border-bottom:1px solid currentColor;font:500 .46rem/1 var(--mono);text-transform:uppercase}
 @media(hover:hover) and (pointer:fine){
-  .card:hover .flip,.card:focus-visible .flip{transform:rotateY(180deg)}
-  .card:hover .preview img{transform:scale(1.07)}
+  .polaroid-link:hover .flip,.polaroid-link:focus-visible .flip{transform:rotateY(180deg)}
+  .polaroid-link:hover .preview img{transform:scale(1.23) rotate(6.7deg)}
 }
-.h1{--x:13%;--rope:6rem;--size:12.4rem;--dur:13.4s;--delay:-2s}
-.h2{--x:30%;--rope:12.4rem;--size:13.6rem;--dur:14.8s;--delay:-7s}
-.h3{--x:47%;--rope:7.4rem;--size:11.9rem;--dur:12.8s;--delay:-4s}
-.h4{--x:64%;--rope:15rem;--size:12.8rem;--dur:15.2s;--delay:-9s}
-.h5{--x:80%;--rope:8.5rem;--size:11.6rem;--dur:13.8s;--delay:-5s}
-.h6{--x:94%;--rope:13.2rem;--size:11rem;--dur:15.6s;--delay:-10s}
-.micro{
-  position:absolute;z-index:45;left:clamp(1rem,3.5vw,4rem);bottom:1.35rem;
-  font:500 .52rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;
-  text-shadow:0 1px 8px rgba(0,0,0,.3)
+.h1{--x:13%;--wire:7rem;--size:14rem;--dur:15s;--delay:-3s}
+.h2{--x:30%;--wire:12rem;--size:15rem;--dur:16s;--delay:-7s}
+.h3{--x:47%;--wire:7.7rem;--size:13.5rem;--dur:15.5s;--delay:-5s}
+.h4{--x:64%;--wire:13.8rem;--size:14.3rem;--dur:16.5s;--delay:-9s}
+.h5{--x:80%;--wire:8.4rem;--size:13rem;--dur:15.8s;--delay:-4s}
+.h6{--x:94%;--wire:13rem;--size:12.4rem;--dur:17s;--delay:-8s}
+.signature{
+  position:absolute;z-index:70;left:clamp(1rem,3vw,3.5rem);bottom:1.4rem;
+  font:500 .52rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  text-shadow:0 1px 10px rgba(0,0,0,.25)
 }
 .lang-en{display:none}
 html[data-lang="en"] .lang-it{display:none}
 html[data-lang="en"] .lang-en{display:inline}
-@media(max-width:1050px){
-  .h1{--x:10%;--size:10.7rem}.h2{--x:29%;--size:11.5rem}.h3{--x:49%;--size:10.4rem}
-  .h4{--x:69%;--size:11.1rem}.h5{--x:87%;--size:10rem}.h6{display:none}
+@media(max-width:1080px){
+  .h1{--x:9%;--size:11.2rem}.h2{--x:28%;--size:12rem}.h3{--x:48%;--size:11rem}.h4{--x:68%;--size:11.7rem}.h5{--x:86%;--size:10.8rem}.h6{display:none}
 }
 @media(max-width:760px){
-  .room{min-height:1050px;background-position:48% center}
-  .nav .home-link{display:none}
-  .gallery{top:4.7rem;bottom:2rem}
-  .h1{--x:18%;--rope:4.2rem;--size:9rem}.h2{--x:50%;--rope:8.4rem;--size:9.5rem}.h3{--x:82%;--rope:4.8rem;--size:8.6rem}
-  .h4{--x:20%;--rope:23rem;--size:9.1rem}.h5{--x:54%;--rope:25.4rem;--size:8.6rem}.h6{display:block;--x:84%;--rope:22.3rem;--size:8rem}
-  .card.flipped .flip{transform:rotateY(180deg)}
-}
-@media(max-width:430px){
-  .h1{--x:17%;--size:8.2rem}.h2{--x:50%;--size:8.6rem}.h3{--x:82%;--size:7.8rem}
-  .h4{--x:18%;--size:8.3rem}.h5{--x:52%;--size:7.9rem}.h6{--x:83%;--size:7.4rem}
+  .scene{min-height:1050px;background-position:47% center}
+  .nav .home{display:none}
+  .gallery{inset:4.6rem .35rem 1rem}
+  .h1{--x:18%;--wire:4.2rem;--size:9.2rem}
+  .h2{--x:50%;--wire:9rem;--size:9.8rem}
+  .h3{--x:82%;--wire:5rem;--size:8.8rem}
+  .h4{--x:20%;--wire:23rem;--size:9.3rem}
+  .h5{--x:54%;--wire:25.5rem;--size:8.8rem}
+  .h6{display:block;--x:84%;--wire:22.8rem;--size:8.2rem}
+  .polaroid-link.flipped .flip{transform:rotateY(180deg)}
 }
 @media(prefers-reduced-motion:reduce){.hanger{animation:none}.flip,.preview img{transition:none}}
 </style>
 </head>
 <body>
-<main class="room">
-<header class="top">
-  <a class="brand" href="/">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>
-    WEMBLAZING
-  </a>
-  <nav class="nav">
-    <a class="home-link" href="/">Home</a>
-    <a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
-    <div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
-  </nav>
+<main class="scene">
+<header class="topbar">
+<a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>WEMBLAZING</a>
+<nav class="nav">
+<a class="home" href="/">Home</a>
+<a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
+<div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+</nav>
 </header>
-
 <section class="gallery" aria-label="Selected works">
-  <div class="hanger h1"><div class="wire"></div><a class="card" href="/works/herbarium/" aria-label="Herbarium"><div class="flip">
-    <div class="side front"><div class="preview"><img src="/img/herbarium-hero.webp" alt="Herbarium"></div><span class="frame"></span></div>
-    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 001</div><h2>Herbarium</h2><p>2025<br>Identity · Packaging · Digital</p><span class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</span></div></div>
-  </div></a></div>
 
-  <div class="hanger h2"><div class="wire"></div><a class="card" href="/works/opera-prima/" aria-label="Opera Prima"><div class="flip">
-    <div class="side front"><div class="preview"><img src="/img/opera-hero.webp" alt="Opera Prima"></div><span class="frame"></span></div>
-    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 002</div><h2>Opera Prima</h2><p>2025<br>Brand identity · Art direction</p><span class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</span></div></div>
-  </div></a></div>
+<div class="hanger h1"><div class="wire"></div><a class="polaroid-link" href="/works/herbarium/"><div class="flip">
+<div class="face front"><div class="preview"><img src="/img/herbarium-hero.webp" alt="Herbarium"></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
+<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 001</div><h2>Herbarium</h2><p>2025<br>Identity · Packaging · Digital</p><div class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</div></div></div>
+</div></a></div>
 
-  <div class="hanger h3"><div class="wire"></div><a class="card" href="/works/hydro/" aria-label="Hydro"><div class="flip">
-    <div class="side front"><div class="preview"><img src="/img/hydro-hero.webp" alt="Hydro"></div><span class="frame"></span></div>
-    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 003</div><h2>Hydro</h2><p>2026<br>Campaign · Art direction</p><span class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</span></div></div>
-  </div></a></div>
+<div class="hanger h2"><div class="wire"></div><a class="polaroid-link" href="/works/opera-prima/"><div class="flip">
+<div class="face front"><div class="preview"><img src="/img/opera-hero.webp" alt="Opera Prima"></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
+<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 002</div><h2>Opera Prima</h2><p>2025<br>Brand identity · Art direction</p><div class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</div></div></div>
+</div></a></div>
 
-  <div class="hanger h4"><div class="wire"></div><a class="card" href="/works/brado/" aria-label="Brado"><div class="flip">
-    <div class="side front"><div class="preview"><div class="placeholder p4">Brado</div></div><span class="frame"></span></div>
-    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 004</div><h2>Brado</h2><p>2026<br>Work in progress</p><span class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</span></div></div>
-  </div></a></div>
+<div class="hanger h3"><div class="wire"></div><a class="polaroid-link" href="/works/hydro/"><div class="flip">
+<div class="face front"><div class="preview"><img src="/img/hydro-hero.webp" alt="Hydro"></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
+<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 003</div><h2>Hydro</h2><p>2026<br>Campaign · Art direction</p><div class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</div></div></div>
+</div></a></div>
 
-  <div class="hanger h5"><div class="wire"></div><a class="card" href="/works/juicy/" aria-label="Juicy"><div class="flip">
-    <div class="side front"><div class="preview"><div class="placeholder p5">Juicy</div></div><span class="frame"></span></div>
-    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 005</div><h2>Juicy</h2><p>2026<br>Work in progress</p><span class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</span></div></div>
-  </div></a></div>
+<div class="hanger h4"><div class="wire"></div><a class="polaroid-link" href="/works/brado/"><div class="flip">
+<div class="face front"><div class="preview"><div class="placeholder p4">Brado</div></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
+<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 004</div><h2>Brado</h2><p>2026<br>Work in progress</p><div class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</div></div></div>
+</div></a></div>
 
-  <div class="hanger h6"><div class="wire"></div><a class="card" href="/works/mostra-arte/" aria-label="Mostra d’arte"><div class="flip">
-    <div class="side front"><div class="preview"><div class="placeholder p6">Mostra</div></div><span class="frame"></span></div>
-    <div class="side back"><span class="back-frame"></span><div class="back-copy"><div class="code">WMB / 006</div><h2>Mostra d’arte</h2><p>2026<br>Poster · Event communication</p><span class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</span></div></div>
-  </div></a></div>
+<div class="hanger h5"><div class="wire"></div><a class="polaroid-link" href="/works/juicy/"><div class="flip">
+<div class="face front"><div class="preview"><div class="placeholder p5">Juicy</div></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
+<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 005</div><h2>Juicy</h2><p>2026<br>Work in progress</p><div class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</div></div></div>
+</div></a></div>
+
+<div class="hanger h6"><div class="wire"></div><a class="polaroid-link" href="/works/mostra-arte/"><div class="flip">
+<div class="face front"><div class="preview"><div class="placeholder p6">Mostra d’arte</div></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
+<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 006</div><h2>Mostra d’arte</h2><p>2026<br>Poster · Event communication</p><div class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</div></div></div>
+</div></a></div>
+
 </section>
-
-<div class="micro">WEMBLAZING / SELECTED WORKS</div>
+<div class="signature">WEMBLAZING / SELECTED WORKS</div>
 </main>
 <script>
 (function(){
-  const root=document.documentElement;
-  const buttons=[...document.querySelectorAll("[data-lang]")];
-  function setLang(lang){
-    lang=lang==="en"?"en":"it";root.dataset.lang=lang;root.lang=lang;
-    buttons.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang?"true":"false"));
-    try{localStorage.setItem("wemblazing-lang",lang)}catch(e){}
-  }
-  let initial="it";
-  try{
-    const saved=localStorage.getItem("wemblazing-lang");
-    if(saved==="it"||saved==="en") initial=saved;
-    else if((navigator.language||"").toLowerCase().startsWith("en")) initial="en";
-  }catch(e){}
-  setLang(initial);
-  buttons.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
-
-  const coarse=!matchMedia("(hover:hover) and (pointer:fine)").matches;
-  if(coarse){
-    document.querySelectorAll(".card").forEach(card=>{
-      let flipped=false;
-      card.addEventListener("click",e=>{
-        if(!flipped){
-          e.preventDefault();
-          document.querySelectorAll(".card.flipped").forEach(c=>c.classList.remove("flipped"));
-          card.classList.add("flipped");
-          flipped=true;
-        }
-      });
-    });
-  }
+ const root=document.documentElement;
+ const bs=[...document.querySelectorAll("[data-lang]")];
+ function setLang(l){l=l==="en"?"en":"it";root.dataset.lang=l;root.lang=l;bs.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));try{localStorage.setItem("wemblazing-lang",l)}catch(e){}}
+ let l="it";try{const s=localStorage.getItem("wemblazing-lang");if(s==="it"||s==="en")l=s;else if((navigator.language||"").toLowerCase().startsWith("en"))l="en"}catch(e){}
+ setLang(l);bs.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+ if(!matchMedia("(hover:hover) and (pointer:fine)").matches){
+   document.querySelectorAll(".polaroid-link").forEach(a=>{
+     let flipped=false;
+     a.addEventListener("click",e=>{
+       if(!flipped){e.preventDefault();document.querySelectorAll(".polaroid-link.flipped").forEach(x=>x.classList.remove("flipped"));a.classList.add("flipped");flipped=true}
+     });
+   });
+ }
 })();
 </script>
 </body>
