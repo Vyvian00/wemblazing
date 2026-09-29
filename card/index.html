@@ -268,6 +268,32 @@
     }
     .quick a:hover{color:var(--salvia-scura)}
 
+    .social-links{
+      margin-top:1.9rem;
+      padding-top:1.2rem;
+      border-top:1px solid var(--linea);
+      display:flex;
+      align-items:center;
+      gap:.8rem;
+    }
+    .social-link{
+      width:2.8rem;
+      height:2.8rem;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--linea);
+      color:var(--grigio);
+      text-decoration:none;
+      transition:transform .25s ease,border-color .25s ease,color .25s ease,background .25s ease;
+    }
+    .social-link:hover{
+      transform:translateY(-2px);
+      color:var(--salvia-scura);
+      border-color:rgba(74,90,66,.45);
+      background:rgba(251,247,238,.45);
+    }
+    .social-link svg{width:1.1rem;height:1.1rem;fill:currentColor}
+
     .footer{
       margin-top:auto;
       padding-top:3rem;
@@ -365,18 +391,18 @@
     </section>
 
     <section class="actions" aria-label="Contatti">
-      <a class="action primary" href="./enrico-pio-esposto.vcf">
+      <a class="action primary" href="tel:+393343700168">
         <span>
           <span class="action-kicker">
-            <span class="lang-it">Un tap</span>
-            <span class="lang-en">One tap</span>
+            <span class="lang-it">Telefono</span>
+            <span class="lang-en">Phone</span>
           </span>
           <span class="action-label">
-            <span class="lang-it">Salva il mio contatto</span>
-            <span class="lang-en">Save my contact</span>
+            <span class="lang-it">Chiama</span>
+            <span class="lang-en">Call</span>
           </span>
         </span>
-        <span class="arrow">＋</span>
+        <span class="arrow">↗</span>
       </a>
 
       <a class="action" href="https://wemblazing.vercel.app/" target="_blank" rel="noopener">
@@ -402,15 +428,12 @@
       </a>
     </section>
 
-    <nav class="quick" aria-label="Quick links">
-      <a href="tel:+393343700168">
-        <span class="lang-it">Chiama</span>
-        <span class="lang-en">Call</span>
+    <nav class="social-links" aria-label="Social">
+      <a class="social-link" href="https://www.instagram.com/wemblazing/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.7 2h8.6A5.7 5.7 0 0 1 22 7.7v8.6a5.7 5.7 0 0 1-5.7 5.7H7.7A5.7 5.7 0 0 1 2 16.3V7.7A5.7 5.7 0 0 1 7.7 2Zm0 2A3.7 3.7 0 0 0 4 7.7v8.6A3.7 3.7 0 0 0 7.7 20h8.6a3.7 3.7 0 0 0 3.7-3.7V7.7A3.7 3.7 0 0 0 16.3 4H7.7Zm8.9 1.5a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
       </a>
-      <a href="https://www.instagram.com/wemblazing/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://wemblazing.vercel.app/">
-        <span class="lang-it">Home</span>
-        <span class="lang-en">Home</span>
+      <a class="social-link" href="https://www.facebook.com/profile.php?id=61594368424347" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-8.5h2.9l.43-3.32H13.7V8.06c0-.96.27-1.62 1.66-1.62h1.77V3.47c-.31-.04-1.36-.13-2.58-.13-2.55 0-4.3 1.56-4.3 4.42v2.42H7.36v3.32h2.89V22h3.45Z"/></svg>
       </a>
     </nav>
 
