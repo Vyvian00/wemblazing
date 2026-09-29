@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://wemblazing.vercel.app/</loc>
-  </url>
+  <url><loc>https://wemblazing.vercel.app/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/card/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/herbarium/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/opera-prima/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/hydro/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/brado/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/juicy/</loc></url>
+  <url><loc>https://wemblazing.vercel.app/works/mostra-arte/</loc></url>
 </urlset>
