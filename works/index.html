@@ -3,224 +3,266 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#A87554">
+<meta name="theme-color" content="#F4EEE1">
 <title>Works — WEMBLAZING</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:"Yuyu";src:url("fonts/Yuyu-Regular.ttf") format("woff2");font-display:swap;}
 :root{
+  --ivory:#F4EEE1;
+  --ivory-hi:#FBF7EE;
+  --cream:#EBE2CF;
+  --sage:#7C8F73;
+  --sage-dark:#4A5A42;
+  --ink:#2A2723;
+  --muted:#67665A;
+  --line:rgba(42,39,35,.14);
   --display:"Fraunces",Georgia,serif;
   --body:"Instrument Sans",Arial,sans-serif;
   --mono:"DM Mono",monospace;
-  --ivory:#F4EEE1;
+  --pad:clamp(1rem,4vw,4rem);
+  --max:92rem;
 }
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#8f674e}
-body{font-family:var(--body);color:var(--ivory);overflow-x:hidden}
+html{background:var(--ivory)}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-img{display:block}
-.scene{
-  position:relative;
-  min-height:100vh;
-  overflow:hidden;
-  background:
-    linear-gradient(rgba(34,20,11,.08),rgba(34,20,11,.10)),
-    url("/img/sfondo%20sito%20pagina%20lavori.png") center center/cover no-repeat;
-}
-.scene::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(180deg,rgba(20,13,8,.14),transparent 22%,transparent 80%,rgba(20,13,8,.12));
-}
-.topbar{
-  position:absolute;z-index:100;left:0;right:0;top:0;
-  height:4.6rem;display:flex;align-items:center;gap:1rem;
-  padding:0 clamp(1rem,3vw,3.5rem);
-  background:linear-gradient(180deg,rgba(30,20,14,.30),transparent);
-  text-shadow:0 1px 12px rgba(0,0,0,.28)
+img{display:block;max-width:100%}
+.top{
+  min-height:4.6rem;display:flex;align-items:center;gap:1rem;
+  padding:0 var(--pad);border-bottom:1px solid var(--line)
 }
 .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.18em}
-.brand svg{width:.85rem;color:#dce6d6}
+.brand svg{width:.85rem;color:var(--sage)}
 .nav{margin-left:auto;display:flex;align-items:center;gap:1rem}
-.nav a,.lang button{border:0;background:none;color:inherit;text-decoration:none;font:500 .63rem/1 var(--mono);padding:.2rem 0;cursor:pointer}
+.nav a,.lang button{
+  border:0;background:none;color:var(--muted);text-decoration:none;padding:.2rem 0;
+  font:500 .63rem/1 var(--mono);cursor:pointer
+}
 .lang{display:flex;align-items:center;gap:.35rem}
-.lang button{opacity:.55}.lang button[aria-pressed="true"]{opacity:1}
-.gallery{
-  position:absolute;z-index:30;
-  inset:4.6rem 1.5rem 1.5rem;
-  perspective:1400px;
+.lang button[aria-pressed="true"]{color:var(--sage-dark)}
+.wrap{width:min(100%,var(--max));margin:auto;padding:0 var(--pad)}
+.intro{
+  display:grid;gap:2rem;align-items:end;
+  padding:clamp(4rem,8vw,7.5rem) 0 clamp(2.5rem,5vw,4rem);
+  border-bottom:1px solid var(--line)
 }
-.hanger{
-  --x:50%;--wire:8rem;--size:13rem;
-  position:absolute;left:var(--x);top:0;
-  width:var(--size);height:calc(var(--wire) + var(--size)*1.03);
-  transform:translateX(-50%);transform-origin:50% 0;
-  animation:sway var(--dur,14s) ease-in-out infinite alternate;
-  animation-delay:var(--delay,0s);
-  pointer-events:none;
+@media(min-width:900px){.intro{grid-template-columns:minmax(0,1.1fr) minmax(22rem,.6fr)}}
+.kicker{font:500 .62rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.intro h1{margin:0;font:300 clamp(4rem,9vw,8rem)/.84 var(--display);letter-spacing:-.055em}
+.intro h1 em{font-style:italic;font-weight:400;color:var(--sage)}
+.intro p{margin:0;max-width:34rem;font-size:clamp(.98rem,1.25vw,1.12rem);line-height:1.55;color:var(--muted)}
+
+.projects{
+  display:grid;
+  gap:clamp(2rem,5vw,5rem);
+  padding:clamp(3rem,6vw,6rem) 0 clamp(5rem,9vw,8rem);
 }
-@keyframes sway{
-  from{transform:translateX(-50%) rotate(-.28deg)}
-  to{transform:translateX(-50%) rotate(.28deg)}
+@media(min-width:900px){
+  .projects{
+    grid-template-columns:minmax(0,1fr) minmax(24rem,.8fr);
+    align-items:start;
+  }
 }
-.wire{
-  position:absolute;left:50%;top:0;width:1px;height:var(--wire);
-  transform:translateX(-50%);
-  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(44,39,36,.42),rgba(255,255,255,.22));
-  box-shadow:1px 0 rgba(255,255,255,.10)
+.index{border-top:1px solid var(--line)}
+.project-row{
+  display:grid;
+  grid-template-columns:4.2rem minmax(0,1fr) auto;
+  gap:1rem;
+  align-items:center;
+  min-height:clamp(5.5rem,8vw,7.2rem);
+  border-bottom:1px solid var(--line);
+  text-decoration:none;
+  position:relative;
+  transition:padding .45s ease,color .35s ease,background .35s ease;
 }
-.wire::after{
-  content:"";position:absolute;left:50%;bottom:-2px;
-  width:4px;height:4px;border-radius:50%;
-  transform:translateX(-50%);background:#5e5954;opacity:.72
+.project-row::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:0;
+  background:var(--sage);
+  opacity:.08;
+  transition:width .45s cubic-bezier(.2,.8,.2,1)
 }
-.polaroid-link{
-  position:absolute;left:50%;top:var(--wire);
-  width:100%;aspect-ratio:767/693;
-  transform:translateX(-50%);
-  text-decoration:none;pointer-events:auto;
-  perspective:1200px;outline:none
+.project-row:hover::before,.project-row.active::before{width:100%}
+.project-row:hover,.project-row.active{padding-left:.7rem;color:var(--sage-dark)}
+.num{
+  position:relative;
+  z-index:1;
+  font:500 .58rem/1 var(--mono);
+  letter-spacing:.08em;
+  color:var(--muted)
 }
-.flip{
-  position:absolute;inset:0;
-  transform-style:preserve-3d;
-  transition:transform 2s cubic-bezier(.22,.61,.36,1);
+.name{
+  position:relative;z-index:1;
+  font:300 clamp(2rem,4.8vw,4.5rem)/.9 var(--display);
+  letter-spacing:-.045em;
 }
-.face{
-  position:absolute;inset:0;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+.status{
+  position:relative;z-index:1;
+  font:500 .54rem/1.35 var(--mono);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:right
 }
-.front{filter:drop-shadow(0 18px 20px rgba(35,23,15,.22))}
-.preview{
-  position:absolute;
-  left:20.4%;top:14.5%;width:61.5%;height:64%;
-  clip-path:polygon(14% 0,100% 15%,87% 100%,0 85%);
+.preview-panel{
+  position:sticky;
+  top:2rem;
+}
+.preview-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
   overflow:hidden;
-  background:#d8c9b6;
-  transform:rotate(.2deg);
+  background:var(--cream)
 }
-.preview img{
-  width:100%;height:100%;object-fit:cover;
-  transform:scale(1.06) rotate(6.7deg);
-  transition:transform 2s cubic-bezier(.22,.61,.36,1)
+.preview-frame img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.035);
+  transition:opacity .5s ease,transform .8s cubic-bezier(.2,.8,.2,1)
 }
-.placeholder{width:100%;height:100%;display:grid;place-items:center;color:#fff;font:400 2rem/1 "Yuyu",cursive;letter-spacing:.01em}
-.p4{background:linear-gradient(145deg,#332b25,#8c7763)}
-.p5{background:linear-gradient(145deg,#efc46d,#d97542 55%,#718567)}
-.p6{background:linear-gradient(145deg,#eee6d8 0 35%,#a5312f 35% 67%,#1e1b19 67%)}
-.frame,.back-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
-
-.back{transform:rotateY(180deg);filter:drop-shadow(0 18px 20px rgba(35,23,15,.22))}
-
-.back-copy{
-  position:absolute;left:24%;right:19%;top:21%;bottom:18%;
-  display:flex;flex-direction:column;justify-content:center;
-  color:#302b27;transform:rotate(7deg)
+.preview-frame img.active{opacity:1;transform:scale(1)}
+.preview-placeholder{
+  position:absolute;inset:0;display:grid;place-items:center;
+  opacity:0;transition:opacity .4s ease;
+  font:400 clamp(2rem,4vw,4rem)/.9 var(--display);
+  text-align:center;color:var(--ivory)
 }
-.code{font:500 .47rem/1 var(--mono);letter-spacing:.08em;color:#897e74}
-.back-copy h2{margin:auto 0 .5rem;font:400 clamp(1.45rem,2.4vw,2.35rem)/.95 "Yuyu",cursive}
-.back-copy p{margin:0;color:#6b625a;font:500 .46rem/1.48 var(--mono);text-transform:uppercase;letter-spacing:.025em}
-.open{align-self:flex-start;margin-top:.85rem;padding-bottom:.12rem;border-bottom:1px solid currentColor;font:500 .46rem/1 var(--mono);text-transform:uppercase}
-@media(hover:hover) and (pointer:fine){
-  .polaroid-link:hover .flip,.polaroid-link:focus-visible .flip{transform:rotateY(180deg)}
-  .polaroid-link:hover .preview img{transform:scale(1.10) rotate(6.7deg)}
+.preview-placeholder.active{opacity:1}
+.ph-brado{background:linear-gradient(145deg,#2f2924,#8b7662)}
+.ph-juicy{background:linear-gradient(145deg,#efc06b,#d87542 55%,#718567)}
+.ph-mostra{background:linear-gradient(145deg,#eee6da 0 36%,#a5302e 36% 66%,#1d1a18 66%)}
+.preview-meta{
+  display:grid;grid-template-columns:auto 1fr;gap:.7rem 1.2rem;
+  padding-top:1rem;border-top:1px solid var(--line);margin-top:1rem
 }
-.h1{--x:14%;--wire:6.2rem;--size:25.5rem;--dur:15s;--delay:-3s}
-.h2{--x:29%;--wire:9.8rem;--size:27rem;--dur:16s;--delay:-7s}
-.h3{--x:44%;--wire:6.4rem;--size:24.75rem;--dur:15.5s;--delay:-5s}
-.h4{--x:59%;--wire:10.8rem;--size:25.8rem;--dur:16.5s;--delay:-9s}
-.h5{--x:74%;--wire:7rem;--size:24rem;--dur:15.8s;--delay:-4s}
-.h6{--x:89%;--wire:10.8rem;--size:23.25rem;--dur:17s;--delay:-8s}
-.signature{
-  position:absolute;z-index:70;left:clamp(1rem,3vw,3.5rem);bottom:1.4rem;
-  font:500 .52rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;
-  text-shadow:0 1px 10px rgba(0,0,0,.25)
+.preview-meta dt{font:500 .55rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.preview-meta dd{margin:0;font-size:.9rem;line-height:1.45}
+.path{
+  margin-top:2.2rem;display:flex;align-items:center;gap:.7rem;
+  font:500 .56rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)
 }
+.path-line{height:1px;flex:1;background:var(--line);position:relative}
+.path-line::before,.path-line::after{
+  content:"";position:absolute;top:50%;width:.35rem;height:.35rem;border-radius:50%;background:var(--sage);transform:translateY(-50%)
+}
+.path-line::before{left:0}.path-line::after{right:0}
 .lang-en{display:none}
 html[data-lang="en"] .lang-it{display:none}
 html[data-lang="en"] .lang-en{display:inline}
-@media(max-width:1080px){
-  .h1{--x:11%;--size:19.5rem}.h2{--x:29%;--size:20.7rem}.h3{--x:47%;--size:19.2rem}.h4{--x:65%;--size:20.1rem}.h5{--x:83%;--size:18.9rem}.h6{display:none}
+@media(max-width:899px){
+  .preview-panel{position:relative;top:auto;order:-1}
+  .preview-frame{aspect-ratio:1.55}
+  .project-row{grid-template-columns:3rem minmax(0,1fr);padding:.7rem 0}
+  .status{grid-column:2;text-align:left;margin-top:-.5rem}
 }
-@media(max-width:760px){
-  .scene{min-height:1050px;background-position:47% center}
+@media(max-width:600px){
   .nav .home{display:none}
-  .gallery{inset:4.6rem .35rem 1rem}
-  .h1{--x:15%;--wire:3.8rem;--size:14rem}
-  .h2{--x:50%;--wire:7.6rem;--size:14.8rem}
-  .h3{--x:85%;--wire:4.3rem;--size:13.5rem}
-  .h4{--x:16%;--wire:22rem;--size:14.2rem}
-  .h5{--x:52%;--wire:24rem;--size:13.5rem}
-  .h6{display:block;--x:86%;--wire:21.5rem;--size:12.8rem}
-  .polaroid-link.flipped .flip{transform:rotateY(180deg)}
+  .intro h1{font-size:clamp(3.6rem,17vw,5.6rem)}
+  .project-row{min-height:5rem}
+  .name{font-size:clamp(1.9rem,10vw,3.2rem)}
 }
-@media(prefers-reduced-motion:reduce){.hanger{animation:none}.flip,.preview img{transition:none}}
 </style>
 </head>
 <body>
-<main class="scene">
-<header class="topbar">
-<a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>WEMBLAZING</a>
-<nav class="nav">
-<a class="home" href="/">Home</a>
-<a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
-<div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
-</nav>
+<header class="top">
+  <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>WEMBLAZING</a>
+  <nav class="nav">
+    <a class="home" href="/">Home</a>
+    <a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
+    <div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en">EN</button></div>
+  </nav>
 </header>
-<section class="gallery" aria-label="Selected works">
 
-<div class="hanger h1"><div class="wire"></div><a class="polaroid-link" href="/works/herbarium/"><div class="flip">
-<div class="face front"><div class="preview"><img src="/img/herbarium-hero.webp" alt="Herbarium"></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
-<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 001</div><h2>Herbarium</h2><p>2025<br>Identity · Packaging · Digital</p><div class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</div></div></div>
-</div></a></div>
+<main class="wrap">
+  <section class="intro">
+    <div>
+      <div class="kicker">WEMBLAZING / SELECTED WORKS</div>
+      <h1><span class="lang-it">Progetti.<br><em>Percorsi.</em></span><span class="lang-en">Projects.<br><em>Paths.</em></span></h1>
+    </div>
+    <div>
+      <p><span class="lang-it">Identità, campagne e sistemi visivi sviluppati seguendo ogni volta una strada diversa.</span><span class="lang-en">Identities, campaigns and visual systems developed by following a different path every time.</span></p>
+      <div class="path"><span>Ideas</span><span class="path-line"></span><span>People</span></div>
+    </div>
+  </section>
 
-<div class="hanger h2"><div class="wire"></div><a class="polaroid-link" href="/works/opera-prima/"><div class="flip">
-<div class="face front"><div class="preview"><img src="/img/opera-hero.webp" alt="Opera Prima"></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
-<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 002</div><h2>Opera Prima</h2><p>2025<br>Brand identity · Art direction</p><div class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</div></div></div>
-</div></a></div>
+  <section class="projects">
+    <div class="index" id="projectIndex">
+      <a class="project-row active" href="/works/herbarium/" data-key="herbarium">
+        <span class="num">01</span><span class="name">Herbarium</span><span class="status">Identity · Packaging · Digital</span>
+      </a>
+      <a class="project-row" href="/works/opera-prima/" data-key="opera">
+        <span class="num">02</span><span class="name">Opera Prima</span><span class="status">Brand identity · Art direction</span>
+      </a>
+      <a class="project-row" href="/works/hydro/" data-key="hydro">
+        <span class="num">03</span><span class="name">Hydro</span><span class="status">Campaign · Art direction</span>
+      </a>
+      <a class="project-row" href="/works/brado/" data-key="brado">
+        <span class="num">04</span><span class="name">Brado</span><span class="status"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span></span>
+      </a>
+      <a class="project-row" href="/works/juicy/" data-key="juicy">
+        <span class="num">05</span><span class="name">Juicy</span><span class="status"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span></span>
+      </a>
+      <a class="project-row" href="/works/mostra-arte/" data-key="mostra">
+        <span class="num">06</span><span class="name">Mostra d’arte</span><span class="status"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span></span>
+      </a>
+    </div>
 
-<div class="hanger h3"><div class="wire"></div><a class="polaroid-link" href="/works/hydro/"><div class="flip">
-<div class="face front"><div class="preview"><img src="/img/hydro-hero.webp" alt="Hydro"></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
-<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 003</div><h2>Hydro</h2><p>2026<br>Campaign · Art direction</p><div class="open"><span class="lang-it">Apri progetto</span><span class="lang-en">View project</span> ↗</div></div></div>
-</div></a></div>
-
-<div class="hanger h4"><div class="wire"></div><a class="polaroid-link" href="/works/brado/"><div class="flip">
-<div class="face front"><div class="preview"><div class="placeholder p4">Brado</div></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
-<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 004</div><h2>Brado</h2><p>2026<br>Work in progress</p><div class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</div></div></div>
-</div></a></div>
-
-<div class="hanger h5"><div class="wire"></div><a class="polaroid-link" href="/works/juicy/"><div class="flip">
-<div class="face front"><div class="preview"><div class="placeholder p5">Juicy</div></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
-<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 005</div><h2>Juicy</h2><p>2026<br>Work in progress</p><div class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</div></div></div>
-</div></a></div>
-
-<div class="hanger h6"><div class="wire"></div><a class="polaroid-link" href="/works/mostra-arte/"><div class="flip">
-<div class="face front"><div class="preview"><div class="placeholder p6">Mostra d’arte</div></div><img class="frame" src="/img/polaroid%20fronte.png" alt=""></div>
-<div class="face back"><img class="back-frame" src="/img/polaroid%20retro.png" alt=""><div class="back-copy"><div class="code">WMB / 006</div><h2>Mostra d’arte</h2><p>2026<br>Poster · Event communication</p><div class="open"><span class="lang-it">In lavorazione</span><span class="lang-en">In progress</span> ↗</div></div></div>
-</div></a></div>
-
-</section>
-<div class="signature">WEMBLAZING / SELECTED WORKS</div>
+    <aside class="preview-panel">
+      <div class="preview-frame">
+        <img class="active" data-preview="herbarium" src="/img/herbarium-hero.webp" alt="Herbarium">
+        <img data-preview="opera" src="/img/opera-hero.webp" alt="Opera Prima">
+        <img data-preview="hydro" src="/img/hydro-hero.webp" alt="Hydro">
+        <div class="preview-placeholder ph-brado" data-preview="brado">Brado</div>
+        <div class="preview-placeholder ph-juicy" data-preview="juicy">Juicy</div>
+        <div class="preview-placeholder ph-mostra" data-preview="mostra">Mostra<br>d’arte</div>
+      </div>
+      <dl class="preview-meta">
+        <dt><span class="lang-it">Selezione</span><span class="lang-en">Selected</span></dt><dd id="metaName">Herbarium</dd>
+        <dt><span class="lang-it">Anno</span><span class="lang-en">Year</span></dt><dd id="metaYear">2025</dd>
+      </dl>
+    </aside>
+  </section>
 </main>
+
 <script>
 (function(){
- const root=document.documentElement;
- const bs=[...document.querySelectorAll("[data-lang]")];
- function setLang(l){l=l==="en"?"en":"it";root.dataset.lang=l;root.lang=l;bs.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));try{localStorage.setItem("wemblazing-lang",l)}catch(e){}}
- let l="it";try{const s=localStorage.getItem("wemblazing-lang");if(s==="it"||s==="en")l=s;else if((navigator.language||"").toLowerCase().startsWith("en"))l="en"}catch(e){}
- setLang(l);bs.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
- if(!matchMedia("(hover:hover) and (pointer:fine)").matches){
-   document.querySelectorAll(".polaroid-link").forEach(a=>{
-     let flipped=false;
-     a.addEventListener("click",e=>{
-       if(!flipped){e.preventDefault();document.querySelectorAll(".polaroid-link.flipped").forEach(x=>x.classList.remove("flipped"));a.classList.add("flipped");flipped=true}
-     });
-   });
- }
+  const root=document.documentElement;
+  const langButtons=[...document.querySelectorAll("[data-lang]")];
+  const rows=[...document.querySelectorAll(".project-row")];
+  const previews=[...document.querySelectorAll("[data-preview]")];
+  const metaName=document.getElementById("metaName");
+  const metaYear=document.getElementById("metaYear");
+  const years={herbarium:"2025",opera:"2025",hydro:"2026",brado:"2026",juicy:"2026",mostra:"2026"};
+  const names={herbarium:"Herbarium",opera:"Opera Prima",hydro:"Hydro",brado:"Brado",juicy:"Juicy",mostra:"Mostra d’arte"};
+
+  function activate(key){
+    rows.forEach(r=>r.classList.toggle("active",r.dataset.key===key));
+    previews.forEach(p=>p.classList.toggle("active",p.dataset.preview===key));
+    metaName.textContent=names[key]||"";
+    metaYear.textContent=years[key]||"";
+  }
+
+  rows.forEach(row=>{
+    row.addEventListener("mouseenter",()=>activate(row.dataset.key));
+    row.addEventListener("focus",()=>activate(row.dataset.key));
+  });
+
+  function setLang(l){
+    l=l==="en"?"en":"it";
+    root.dataset.lang=l;root.lang=l;
+    langButtons.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));
+    try{localStorage.setItem("wemblazing-lang",l)}catch(e){}
+  }
+  let lang="it";
+  try{
+    const saved=localStorage.getItem("wemblazing-lang");
+    if(saved==="it"||saved==="en")lang=saved;
+    else if((navigator.language||"").toLowerCase().startsWith("en"))lang="en";
+  }catch(e){}
+  setLang(lang);
+  langButtons.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 })();
 </script>
 </body>
