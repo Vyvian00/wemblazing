@@ -31,93 +31,58 @@
 .wrap{width:min(100%,var(--max));margin:auto;padding:0 var(--pad)}.hero{padding:clamp(4rem,8vw,8rem) 0 2rem}.meta{display:flex;flex-wrap:wrap;gap:.65rem 1.3rem;margin-bottom:1.1rem;font:500 .62rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}h1{margin:0;font:300 clamp(4rem,11vw,9.2rem)/.83 var(--display);letter-spacing:-.055em}.hero-image{margin:clamp(2.2rem,5vw,4rem) auto 0;width:min(100%,68rem);aspect-ratio:1.9;overflow:hidden;background:var(--ivory)!important;}.hero-image img{width:100%;height:100%;object-fit:cover}
 .story{display:grid;gap:clamp(2rem,6vw,6rem);padding:clamp(3rem,7vw,6rem) 0;border-bottom:1px solid var(--line)}@media(min-width:850px){.story{grid-template-columns:minmax(0,1.25fr) minmax(18rem,.6fr)}}.copy{max-width:56rem}.copy p{margin:0;font-size:clamp(1.03rem,1.35vw,1.22rem);line-height:1.62}.copy p+p{margin-top:1.15rem}.facts{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.25rem;align-content:start;padding-top:.15rem}.facts dt{font:500 .56rem/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}.facts dd{margin:0;font-size:.9rem;line-height:1.45}
 
-/* materiali — scorrimento orizzontale come nella home */
-.materials{
-  margin-top:clamp(2.8rem,6vw,5rem);
-  padding-bottom:clamp(3rem,6vw,5rem);
+
+/* striscia orizzontale dei materiali — coerente con la home */
+.striscia{margin-top:clamp(2rem,4vw,3.2rem);position:relative}
+.binario{
+  user-select:none;display:flex;align-items:flex-end;
+  gap:clamp(1rem,2.2vw,2rem);
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none;
+  padding-left:max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad)));
+  padding-right:22vw;padding-bottom:.4rem;cursor:grab;
 }
-.materials-head{
-  width:min(100%,var(--max));
-  margin:0 auto .9rem;
-  padding:0 var(--pad);
-  display:flex;align-items:baseline;gap:1rem;
+.binario::-webkit-scrollbar{display:none}
+.binario.trascino{cursor:grabbing;scroll-snap-type:none}
+.binario.trascino .pezzo{pointer-events:none}
+.pezzo{margin:0;flex:none;scroll-snap-align:center;display:flex;flex-direction:column;gap:.7rem}
+.pezzo img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none;user-select:none;object-fit:contain}
+.pezzo .telaio{
+  height:var(--alt);
+  background:var(--ivory);
+  overflow:hidden;display:flex;align-self:flex-start;width:max-content;
+}
+.pezzo--alto{--alt:clamp(17rem,52vh,29rem)}
+.pezzo--medio{--alt:clamp(13rem,40vh,22rem)}
+.pezzo--basso{--alt:clamp(10rem,31vh,17rem)}
+.pezzo .telaio--piastra{
+  align-items:center;justify-content:center;
+  padding:clamp(1.2rem,3vw,2.4rem);
+  aspect-ratio:4/3;
+}
+.pezzo figcaption{
+  font:500 .68rem/1.45 var(--mono);
+  letter-spacing:.06em;color:var(--muted);max-width:22rem;
+}
+.rotaia{
+  height:1px;background:var(--line);
+  margin:clamp(1.4rem,3vw,2.2rem) max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad))) 0;
+  position:relative;overflow:hidden;
+}
+.cursore{
+  position:absolute;inset:0 auto 0 0;width:100%;
+  background:var(--sage-dark);
+  transform-origin:0 50%;transform:scaleX(.07);
+}
+.striscia-eti{
+  display:flex;gap:1rem;align-items:baseline;
+  margin:.7rem max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad))) 0;
   font:500 .58rem/1 var(--mono);
   letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
 }
-.materials-head .hint{margin-left:auto}
-.track{
-  display:flex;
-  align-items:flex-end;
-  gap:clamp(1rem,2vw,1.8rem);
-  overflow-x:auto;
-  overscroll-behavior-x:contain;
-  scroll-snap-type:x proximity;
-  scrollbar-width:none;
-  -ms-overflow-style:none;
-  padding-left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));
-  padding-right:18vw;
-  padding-bottom:.6rem;
-  cursor:grab;
-  user-select:none;
-}
-.track::-webkit-scrollbar{display:none}
-.track.dragging{cursor:grabbing;scroll-snap-type:none}
-.track.dragging figure{pointer-events:none}
-.track figure{
-  margin:0;
-  flex:none;
-  scroll-snap-align:center;
-  display:flex;
-  flex-direction:column;
-  gap:.65rem;
-}
-.track .media{
-  height:var(--h,clamp(15rem,42vh,24rem));
-  background:var(--ivory);
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.track .tall{--h:clamp(18rem,50vh,29rem)}
-.track .mid{--h:clamp(14rem,40vh,23rem)}
-.track .small{--h:clamp(11rem,31vh,17rem)}
-.track .media img{
-  display:block;
-  width:auto;
-  height:100%;
-  max-width:none;
-  object-fit:contain;
-  -webkit-user-drag:none;
-  user-select:none;
-}
-.track .media.wide img{
-  width:min(72vw,58rem);
-  height:auto;
-  max-height:var(--h);
-  object-fit:contain;
-}
-.track figcaption{
-  font:500 .58rem/1.45 var(--mono);
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  color:var(--muted);
-  max-width:22rem;
-}
-.rail{
-  height:1px;
-  background:var(--line);
-  width:min(calc(100% - 2*var(--pad)),var(--max));
-  margin:1rem auto 0;
-  overflow:hidden;
-}
-.rail > span{
-  display:block;height:100%;width:100%;
-  background:var(--sage-dark);
-  transform-origin:0 50%;
-  transform:scaleX(.16);
-}
-.hero-image,.frame{background:var(--ivory)!important}
+.striscia-eti .scorri{margin-left:auto}
+.hero-image{background:var(--ivory)!important}
+
 
 .project-foot{border-top:1px solid var(--line);padding:1.2rem 0 3rem;display:flex;justify-content:space-between;gap:1rem;font:500 .62rem/1.4 var(--mono);text-transform:uppercase}.project-foot a{text-decoration:none}.project-foot a:hover{color:var(--sage-dark)}
 .lang-en{display:none}html[data-lang=en] .lang-it{display:none}html[data-lang=en] .lang-en{display:inline}
@@ -144,22 +109,23 @@
 <p><span class="lang-it">Le illustrazioni botaniche usano un tratto costante in verde salvia, abbastanza pulito da funzionare sia nella stampa a un colore sull&#x27;astuccio sia in piccolo sulla boccetta. Italiano e inglese convivono sulla stessa griglia senza appesantire la lettura.</span><span class="lang-en">The botanical illustrations use a consistent sage-green line, clean enough to work both as a single-colour print on the box and at a small scale on the bottle. Italian and English share the same grid without making the layout feel crowded.</span></p>
 <p><span class="lang-it">Lo stesso sistema continua anche online: la pagina shop riprende la logica dello schedario, mentre la fascia blu distingue in modo netto il catalogo dalla parte commerciale.</span><span class="lang-en">The same system carries over online: the shop page follows the logic of a filing system, while the blue band clearly separates the catalogue from the commercial content.</span></p></div><dl class="facts"><dt><span class="lang-it">Ruolo</span><span class="lang-en">Role</span></dt><dd><span class="lang-it">Identità, packaging, illustrazione, interfaccia</span><span class="lang-en">Identity, packaging, illustration, interface</span></dd>
 <dt><span class="lang-it">Consegna</span><span class="lang-en">Deliverables</span></dt><dd><span class="lang-it">Marchio, sistema etichetta e astuccio, tavole botaniche, pagina shop</span><span class="lang-en">Logo, label and box system, botanical illustrations, shop page</span></dd></dl></section>
-<section class="materials">
-  <div class="materials-head">
-    <span><span class="lang-it">Materiali</span><span class="lang-en">Materials</span></span>
-    <span class="hint"><span class="lang-it">Trascina o scorri →</span><span class="lang-en">Drag or scroll →</span></span>
-  </div>
-  <div class="track" tabindex="0" role="region">
-<figure class="wide tall"><div class="media wide tall"><img src="/img/herbarium-sito.webp" alt="Interfaccia — pagina shop" loading="lazy"></div><figcaption><span class="lang-it">Interfaccia — pagina shop</span><span class="lang-en">Interface — shop page</span></figcaption></figure>
-<figure class="mid"><div class="media mid"><img src="/img/herbarium-etichetta.webp" alt="Etichetta fronte — Lavandula angustifolia" loading="lazy"></div><figcaption><span class="lang-it">Etichetta fronte — Lavandula angustifolia</span><span class="lang-en">Front label — Lavandula angustifolia</span></figcaption></figure>
-<figure class="mid"><div class="media mid"><img src="/img/herbarium-specimen.webp" alt="Astuccio — scheda specimen, IT / EN" loading="lazy"></div><figcaption><span class="lang-it">Astuccio — scheda specimen, IT / EN</span><span class="lang-en">Box — specimen sheet, IT / EN</span></figcaption></figure>
-<figure class="mid"><div class="media mid"><img src="/img/herbarium-precauzioni.webp" alt="Astuccio — precauzioni d'uso" loading="lazy"></div><figcaption><span class="lang-it">Astuccio — precauzioni d'uso</span><span class="lang-en">Box — usage precautions</span></figcaption></figure>
-<figure class="mid"><div class="media mid"><img src="/img/herbarium-cartiglio.webp" alt="Cartiglio — specimen No. 004" loading="lazy"></div><figcaption><span class="lang-it">Cartiglio — specimen No. 004</span><span class="lang-en">Specimen panel — No. 004</span></figcaption></figure>
-<figure class="mid"><div class="media mid"><img src="/img/herbarium-lavanda.webp" alt="Etichetta — variante diagonale" loading="lazy"></div><figcaption><span class="lang-it">Etichetta — variante diagonale</span><span class="lang-en">Label — diagonal variant</span></figcaption></figure>
-<figure class="small"><div class="media small"><img src="/img/herbarium-monogramma.webp" alt="Monogramma" loading="lazy"></div><figcaption><span class="lang-it">Monogramma</span><span class="lang-en">Monogram</span></figcaption></figure>
-  </div>
-  <div class="rail"><span></span></div>
-</section>
+<section class="striscia">
+    <div class="binario" tabindex="0" role="region">
+
+      <figure class="pezzo pezzo--alto"><div class="telaio"><img src="/img/herbarium-sito.webp" alt="Interfaccia — pagina shop" loading="lazy"></div><figcaption><span class="lang-it">Interfaccia — pagina shop</span><span class="lang-en">Interface — shop page</span></figcaption></figure>
+      <figure class="pezzo pezzo--medio"><div class="telaio"><img src="/img/herbarium-etichetta.webp" alt="Etichetta fronte — Lavandula angustifolia" loading="lazy"></div><figcaption><span class="lang-it">Etichetta fronte — Lavandula angustifolia</span><span class="lang-en">Front label — Lavandula angustifolia</span></figcaption></figure>
+      <figure class="pezzo pezzo--medio"><div class="telaio"><img src="/img/herbarium-specimen.webp" alt="Astuccio — scheda specimen, IT / EN" loading="lazy"></div><figcaption><span class="lang-it">Astuccio — scheda specimen, IT / EN</span><span class="lang-en">Box — specimen sheet, IT / EN</span></figcaption></figure>
+      <figure class="pezzo pezzo--medio"><div class="telaio"><img src="/img/herbarium-precauzioni.webp" alt="Astuccio — precauzioni d'uso" loading="lazy"></div><figcaption><span class="lang-it">Astuccio — precauzioni d'uso</span><span class="lang-en">Box — usage precautions</span></figcaption></figure>
+      <figure class="pezzo pezzo--medio"><div class="telaio"><img src="/img/herbarium-cartiglio.webp" alt="Cartiglio — specimen No. 004" loading="lazy"></div><figcaption><span class="lang-it">Cartiglio — specimen No. 004</span><span class="lang-en">Specimen panel — No. 004</span></figcaption></figure>
+      <figure class="pezzo pezzo--medio"><div class="telaio"><img src="/img/herbarium-lavanda.webp" alt="Etichetta — variante diagonale" loading="lazy"></div><figcaption><span class="lang-it">Etichetta — variante diagonale</span><span class="lang-en">Label — diagonal variant</span></figcaption></figure>
+      <figure class="pezzo pezzo--basso"><div class="telaio"><img src="/img/herbarium-monogramma.webp" alt="Monogramma" loading="lazy"></div><figcaption>Monogramma</figcaption></figure>
+    </div>
+    <div class="rotaia"><span class="cursore"></span></div>
+    <div class="striscia-eti">
+      <span><span class="lang-it">Materiali</span><span class="lang-en">Materials</span></span>
+      <span class="scorri"><span class="lang-it">Trascina o scorri →</span><span class="lang-en">Drag or scroll →</span></span>
+    </div>
+  </section>
 <footer class="project-foot"><a href="/works/hydro/">← Hydro</a><a href="/works/">Works</a><a href="/works/opera-prima/">Opera Prima →</a></footer>
 </main><script>
 (function(){
@@ -168,21 +134,39 @@
  let l="it";try{const s=localStorage.getItem("wemblazing-lang");if(s==="it"||s==="en")l=s;else if((navigator.language||"").toLowerCase().startsWith("en"))l="en"}catch(e){}
  setLang(l);bs.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 
-  document.querySelectorAll(".track").forEach(track=>{
-    let down=false,startX=0,startScroll=0;
-    const updateRail=()=>{
-      const rail=track.closest(".materials")?.querySelector(".rail > span");
-      if(!rail)return;
-      const max=Math.max(1,track.scrollWidth-track.clientWidth);
-      const visible=Math.min(1,track.clientWidth/track.scrollWidth);
-      const progress=Math.min(1,track.scrollLeft/max);
-      rail.style.transform="scaleX("+Math.max(visible,visible+(1-visible)*progress)+")";
-    };
-    track.addEventListener("pointerdown",e=>{
-      down=true;startX=e.clientX;startScroll=track.scrollLeft;
-      track.classList.add("dragging");
-      track.setPointerCapture?.(e.pointerId);
+  document.querySelectorAll('.striscia').forEach(function(striscia){
+    var binario=striscia.querySelector('.binario');
+    var cursore=striscia.querySelector('.cursore');
+    var giu=false,xIniziale=0,scrollIniziale=0,mosso=false;
+    function avanzamento(){
+      var corsa=binario.scrollWidth-binario.clientWidth;
+      var q=corsa>4?binario.scrollLeft/corsa:0;
+      if(cursore)cursore.style.transform='scaleX('+(0.07+q*0.93).toFixed(4)+')';
+    }
+    binario.addEventListener('scroll',avanzamento,{passive:true});
+    window.addEventListener('resize',avanzamento);
+    avanzamento();
+    binario.addEventListener('dragstart',function(e){e.preventDefault()});
+    binario.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='touch')return;
+      giu=true;mosso=false;xIniziale=e.clientX;scrollIniziale=binario.scrollLeft;
     });
+    binario.addEventListener('pointermove',function(e){
+      if(!giu)return;
+      if(!mosso&&Math.abs(e.clientX-xIniziale)>6){
+        mosso=true;binario.classList.add('trascino');
+        try{binario.setPointerCapture(e.pointerId)}catch(_){}
+      }
+      if(mosso)binario.scrollLeft=scrollIniziale-(e.clientX-xIniziale);
+    });
+    function rilascia(e){
+      if(!giu)return;giu=false;binario.classList.remove('trascino');
+      try{binario.releasePointerCapture(e.pointerId)}catch(_){}
+    }
+    binario.addEventListener('pointerup',rilascia);
+    binario.addEventListener('pointercancel',rilascia);
+  });
+
     track.addEventListener("pointermove",e=>{
       if(!down)return;
       track.scrollLeft=startScroll-(e.clientX-startX);
