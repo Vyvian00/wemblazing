@@ -1,24 +1,154 @@
 <!DOCTYPE html><html lang="it" data-lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#F4EEE1"><title>Hydro — WEMBLAZING</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
 :root{--ivory:#F4EEE1;--ivory-hi:#FBF7EE;--cream:#EBE2CF;--sage:#7C8F73;--sage-dark:#4A5A42;--ink:#2A2723;--muted:#67665A;--line:rgba(42,39,35,.14);--display:"Fraunces",Georgia,serif;--body:"Instrument Sans",Arial,sans-serif;--mono:"DM Mono",monospace;--pad:clamp(1rem,4vw,4rem);--max:88rem}
 *{box-sizing:border-box}html{background:var(--ivory)}body{margin:0;color:var(--ink);font-family:var(--body);background:var(--ivory);-webkit-font-smoothing:antialiased}a{color:inherit}img{display:block;max-width:100%}
-.top{min-height:4.6rem;display:flex;align-items:center;padding:0 var(--pad);border-bottom:1px solid var(--line);position:relative;z-index:20}.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.18em}.brand svg{width:.85rem;color:var(--sage)}.nav{margin-left:auto;display:flex;gap:1rem;align-items:center}.nav a,.lang button{border:0;background:none;color:var(--muted);text-decoration:none;padding:.2rem 0;font:500 .63rem/1 var(--mono);cursor:pointer}.lang{display:flex;align-items:center;gap:.35rem}.lang button[aria-pressed=true]{color:var(--sage-dark)}
+.top{
+  min-height:auto;
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.05rem var(--pad);
+  border-bottom:1px solid var(--line);
+  position:relative;z-index:20;
+}.brand{
+  display:flex;align-items:center;gap:.6rem;
+  text-decoration:none;
+  font-family:var(--body);
+  font-weight:600;
+  font-size:.82rem;
+  letter-spacing:.2em;
+}.brand svg{width:.95rem;color:var(--sage);transition:transform 1.1s cubic-bezier(.16,.84,.28,1)}.nav{margin-left:auto;display:flex;gap:1.6rem;align-items:center}.nav a,.lang button{
+  border:0;background:none;
+  text-decoration:none;
+  padding:.2rem 0;
+  font:500 .76rem/1 var(--mono);
+  color:var(--muted);
+  cursor:pointer;
+}.lang{
+  display:flex;align-items:center;gap:.28rem;flex:none;
+  padding-left:1.15rem;margin-left:.05rem;
+  border-left:1px solid var(--line);
+  font:500 .70rem/1 var(--mono);
+  letter-spacing:.08em;
+}.lang button[aria-pressed=true]{color:var(--ink);font-weight:500}
 .wrap{width:min(100%,var(--max));margin:auto;padding:0 var(--pad)}.hero{padding:clamp(4rem,8vw,8rem) 0 2rem}.meta{display:flex;flex-wrap:wrap;gap:.65rem 1.3rem;margin-bottom:1.1rem;font:500 .62rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}h1{margin:0;font:300 clamp(4rem,11vw,9.2rem)/.83 var(--display);letter-spacing:-.055em}.hero-image{margin-top:clamp(2.2rem,5vw,4rem);width:100%;aspect-ratio:1.75;overflow:hidden;background:var(--cream)}.hero-image img{width:100%;height:100%;object-fit:cover}
 .story{display:grid;gap:clamp(2rem,6vw,6rem);padding:clamp(3rem,7vw,6rem) 0;border-bottom:1px solid var(--line)}@media(min-width:850px){.story{grid-template-columns:minmax(0,1.25fr) minmax(18rem,.6fr)}}.copy{max-width:56rem}.copy p{margin:0;font-size:clamp(1.03rem,1.35vw,1.22rem);line-height:1.62}.copy p+p{margin-top:1.15rem}.facts{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.25rem;align-content:start;padding-top:.15rem}.facts dt{font:500 .56rem/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}.facts dd{margin:0;font-size:.9rem;line-height:1.45}
-.gallery{padding:clamp(3rem,7vw,7rem) 0;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(.8rem,2vw,1.5rem)}figure{margin:0;grid-column:span 6}figure:nth-child(3n+1){grid-column:span 7}figure:nth-child(3n+2){grid-column:span 5}.frame{background:var(--cream);overflow:hidden}.frame img{width:100%;height:auto}figcaption{margin-top:.55rem;color:var(--muted);font:500 .58rem/1.45 var(--mono);letter-spacing:.04em;text-transform:uppercase}
+
+/* materiali — scorrimento orizzontale come nella home */
+.materials{
+  margin-top:clamp(2.8rem,6vw,5rem);
+  padding-bottom:clamp(3rem,6vw,5rem);
+}
+.materials-head{
+  width:min(100%,var(--max));
+  margin:0 auto .9rem;
+  padding:0 var(--pad);
+  display:flex;align-items:baseline;gap:1rem;
+  font:500 .58rem/1 var(--mono);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+}
+.materials-head .hint{margin-left:auto}
+.track{
+  display:flex;
+  align-items:flex-end;
+  gap:clamp(1rem,2vw,1.8rem);
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding-left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));
+  padding-right:18vw;
+  padding-bottom:.6rem;
+  cursor:grab;
+  user-select:none;
+}
+.track::-webkit-scrollbar{display:none}
+.track.dragging{cursor:grabbing;scroll-snap-type:none}
+.track.dragging figure{pointer-events:none}
+.track figure{
+  margin:0;
+  flex:none;
+  scroll-snap-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:.65rem;
+}
+.track .media{
+  height:var(--h,clamp(15rem,42vh,24rem));
+  background:var(--ivory);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.track .tall{--h:clamp(18rem,50vh,29rem)}
+.track .mid{--h:clamp(14rem,40vh,23rem)}
+.track .small{--h:clamp(11rem,31vh,17rem)}
+.track .media img{
+  display:block;
+  width:auto;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+  -webkit-user-drag:none;
+  user-select:none;
+}
+.track .media.wide img{
+  width:min(72vw,58rem);
+  height:auto;
+  max-height:var(--h);
+  object-fit:contain;
+}
+.track figcaption{
+  font:500 .58rem/1.45 var(--mono);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--muted);
+  max-width:22rem;
+}
+.rail{
+  height:1px;
+  background:var(--line);
+  width:min(calc(100% - 2*var(--pad)),var(--max));
+  margin:1rem auto 0;
+  overflow:hidden;
+}
+.rail > span{
+  display:block;height:100%;width:100%;
+  background:var(--sage-dark);
+  transform-origin:0 50%;
+  transform:scaleX(.16);
+}
+.hero-image,.frame{background:var(--ivory)!important}
+
 .project-foot{border-top:1px solid var(--line);padding:1.2rem 0 3rem;display:flex;justify-content:space-between;gap:1rem;font:500 .62rem/1.4 var(--mono);text-transform:uppercase}.project-foot a{text-decoration:none}.project-foot a:hover{color:var(--sage-dark)}
 .lang-en{display:none}html[data-lang=en] .lang-it{display:none}html[data-lang=en] .lang-en{display:inline}
 @media(max-width:720px){.nav .home-link{display:none}.hero-image{aspect-ratio:1.25}.gallery{display:block}.gallery figure+figure{margin-top:1.8rem}}
+
+@media(max-width:760px){
+  .top{gap:.85rem;padding:1.05rem var(--pad)}
+  .nav{gap:1rem}
+  .brand{font-size:.72rem;letter-spacing:.16em}
+  .lang{padding-left:.7rem;gap:.16rem;font-size:.66rem}
+}
 </style></head><body>
 <header class="top"><a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>WEMBLAZING</a><nav class="nav"><a class="home-link" href="/works/"><span class="lang-it">Lavori</span><span class="lang-en">Works</span></a><a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a><div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en">EN</button></div></nav></header>
 <main class="wrap">
-<section class="hero"><div class="meta"><span>2026</span><span><span class="lang-it">Concept di campagna · Non commissionato</span><span class="lang-en">Campaign concept · Self-initiated</span></span></div><h1>Hydro</h1><div class="hero-image" style="background:#414B55"><img src="/img/hydro-hero.webp" alt="Hydro"></div></section>
+<section class="hero"><div class="meta"><span>2026</span><span><span class="lang-it">Concept di campagna · Non commissionato</span><span class="lang-en">Campaign concept · Self-initiated</span></span></div><h1>Hydro</h1><div class="hero-image"><img src="/img/hydro-hero.webp" alt="Hydro"></div></section>
 <section class="story"><div class="copy"><p><span class="lang-it">L&#x27;alluminio viene raccontato quasi sempre attraverso impianti, colate e macchinari. In questo concept ho scelto di spostare l&#x27;attenzione sulle persone che rendono possibile quel lavoro: the people behind progress.</span><span class="lang-en">Aluminium is almost always communicated through industrial facilities, molten metal and machinery. For this concept I chose to shift the focus to the people who make that work possible: the people behind progress.</span></p>
 <p><span class="lang-it">La direzione visiva unisce una tipografia serif importante, tutta in maiuscolo, alla fotografia del paesaggio industriale nordico. Il titolo entra direttamente nell&#x27;immagine e il sistema si adatta poi a banner, post social e formati verticali senza perdere riconoscibilità.</span><span class="lang-en">The visual direction pairs a bold, all-caps serif with photography of Nordic industrial landscapes. The headline sits directly within the image, while the system adapts to banners, social posts and vertical formats without losing recognition.</span></p>
 <p><span class="lang-it">Non è un progetto commissionato. L&#x27;ho sviluppato come esercizio di art direction per capire se l&#x27;idea fosse abbastanza solida da funzionare su formati diversi.</span><span class="lang-en">This was not a commissioned project. I developed it as an art-direction exercise to test whether the idea was strong enough to work across different formats.</span></p></div><dl class="facts"><dt><span class="lang-it">Ruolo</span><span class="lang-en">Role</span></dt><dd><span class="lang-it">Concept, art direction, declinazioni</span><span class="lang-en">Concept, art direction, adaptations</span></dd>
 <dt><span class="lang-it">Consegna</span><span class="lang-en">Deliverables</span></dt><dd><span class="lang-it">Key visual, banner, formati social</span><span class="lang-en">Key visual, banner, social formats</span></dd>
 <dt><span class="lang-it">Stato</span><span class="lang-en">Status</span></dt><dd><span class="lang-it">Concept non commissionato</span><span class="lang-en">Self-initiated concept</span></dd></dl></section>
-<section class="gallery"><figure><div class="frame"><img src="/img/hydro-banner.webp" alt="Banner — apertura sito" loading="lazy"></div><figcaption><span class="lang-it">Banner — apertura sito</span><span class="lang-en">Banner — website hero</span></figcaption></figure>
-<figure><div class="frame"><img src="/img/hydro-linkedin.webp" alt="Post social — declinazione verticale" loading="lazy"></div><figcaption><span class="lang-it">Post social — declinazione verticale</span><span class="lang-en">Social post — vertical adaptation</span></figcaption></figure></section>
+<section class="materials">
+  <div class="materials-head">
+    <span><span class="lang-it">Materiali</span><span class="lang-en">Materials</span></span>
+    <span class="hint"><span class="lang-it">Trascina o scorri →</span><span class="lang-en">Drag or scroll →</span></span>
+  </div>
+  <div class="track" tabindex="0" role="region">
+<figure class="wide tall"><div class="media wide tall"><img src="/img/hydro-banner.webp" alt="Banner — apertura sito" loading="lazy"></div><figcaption><span class="lang-it">Banner — apertura sito</span><span class="lang-en">Banner — website hero</span></figcaption></figure>
+<figure class="tall"><div class="media tall"><img src="/img/hydro-linkedin.webp" alt="Post social — declinazione verticale" loading="lazy"></div><figcaption><span class="lang-it">Post social — declinazione verticale</span><span class="lang-en">Social post — vertical adaptation</span></figcaption></figure>
+  </div>
+  <div class="rail"><span></span></div>
+</section>
 <footer class="project-foot"><a href="/works/opera-prima/">← Opera Prima</a><a href="/works/">Works</a><a href="/works/herbarium/">Herbarium →</a></footer>
 </main><script>
 (function(){
@@ -26,5 +156,32 @@
  function setLang(l){l=l==="en"?"en":"it";root.dataset.lang=l;root.lang=l;bs.forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l?"true":"false"));try{localStorage.setItem("wemblazing-lang",l)}catch(e){}}
  let l="it";try{const s=localStorage.getItem("wemblazing-lang");if(s==="it"||s==="en")l=s;else if((navigator.language||"").toLowerCase().startsWith("en"))l="en"}catch(e){}
  setLang(l);bs.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+  document.querySelectorAll(".track").forEach(track=>{
+    let down=false,startX=0,startScroll=0;
+    const updateRail=()=>{
+      const rail=track.closest(".materials")?.querySelector(".rail > span");
+      if(!rail)return;
+      const max=Math.max(1,track.scrollWidth-track.clientWidth);
+      const visible=Math.min(1,track.clientWidth/track.scrollWidth);
+      const progress=Math.min(1,track.scrollLeft/max);
+      rail.style.transform="scaleX("+Math.max(visible,visible+(1-visible)*progress)+")";
+    };
+    track.addEventListener("pointerdown",e=>{
+      down=true;startX=e.clientX;startScroll=track.scrollLeft;
+      track.classList.add("dragging");
+      track.setPointerCapture?.(e.pointerId);
+    });
+    track.addEventListener("pointermove",e=>{
+      if(!down)return;
+      track.scrollLeft=startScroll-(e.clientX-startX);
+    });
+    const end=()=>{down=false;track.classList.remove("dragging")};
+    track.addEventListener("pointerup",end);
+    track.addEventListener("pointercancel",end);
+    track.addEventListener("scroll",updateRail,{passive:true});
+    updateRail();
+  });
+
 })();
 </script></body></html>
