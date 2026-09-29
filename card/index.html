@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F4EEE1">
+  <meta name="description" content="Enrico Pio Esposto — Founder & Graphic Designer at WEMBLAZING.">
+  <title>Enrico Pio Esposto — WEMBLAZING</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,50,1;1,9..144,300..600,50,1&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      color-scheme:light;
+      --avorio:#F4EEE1;
+      --avorio-alto:#FBF7EE;
+      --crema:#EBE2CF;
+      --taupe:#CDC1AB;
+      --salvia:#7C8F73;
+      --salvia-chiara:#A7B79C;
+      --salvia-scura:#4A5A42;
+      --carbone:#1E1C19;
+      --inchiostro:#2A2723;
+      --grigio:#67665A;
+      --brace:#8F4E22;
+      --linea:rgba(30,28,25,.14);
+      --display:"Fraunces", Georgia, serif;
+      --testo:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+      --mono:"DM Mono",ui-monospace,monospace;
+    }
+
+    *{box-sizing:border-box}
+    html{min-height:100%;background:var(--avorio)}
+    body{
+      margin:0;
+      min-height:100svh;
+      background:var(--avorio);
+      color:var(--inchiostro);
+      font-family:var(--testo);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.045;
+      mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index:20;
+    }
+
+    a{color:inherit}
+    button{font:inherit}
+
+    .page{
+      min-height:100svh;
+      width:min(100%, 720px);
+      margin:0 auto;
+      padding:max(1.25rem, env(safe-area-inset-top)) 1.35rem max(1.4rem, env(safe-area-inset-bottom));
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      isolation:isolate;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding-bottom:1.2rem;
+      border-bottom:1px solid var(--linea);
+    }
+
+    .wordmark{
+      display:flex;
+      align-items:center;
+      gap:.62rem;
+      text-decoration:none;
+      font-size:.77rem;
+      letter-spacing:.19em;
+      font-weight:600;
+      color:var(--carbone);
+    }
+
+    .star{
+      width:.92rem;
+      height:.92rem;
+      flex:none;
+      color:var(--salvia);
+    }
+
+    .lang{
+      display:flex;
+      gap:.35rem;
+      font-family:var(--mono);
+      font-size:.64rem;
+      letter-spacing:.08em;
+    }
+
+    .lang button{
+      border:0;
+      background:transparent;
+      color:var(--grigio);
+      padding:.35rem .2rem;
+      cursor:pointer;
+    }
+    .lang button[aria-pressed="true"]{color:var(--salvia-scura);font-weight:500}
+
+    .hero{
+      padding:clamp(3.2rem, 10vh, 6rem) 0 2.4rem;
+      position:relative;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      margin-bottom:1.15rem;
+      font-family:var(--mono);
+      font-size:.67rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--grigio);
+    }
+
+    .dot{
+      width:.48rem;
+      height:.48rem;
+      border-radius:50%;
+      background:var(--brace);
+    }
+
+    h1{
+      margin:0;
+      max-width:7ch;
+      font-family:var(--display);
+      font-size:clamp(3.55rem, 16vw, 6.6rem);
+      line-height:.84;
+      letter-spacing:-.055em;
+      font-weight:300;
+      font-variation-settings:"SOFT" 50,"WONK" 1;
+    }
+
+    h1 em{
+      font-style:italic;
+      color:var(--salvia);
+      font-weight:400;
+    }
+
+    .intro{
+      max-width:34rem;
+      margin-top:1.8rem;
+      font-size:clamp(1rem, 3.8vw, 1.15rem);
+      line-height:1.5;
+    }
+
+    .role{
+      margin-top:.75rem;
+      font-family:var(--mono);
+      font-size:.72rem;
+      letter-spacing:.08em;
+      color:var(--grigio);
+    }
+
+    .path{
+      margin:2.35rem 0 1.3rem;
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      color:var(--salvia-scura);
+      font-family:var(--mono);
+      font-size:.66rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .path-line{
+      height:1px;
+      flex:1;
+      background:var(--salvia);
+      position:relative;
+    }
+    .path-line::before,.path-line::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:.38rem;
+      height:.38rem;
+      border-radius:50%;
+      background:var(--salvia);
+      transform:translateY(-50%);
+    }
+    .path-line::before{left:0}
+    .path-line::after{right:0}
+
+    .actions{
+      display:grid;
+      gap:.72rem;
+    }
+
+    .action{
+      min-height:3.7rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:1rem 1.05rem;
+      border:1px solid var(--linea);
+      background:rgba(251,247,238,.34);
+      text-decoration:none;
+      transition:transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+
+    .action.primary{
+      background:var(--salvia-scura);
+      color:var(--avorio-alto);
+      border-color:var(--salvia-scura);
+    }
+
+    .action:hover{
+      transform:translateY(-2px);
+      border-color:rgba(74,90,66,.45);
+    }
+    .action.primary:hover{background:#3f4d38}
+
+    .action-kicker{
+      display:block;
+      margin-bottom:.12rem;
+      font-family:var(--mono);
+      font-size:.59rem;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      opacity:.7;
+    }
+
+    .action-label{
+      font-size:.97rem;
+      font-weight:500;
+    }
+
+    .arrow{
+      font-family:var(--mono);
+      font-size:1.1rem;
+      flex:none;
+    }
+
+    .quick{
+      margin-top:1.9rem;
+      padding-top:1.2rem;
+      border-top:1px solid var(--linea);
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.55rem;
+    }
+
+    .quick a{
+      text-decoration:none;
+      font-family:var(--mono);
+      font-size:.68rem;
+      color:var(--grigio);
+      padding:.55rem 0;
+    }
+    .quick a:hover{color:var(--salvia-scura)}
+
+    .footer{
+      margin-top:auto;
+      padding-top:3rem;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:1.4rem;
+      font-family:var(--mono);
+      font-size:.62rem;
+      letter-spacing:.07em;
+      color:var(--grigio);
+    }
+
+    .footer strong{
+      display:block;
+      margin-bottom:.28rem;
+      font-weight:500;
+      color:var(--salvia-scura);
+    }
+
+    .signature{
+      font-family:var(--display);
+      font-size:1.08rem;
+      font-style:italic;
+      color:var(--inchiostro);
+      letter-spacing:-.01em;
+      white-space:nowrap;
+    }
+
+    .lang-en{display:none}
+    html[data-lang="en"] .lang-it{display:none}
+    html[data-lang="en"] .lang-en{display:initial}
+
+    @media (min-width:620px){
+      .page{padding-left:2rem;padding-right:2rem}
+      .actions{grid-template-columns:1.35fr 1fr}
+      .action.primary{grid-column:1 / -1}
+    }
+
+    @media (prefers-reduced-motion:no-preference){
+      .hero, .actions, .quick{
+        animation:enter .7s cubic-bezier(.16,.84,.28,1) both;
+      }
+      .actions{animation-delay:.08s}
+      .quick{animation-delay:.14s}
+      @keyframes enter{
+        from{opacity:0;transform:translateY(14px)}
+        to{opacity:1;transform:none}
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="header">
+      <a class="wordmark" href="https://wemblazing.vercel.app/" aria-label="WEMBLAZING">
+        <svg class="star" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/>
+        </svg>
+        WEMBLAZING
+      </a>
+
+      <div class="lang" aria-label="Language">
+        <button type="button" data-lang="it" aria-pressed="true">IT</button>
+        <span>·</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span class="lang-it">Biglietto digitale</span>
+        <span class="lang-en">Digital card</span>
+      </div>
+
+      <h1>
+        <span class="lang-it">Ciao, sono <em>Enrico.</em></span>
+        <span class="lang-en">Hi, I'm <em>Enrico.</em></span>
+      </h1>
+
+      <p class="intro">
+        <span class="lang-it">Aiuto idee e brand a trovare il modo giusto di arrivare alle persone, attraverso identità visive, grafica e sistemi di comunicazione.</span>
+        <span class="lang-en">I help ideas and brands find the right way to reach people through visual identities, graphic design and communication systems.</span>
+      </p>
+
+      <p class="role">Enrico Pio Esposto · Founder & Graphic Designer</p>
+
+      <div class="path" aria-hidden="true">
+        <span>Ideas</span>
+        <span class="path-line"></span>
+        <span>People</span>
+      </div>
+    </section>
+
+    <section class="actions" aria-label="Contatti">
+      <a class="action primary" href="./enrico-pio-esposto.vcf">
+        <span>
+          <span class="action-kicker">
+            <span class="lang-it">Un tap</span>
+            <span class="lang-en">One tap</span>
+          </span>
+          <span class="action-label">
+            <span class="lang-it">Salva il mio contatto</span>
+            <span class="lang-en">Save my contact</span>
+          </span>
+        </span>
+        <span class="arrow">＋</span>
+      </a>
+
+      <a class="action" href="https://wemblazing.vercel.app/" target="_blank" rel="noopener">
+        <span>
+          <span class="action-kicker">WEMBLAZING</span>
+          <span class="action-label">
+            <span class="lang-it">Guarda il portfolio</span>
+            <span class="lang-en">View the portfolio</span>
+          </span>
+        </span>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a class="action" href="mailto:espostoenricopio@outlook.it?subject=WEMBLAZING%20%E2%80%94%20hello">
+        <span>
+          <span class="action-kicker">Email</span>
+          <span class="action-label">
+            <span class="lang-it">Scrivimi</span>
+            <span class="lang-en">Write to me</span>
+          </span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </section>
+
+    <nav class="quick" aria-label="Quick links">
+      <a href="tel:+393343700168">
+        <span class="lang-it">Chiama</span>
+        <span class="lang-en">Call</span>
+      </a>
+      <a href="https://www.instagram.com/wemblazing/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wemblazing.vercel.app/#contatti" target="_blank" rel="noopener">
+        <span class="lang-it">Contatti</span>
+        <span class="lang-en">Contact</span>
+      </a>
+    </nav>
+
+    <footer class="footer">
+      <div>
+        <strong>Explore. Create. Connect.</strong>
+        <span>WEMBLAZING © 2026</span>
+      </div>
+      <div class="signature">Trailblazing through design.</div>
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll("[data-lang]");
+
+      function setLang(lang){
+        lang = lang === "en" ? "en" : "it";
+        root.dataset.lang = lang;
+        root.lang = lang;
+        buttons.forEach(btn => btn.setAttribute("aria-pressed", btn.dataset.lang === lang ? "true" : "false"));
+        try { localStorage.setItem("wemblazing-lang", lang); } catch(e) {}
+      }
+
+      let initial = "it";
+      try {
+        const stored = localStorage.getItem("wemblazing-lang");
+        if(stored === "it" || stored === "en") initial = stored;
+        else if((navigator.language || "").toLowerCase().startsWith("en")) initial = "en";
+      } catch(e) {}
+
+      setLang(initial);
+      buttons.forEach(btn => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    })();
+  </script>
+</body>
+</html>
