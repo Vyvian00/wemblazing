@@ -9,234 +9,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ivory:#F4EEE1;
-  --cream:#EBE2CF;
-  --sage:#7C8F73;
-  --sage-dark:#4A5A42;
-  --ink:#2A2723;
-  --muted:#67665A;
-  --line:rgba(42,39,35,.14);
-  --display:"Fraunces",Georgia,serif;
-  --body:"Instrument Sans",Arial,sans-serif;
-  --mono:"DM Mono",monospace;
-  --pad:clamp(1rem,4vw,4rem);
-  --max:92rem;
-}
-*{box-sizing:border-box}
-html{background:var(--ivory)}
-body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
-a{color:inherit}
-img{display:block;max-width:100%}
-.top{
-  display:flex;align-items:center;gap:1.5rem;
-  padding:1.05rem var(--pad);
-  border-bottom:1px solid var(--line);
-  position:relative;z-index:20
-}
-.brand{
-  display:flex;align-items:center;gap:.6rem;
-  text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:.2em
-}
-.brand svg{width:.95rem;color:var(--sage)}
-.nav{margin-left:auto;display:flex;gap:1.6rem;align-items:center}
-.nav a,.lang button{
-  border:0;background:none;text-decoration:none;padding:.2rem 0;
-  font:500 .76rem/1 var(--mono);color:var(--muted);cursor:pointer
-}
-.lang{
-  display:flex;align-items:center;gap:.28rem;flex:none;
-  padding-left:1.15rem;border-left:1px solid var(--line);
-  font:500 .70rem/1 var(--mono);letter-spacing:.08em
-}
-.lang button[aria-pressed="true"]{color:var(--ink)}
+:root{--ivory:#F4EEE1;--cream:#EBE2CF;--sage:#7C8F73;--sage-dark:#4A5A42;--ink:#2A2723;--muted:#67665A;--line:rgba(42,39,35,.14);--display:"Fraunces",Georgia,serif;--body:"Instrument Sans",Arial,sans-serif;--mono:"DM Mono",monospace;--pad:clamp(1rem,4vw,4rem);--max:92rem}
+*{box-sizing:border-box}html{background:var(--ivory)}body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}a{color:inherit}img{display:block;max-width:100%}
+.top{display:flex;align-items:center;gap:1.5rem;padding:1.05rem var(--pad);border-bottom:1px solid var(--line);position:relative;z-index:20}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:.2em}.brand svg{width:.95rem;color:var(--sage)}
+.nav{margin-left:auto;display:flex;gap:1.6rem;align-items:center}.nav a,.lang button{border:0;background:none;text-decoration:none;padding:.2rem 0;font:500 .76rem/1 var(--mono);color:var(--muted);cursor:pointer}
+.lang{display:flex;align-items:center;gap:.28rem;flex:none;padding-left:1.15rem;border-left:1px solid var(--line);font:500 .70rem/1 var(--mono);letter-spacing:.08em}.lang button[aria-pressed="true"]{color:var(--ink)}
 .wrap{width:min(100%,var(--max));margin:auto;padding:0 var(--pad)}
-.intro{
-  display:grid;gap:2rem;align-items:end;
-  padding:clamp(4rem,8vw,7rem) 0 clamp(2.6rem,5vw,4.5rem);
-  border-bottom:1px solid var(--line)
-}
+.intro{display:grid;gap:2rem;align-items:end;padding:clamp(4rem,8vw,7rem) 0 clamp(2.6rem,5vw,4.5rem);border-bottom:1px solid var(--line)}
 @media(min-width:900px){.intro{grid-template-columns:minmax(0,1fr) minmax(19rem,.42fr)}}
-.kicker{font:500 .62rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-.intro h1{margin:0;font:300 clamp(4rem,8vw,7.6rem)/.88 var(--display);letter-spacing:-.05em}
-.intro p{margin:0 0 1.1rem;max-width:28rem;font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.6;color:var(--muted)}
+.kicker{font:500 .62rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}.intro h1{margin:0;font:300 clamp(4rem,8vw,7.6rem)/.88 var(--display);letter-spacing:-.05em}.intro p{margin:0 0 1.1rem;max-width:28rem;font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.6;color:var(--muted)}
 .intro-meta{display:flex;gap:1.5rem;flex-wrap:wrap;font:500 .58rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 .projects{padding:0 0 clamp(5rem,10vw,9rem)}
-.project{
-  display:grid;gap:clamp(1.3rem,3vw,3rem);align-items:start;
-  padding:clamp(2.2rem,5vw,4.8rem) 0;
-  border-bottom:1px solid var(--line)
-}
-@media(min-width:900px){
-  .project{grid-template-columns:5rem minmax(18rem,28rem) minmax(0,1fr)}
-  .project:nth-child(even){grid-template-columns:5rem minmax(0,1fr) minmax(18rem,28rem)}
-  .project:nth-child(even) .visual{grid-column:3}
-  .project:nth-child(even) .copy{grid-column:2;grid-row:1}
-  .project:nth-child(even) .number{grid-column:1;grid-row:1}
-}
-.number{font:500 .62rem/1 var(--mono);letter-spacing:.08em;color:var(--muted);padding-top:.25rem}
-.visual{position:relative}
-.frame{aspect-ratio:9/16;overflow:hidden;background:var(--cream)}
-.frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.project:hover .frame img{transform:scale(1.015)}
-.frame--hydro img{object-position:50% 24%}
-.copy{align-self:end;max-width:34rem}
-.label{font:500 .58rem/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-.copy h2{margin:0;font:300 clamp(2.8rem,5.8vw,5.8rem)/.9 var(--display);letter-spacing:-.045em}
-.desc{margin:1rem 0 0;max-width:30rem;font-size:clamp(.98rem,1.2vw,1.08rem);line-height:1.6;color:var(--muted)}
-.meta{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.1rem;font:500 .58rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
-.view{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.45rem;text-decoration:none;font:500 .72rem/1 var(--mono);border-bottom:1px solid currentColor;padding-bottom:.22rem}
-.view span{transition:transform .25s ease}.view:hover span{transform:translateX(.22rem)}
-.closing{display:grid;gap:1.2rem;padding:clamp(4rem,8vw,7rem) 0}
-@media(min-width:900px){.closing{grid-template-columns:1fr auto;align-items:end}}
-.closing h3{margin:0;font:300 clamp(2.8rem,6vw,6rem)/.92 var(--display);letter-spacing:-.045em}
-.closing a{text-decoration:none;font:500 .72rem/1 var(--mono);border-bottom:1px solid currentColor;padding-bottom:.22rem}
-.lang-en{display:none}
-html[data-lang="en"] .lang-it{display:none}
-html[data-lang="en"] .lang-en{display:inline}
-@media(max-width:899px){
-  .project{grid-template-columns:3rem minmax(0,1fr)}
-  .number{grid-column:1}
-  .visual{grid-column:2;grid-row:1 / span 2;width:min(100%,28rem)}
-  .copy{grid-column:2}
-}
-@media(max-width:620px){
-  .nav .home{display:none}
-  .project{grid-template-columns:1fr}
-  .number,.visual,.copy{grid-column:1;grid-row:auto}
-  .number{margin-bottom:-.2rem}
-  .visual{width:100%}
-  .copy h2{font-size:clamp(2.7rem,14vw,4.6rem)}
-}
-@media(max-width:760px){
-  .top{gap:.85rem;padding:1.05rem var(--pad)}
-  .nav{gap:1rem}
-  .brand{font-size:.72rem;letter-spacing:.16em}
-  .lang{padding-left:.7rem;gap:.16rem;font-size:.66rem}
-}
+.project{display:grid;gap:clamp(1.3rem,3vw,3rem);align-items:start;padding:clamp(2.2rem,5vw,4.8rem) 0;border-bottom:1px solid var(--line)}
+@media(min-width:900px){.project{grid-template-columns:5rem minmax(18rem,28rem) minmax(0,1fr)}.project:nth-child(even){grid-template-columns:5rem minmax(0,1fr) minmax(18rem,28rem)}.project:nth-child(even) .visual{grid-column:3}.project:nth-child(even) .copy{grid-column:2;grid-row:1}.project:nth-child(even) .number{grid-column:1;grid-row:1}}
+.number{font:500 .62rem/1 var(--mono);letter-spacing:.08em;color:var(--muted);padding-top:.25rem}.visual{position:relative}.frame{aspect-ratio:9/16;overflow:hidden;background:var(--cream)}.frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}.project:hover .frame img{transform:scale(1.015)}
+.frame--hydro img{object-position:68% 50%}
+.wip-frame{aspect-ratio:9/16;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(235,226,207,.35),rgba(235,226,207,.82))}.wip-frame:before{content:"";position:absolute;inset:1.2rem;border:1px solid rgba(42,39,35,.08)}.wip-copy{position:relative;z-index:1;text-align:center;padding:2rem}.wip-copy small{display:block;font:500 .58rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}.wip-copy strong{display:block;font:300 clamp(2.2rem,4vw,4rem)/.95 var(--display);font-weight:300}
+.copy{align-self:end;max-width:34rem}.label{font:500 .58rem/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}.copy h2{margin:0;font:300 clamp(2.8rem,5.8vw,5.8rem)/.9 var(--display);letter-spacing:-.045em}.desc{margin:1rem 0 0;max-width:30rem;font-size:clamp(.98rem,1.2vw,1.08rem);line-height:1.6;color:var(--muted)}.meta{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.1rem;font:500 .58rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.view{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.45rem;text-decoration:none;font:500 .72rem/1 var(--mono);border-bottom:1px solid currentColor;padding-bottom:.22rem}.view span{transition:transform .25s ease}.view:hover span{transform:translateX(.22rem)}
+.closing{display:grid;gap:1.2rem;padding:clamp(4rem,8vw,7rem) 0}@media(min-width:900px){.closing{grid-template-columns:1fr auto;align-items:end}}.closing h3{margin:0;font:300 clamp(2.8rem,6vw,6rem)/.92 var(--display);letter-spacing:-.045em}.closing a{text-decoration:none;font:500 .72rem/1 var(--mono);border-bottom:1px solid currentColor;padding-bottom:.22rem}
+.lang-en{display:none}html[data-lang="en"] .lang-it{display:none}html[data-lang="en"] .lang-en{display:inline}
+@media(max-width:899px){.project{grid-template-columns:3rem minmax(0,1fr)}.number{grid-column:1}.visual{grid-column:2;grid-row:1 / span 2;width:min(100%,28rem)}.copy{grid-column:2}}
+@media(max-width:620px){.nav .home{display:none}.project{grid-template-columns:1fr}.number,.visual,.copy{grid-column:1;grid-row:auto}.number{margin-bottom:-.2rem}.visual{width:100%}.copy h2{font-size:clamp(2.7rem,14vw,4.6rem)}}
+@media(max-width:760px){.top{gap:.85rem;padding:1.05rem var(--pad)}.nav{gap:1rem}.brand{font-size:.72rem;letter-spacing:.16em}.lang{padding-left:.7rem;gap:.16rem;font-size:.66rem}}
 </style>
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>WEMBLAZING</a>
-  <nav class="nav">
-    <a class="home" href="/">Home</a>
-    <a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a>
-    <div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en">EN</button></div>
-  </nav>
-</header>
-
+<header class="top"><a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.62 6.4 5.6 11.38 12 12-6.4.62-11.38 5.6-12 12-.62-6.4-5.6-11.38-12-12C6.4 11.38 11.38 6.4 12 0Z"/></svg>WEMBLAZING</a><nav class="nav"><a class="home" href="/">Home</a><a href="/card/"><span class="lang-it">Contatti</span><span class="lang-en">Contact</span></a><div class="lang"><button type="button" data-lang="it" aria-pressed="true">IT</button><span>/</span><button type="button" data-lang="en">EN</button></div></nav></header>
 <main class="wrap">
-  <section class="intro">
-    <div>
-      <div class="kicker">WEMBLAZING / SELECTED WORKS</div>
-      <h1><span class="lang-it">Lavori selezionati.</span><span class="lang-en">Selected works.</span></h1>
-    </div>
-    <div>
-      <p><span class="lang-it">Identità, campagne e sistemi visivi sviluppati con approcci diversi, ma sempre con la stessa attenzione alla chiarezza e alla connessione.</span><span class="lang-en">Identities, campaigns and visual systems developed through different approaches, always with the same focus on clarity and connection.</span></p>
-      <div class="intro-meta"><span>2025—2026</span><span>06 projects</span></div>
-    </div>
-  </section>
-
-  <section class="projects">
-    <article class="project">
-      <div class="number">01</div>
-      <a class="visual" href="/works/herbarium/" aria-label="Herbarium"><div class="frame"><img src="/img/HERBARIUM_HERO.jpg" alt="Herbarium" loading="eager"></div></a>
-      <div class="copy">
-        <div class="label">Identity · Packaging · Editorial</div>
-        <h2>Herbarium</h2>
-        <p class="desc"><span class="lang-it">Un sistema visivo botanico costruito tra packaging, catalogo e identità di prodotto.</span><span class="lang-en">A botanical visual system built across packaging, catalogue and product identity.</span></p>
-        <div class="meta"><span>2025</span><span>Brand system</span></div>
-        <a class="view" href="/works/herbarium/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="number">02</div>
-      <a class="visual" href="/works/opera-prima/" aria-label="Opera Prima"><div class="frame"><img src="/img/OPERAPRIMA_HERO916.png" alt="Opera Prima" loading="lazy"></div></a>
-      <div class="copy">
-        <div class="label">Brand identity · Art direction · Packaging</div>
-        <h2>Opera Prima</h2>
-        <p class="desc"><span class="lang-it">Un’identità per gelateria italiana costruita su eleganza, teatro e materia.</span><span class="lang-en">An identity for an Italian gelato shop built around elegance, theatre and materiality.</span></p>
-        <div class="meta"><span>2025</span><span>Identity system</span></div>
-        <a class="view" href="/works/opera-prima/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="number">03</div>
-      <a class="visual" href="/works/hydro/" aria-label="Hydro"><div class="frame frame--hydro"><img src="/img/hydro-linkedin.webp" alt="Hydro" loading="lazy"></div></a>
-      <div class="copy">
-        <div class="label">Campaign · Social · Art direction</div>
-        <h2>Hydro</h2>
-        <p class="desc"><span class="lang-it">Una campagna corporate dove persone, industria e paesaggio convivono nello stesso racconto.</span><span class="lang-en">A corporate campaign where people, industry and landscape share the same visual story.</span></p>
-        <div class="meta"><span>2026</span><span>Campaign</span></div>
-        <a class="view" href="/works/hydro/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="number">04</div>
-      <a class="visual" href="/works/brado/" aria-label="Brado"><div class="frame"><img src="/img/BRADO_HERO2.png" alt="Brado" loading="lazy"></div></a>
-      <div class="copy">
-        <div class="label">Brand identity · Packaging · Food</div>
-        <h2>Brado</h2>
-        <p class="desc"><span class="lang-it">Un’identità calda e territoriale per un progetto food costruito attorno a filiera corta e convivialità.</span><span class="lang-en">A warm, local identity for a food concept built around short supply chains and conviviality.</span></p>
-        <div class="meta"><span>2026</span><span>Brand system</span></div>
-        <a class="view" href="/works/brado/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="number">05</div>
-      <a class="visual" href="/works/juicy/" aria-label="Juicy"><div class="frame"><img src="/img/COPERTINAJUICE.jpg" alt="Juicy" loading="lazy"></div></a>
-      <div class="copy">
-        <div class="label">Editorial · Packaging · Visual system</div>
-        <h2>Juicy</h2>
-        <p class="desc"><span class="lang-it">Una collezione editoriale e packaging costruita sul colore, sulla frutta e su un linguaggio fresco e modulare.</span><span class="lang-en">An editorial and packaging collection built around colour, fruit and a fresh modular language.</span></p>
-        <div class="meta"><span>2026</span><span>Editorial system</span></div>
-        <a class="view" href="/works/juicy/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a>
-      </div>
-    </article>
-
-    <article class="project">
-      <div class="number">06</div>
-      <a class="visual" href="/works/mostra-arte/" aria-label="Mostra d’arte"><div class="frame"><img src="/img/Storie1.jpg" alt="Mostra d’arte" loading="lazy"></div></a>
-      <div class="copy">
-        <div class="label">Art direction · Poster · Exhibition</div>
-        <h2><span class="lang-it">Mostra d’arte</span><span class="lang-en">Art exhibition</span></h2>
-        <p class="desc"><span class="lang-it">Un progetto espositivo costruito su materia, stratificazione e tensione tra immagine e tipografia.</span><span class="lang-en">An exhibition project built around materiality, layering and tension between image and typography.</span></p>
-        <div class="meta"><span>2026</span><span>Exhibition graphics</span></div>
-        <a class="view" href="/works/mostra-arte/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a>
-      </div>
-    </article>
-  </section>
-
-  <section class="closing">
-    <h3><span class="lang-it">Hai un’idea da portare alle persone?</span><span class="lang-en">Have an idea worth bringing to people?</span></h3>
-    <a href="/card/"><span class="lang-it">Parliamone →</span><span class="lang-en">Let’s talk →</span></a>
-  </section>
+<section class="intro"><div><div class="kicker">WEMBLAZING / SELECTED WORKS</div><h1><span class="lang-it">Lavori selezionati.</span><span class="lang-en">Selected works.</span></h1></div><div><p><span class="lang-it">Identità, campagne e sistemi visivi sviluppati con approcci diversi, ma sempre con la stessa attenzione alla chiarezza e alla connessione.</span><span class="lang-en">Identities, campaigns and visual systems developed through different approaches, always with the same focus on clarity and connection.</span></p><div class="intro-meta"><span>2025—2026</span><span>06 projects</span></div></div></section>
+<section class="projects">
+<article class="project"><div class="number">01</div><a class="visual" href="/works/herbarium/" aria-label="Herbarium"><div class="frame"><img src="/img/HERBARIUM_HERO.jpg" alt="Herbarium" loading="eager"></div></a><div class="copy"><div class="label">Identity · Packaging · Editorial</div><h2>Herbarium</h2><p class="desc"><span class="lang-it">Un sistema visivo botanico costruito tra packaging, catalogo e identità di prodotto.</span><span class="lang-en">A botanical visual system built across packaging, catalogue and product identity.</span></p><div class="meta"><span>2025</span><span>Brand system</span></div><a class="view" href="/works/herbarium/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a></div></article>
+<article class="project"><div class="number">02</div><a class="visual" href="/works/opera-prima/" aria-label="Opera Prima"><div class="frame"><img src="/img/OPERAPRIMA_HERO916.png" alt="Opera Prima" loading="lazy"></div></a><div class="copy"><div class="label">Brand identity · Art direction · Packaging</div><h2>Opera Prima</h2><p class="desc"><span class="lang-it">Un’identità per gelateria italiana costruita su eleganza, teatro e materia.</span><span class="lang-en">An identity for an Italian gelato shop built around elegance, theatre and materiality.</span></p><div class="meta"><span>2025</span><span>Identity system</span></div><a class="view" href="/works/opera-prima/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a></div></article>
+<article class="project"><div class="number">03</div><a class="visual" href="/works/hydro/" aria-label="Hydro"><div class="frame frame--hydro"><img src="/img/hydro-banner.webp" alt="Hydro" loading="lazy"></div></a><div class="copy"><div class="label">Campaign · Social · Art direction</div><h2>Hydro</h2><p class="desc"><span class="lang-it">Una campagna corporate dove persone, industria e paesaggio convivono nello stesso racconto.</span><span class="lang-en">A corporate campaign where people, industry and landscape share the same visual story.</span></p><div class="meta"><span>2026</span><span>Campaign</span></div><a class="view" href="/works/hydro/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a></div></article>
+<article class="project"><div class="number">04</div><a class="visual" href="/works/brado/" aria-label="Brado"><div class="frame"><img src="/img/BRADO_HERO2.png" alt="Brado" loading="lazy"></div></a><div class="copy"><div class="label">Brand identity · Packaging · Food</div><h2>Brado</h2><p class="desc"><span class="lang-it">Un’identità calda e territoriale per un progetto food costruito attorno a filiera corta e convivialità.</span><span class="lang-en">A warm, local identity for a food concept built around short supply chains and conviviality.</span></p><div class="meta"><span>2026</span><span>Brand system</span></div><a class="view" href="/works/brado/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a></div></article>
+<article class="project"><div class="number">05</div><a class="visual" href="/works/juicy/" aria-label="Juicy"><div class="frame"><img src="/img/COPERTINAJUICE.jpg" alt="Juicy" loading="lazy"></div></a><div class="copy"><div class="label">Editorial · Packaging · Visual system</div><h2>Juicy</h2><p class="desc"><span class="lang-it">Una collezione editoriale e packaging costruita sul colore, sulla frutta e su un linguaggio fresco e modulare.</span><span class="lang-en">An editorial and packaging collection built around colour, fruit and a fresh modular language.</span></p><div class="meta"><span>2026</span><span>Editorial system</span></div><a class="view" href="/works/juicy/"><span class="lang-it">Vedi progetto</span><span class="lang-en">View project</span> <span>→</span></a></div></article>
+<article class="project"><div class="number">06</div><div class="visual"><div class="wip-frame"><div class="wip-copy"><small>WEMBLAZING / 06</small><strong><span class="lang-it">Lavori in corso</span><span class="lang-en">Work in progress</span></strong></div></div></div><div class="copy"><div class="label"><span class="lang-it">Nuovo progetto · In sviluppo</span><span class="lang-en">New project · In development</span></div><h2><span class="lang-it">Prossimamente</span><span class="lang-en">Coming soon</span></h2><p class="desc"><span class="lang-it">Questo spazio è riservato a un progetto ancora in costruzione. Tornerà online quando sarà pronto per essere mostrato.</span><span class="lang-en">This space is reserved for a project still in development. It will appear here when it is ready to be shown.</span></p><div class="meta"><span>2026</span><span>WIP</span></div></div></article>
+</section>
+<section class="closing"><h3><span class="lang-it">Hai un’idea?<br>Troviamo la strada.</span><span class="lang-en">Have an idea?<br>Let’s find the path.</span></h3><a href="/card/"><span class="lang-it">Contatti →</span><span class="lang-en">Contact →</span></a></section>
 </main>
-
-<script>
-(function(){
-  const root=document.documentElement;
-  const buttons=[...document.querySelectorAll('[data-lang]')];
-  function setLang(l){
-    l=l==='en'?'en':'it';
-    root.dataset.lang=l;root.lang=l;
-    buttons.forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false'));
-    try{localStorage.setItem('wemblazing-lang',l)}catch(e){}
-  }
-  let lang='it';
-  try{
-    const saved=localStorage.getItem('wemblazing-lang');
-    if(saved==='it'||saved==='en')lang=saved;
-    else if((navigator.language||'').toLowerCase().startsWith('en'))lang='en';
-  }catch(e){}
-  setLang(lang);
-  buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-})();
-</script>
-</body>
-</html>
+<script>(function(){const root=document.documentElement;const bs=[...document.querySelectorAll('[data-lang]')];function setLang(l){l=l==='en'?'en':'it';root.dataset.lang=l;root.lang=l;bs.forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false'));try{localStorage.setItem('wemblazing-lang',l)}catch(e){}}let l='it';try{const s=localStorage.getItem('wemblazing-lang');if(s==='it'||s==='en')l=s;else if((navigator.language||'').toLowerCase().startsWith('en'))l='en'}catch(e){}setLang(l);bs.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));})();</script>
+</body></html>
